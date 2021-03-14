@@ -6,28 +6,8 @@ const userSchema = new Schema({
   lastName: String,
   email: String,
   password: String,
-  startTime: Date,
+  startTime: { type: Date, default: Date.now },
   active: Boolean,
-  projects: [
-    {
-      project: String,
-      color: String,
-      tasks: [
-        {
-          task: String,
-          color: String,
-          totalDuration: Date,
-          history: [
-            {
-              startTime: Date,
-              endTime: Date,
-              duration: Date,
-            },
-          ],
-        },
-      ],
-    },
-  ],
 });
 
 const User = mongoose.model("User", userSchema);
