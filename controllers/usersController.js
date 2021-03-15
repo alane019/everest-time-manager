@@ -29,4 +29,12 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  findUserByEmail: function (req, res) {
+    db.User.findById({
+      email: req.params.email,
+      password: req.params.password,
+    })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
 };
