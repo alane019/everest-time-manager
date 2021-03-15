@@ -104,4 +104,8 @@ dist
 .tern-port
 
 #other
+<<<<<<< HEAD
 .vscode
+=======
+.vscode
+>>>>>>> api-interface
