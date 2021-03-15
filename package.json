@@ -27,6 +27,8 @@
     "express-validator": "^6.10.0",
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
+    "material-ui": "^0.20.2",
+    "material-ui-react": "0.0.1",
     "mongoose": "^5.3.16",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
