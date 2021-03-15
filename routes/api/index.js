@@ -7,5 +7,5 @@ const actionsRoutes = require("./actions");
 router.use("/users", userRoutes);
 router.use("/projects", projectRoutes);
 router.use("/tasks", tasksRoutes);
-router.use("/action", actionRoutes);
+router.use("/action", actionsRoutes);
 module.exports = router;
