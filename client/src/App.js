@@ -5,6 +5,7 @@ import SignUp from "./pages/SignUp"
 import NoMatch from "./pages/NoMatch";
 import Main from "./pages/Main";
 import Nav from "./components/Nav";
+import ProjectManager from "./components/ProjectManager";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path={["/logIn"]}>
+          <Route exact path={["/"]}>
             <LogIn />
           </Route>
           <Route exact path={["/SignUp"]}>
@@ -21,6 +22,9 @@ function App() {
           <Route exact path={["/Main"]}>
             <Main />
           </ Route>
+          <Route exact path={["/home"]}>
+            <ProjectManager />
+          </Route>
           <Route>
             <NoMatch />
           </Route>
