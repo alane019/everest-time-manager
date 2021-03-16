@@ -8,14 +8,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [container, setContainer] = useState("container");
 
-  // signUpButton.addEventListener("click", () => {
-  //   container.classList.add("right-panel-active");
-  // });
-
-  // signInButton.addEventListener("click", () => {
-  //   container.classList.remove("right-panel-active");
-  // });
-
   return (
     <div>
       <div class={container} id="container">
@@ -77,7 +69,7 @@ export default function Login() {
               </button>
             </div>
             <div class="overlay-panel overlay-right">
-              <h1>Hello, Alan, Matt, Eric, and Pavel!</h1>
+              <h1>Hello, Adam, Matt, Eric, and Pavel!</h1>
               <p>Enter your personal details and start journey with us</p>
               <button
                 class="ghost"
