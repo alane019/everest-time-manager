@@ -9,11 +9,11 @@ function NoMatch() {
         <Col size="md-12">
           <Jumbotron>
             <h1>404 Page Not Found</h1>
+            <br></br>
             <h1>
-              <span role="img" aria-label="Face With Rolling Eyes Emoji">
-                🙄
-              </span>
+              <img aria-label="vincent-vega-lost-confused" src="https://media.tenor.co/images/9f2d19ec75ddc830ba276cb24190e4b6/raw"></img>
             </h1>
+            <br></br>
           </Jumbotron>
         </Col>
       </Row>

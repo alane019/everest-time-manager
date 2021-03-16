@@ -22,17 +22,7 @@ export default function Login() {
         <div class="form-container sign-up-container">
           <form action="#">
             <h1>Create Account</h1>
-            <div class="social-container">
-              <a href="#" class="social">
-                <i class="fa fa-facebook"></i>
-              </a>
-              <a href="#" class="social">
-                <i class="fa fa-google"></i>
-              </a>
-              <a href="#" class="social">
-                <i class="fa fa-linkedin"></i>
-              </a>
-            </div>
+
             <span>or use your email for registration</span>
             <input type="text" placeholder="Name" />
             <input type="email" placeholder="Email" />
