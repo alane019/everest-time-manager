@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LogIn from "./pages/LogIn";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import ProjectManager from "./components/ProjectManager";
 
 function App() {
   return (
@@ -10,8 +11,11 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path={["/logIn"]}>
+          <Route exact path={["/"]}>
             <LogIn />
+          </Route>
+          <Route exact path={["/home"]}>
+            <ProjectManager />
           </Route>
           <Route>
             <NoMatch />
