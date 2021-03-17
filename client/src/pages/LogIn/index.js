@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-//import Form from "react-bootstrap/Form";
-//import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
+// import Button from "react-bootstrap/Button";
 import "./style.css";
 import API from "../../utils/API";
 
 export default function Login() {
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [container, setContainer] = useState("container");
   const [userData, setUserData] = useState({});
 
@@ -53,13 +55,13 @@ export default function Login() {
           <form action="#">
             <h1>Create Account</h1>
             <div class="social-container">
-              <a href="#" class="social">
+              <a href="# " class="social">
                 <i class="fa fa-facebook"></i>
               </a>
-              <a href="#" class="social">
+              <a href="# " class="social">
                 <i class="fa fa-google"></i>
               </a>
-              <a href="#" class="social">
+              <a href="# " class="social">
                 <i class="fa fa-linkedin"></i>
               </a>
             </div>
@@ -89,17 +91,18 @@ export default function Login() {
           <form action="#">
             <h1>Sign in</h1>
             <div class="social-container">
-              <a href="#" class="social">
+              <a href="# " class="social">
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="#" class="social">
+              <a href="# " class="social">
                 <i class="fab fa-google-plus-g"></i>
               </a>
-              <a href="#" class="social">
+              <a href="# " class="social">
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
             <span>or use your account</span>
+
             <input
               type="email"
               placeholder="Email"
@@ -112,6 +115,7 @@ export default function Login() {
             />
             <a href="#">Forgot your password?</a>
             <button onClick={handleLoginForm}>Sign In</button>
+
           </form>
         </div>
         <div class="overlay-container">
