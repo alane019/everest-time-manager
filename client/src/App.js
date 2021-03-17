@@ -11,15 +11,7 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path={["/"]}>
-            <LogIn />
-          </Route>
-          <Route exact path={["/home"]}>
-            <ProjectManager />
-          </Route>
-          <Route>
-            <NoMatch />
-          </Route>
+          <LogIn />
         </Switch>
       </div>
     </Router>
