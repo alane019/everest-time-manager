@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./style.css"
-
+import "./style.css";
+import API from "../../utils/API";
 class ProjectManager extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +22,9 @@ class ProjectManager extends React.Component {
             onChange={this.handleChange}
             value={this.state.text}
           />
-          <button className="">Add Project {this.state.items.length + 1}</button>
+          <button className="">
+            Add Project {this.state.items.length + 1}
+          </button>
         </form>
       </div>
     );
@@ -38,7 +40,14 @@ class ProjectManager extends React.Component {
       return;
     }
     const newItem = {
-      text: (this.state.text + " . . .   ("  +  (new Intl.DateTimeFormat('en-US', { dateStyle: 'short', timeStyle: 'short' }).format()) + ")"),
+      text:
+        this.state.text +
+        " . . .   (" +
+        new Intl.DateTimeFormat("en-US", {
+          dateStyle: "short",
+          timeStyle: "short",
+        }).format() +
+        ")",
       id: Date.now(),
     };
     this.setState((state) => ({
