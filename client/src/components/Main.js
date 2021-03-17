@@ -1,6 +1,6 @@
 import React from "react";
-import ProjectManager from "../components/ProjectManager";
-import Timer from "../components/Timer";
+import ProjectManager from "./ProjectManager";
+import Timer from "./Timer";
 
 function Main() {
   return (
