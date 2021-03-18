@@ -15,7 +15,7 @@
 
 body {
 	background: #FFFFFF;
-	display: flex;
+	/* display: flex; */
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
@@ -24,15 +24,16 @@ body {
 	margin: -20px 0 50px;
 }
 
-ul {
+.projectManagerUl {
     background-color: #c9d1c898;
     overflow-y: scroll;
     max-height: 60vh;
     padding: 2px;
 }
 
-li {
-    border:  #5b706586 outset  2.5px; /* "pine" from color theme @ ~=50% alpha (opacity) */
+.projectManagerLi {
+    border:  #5b706586 outset  2.5px; 
+	/* "pine" from color theme @ ~=50% alpha (opacity) */
     list-style-type: none;
     padding: 10px;
 }
