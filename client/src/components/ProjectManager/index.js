@@ -60,9 +60,9 @@ class ProjectManager extends React.Component {
 class ProjectList extends React.Component {
   render() {
     return (
-      <ul>
+      <ul className="projectManagerUl">
         {this.props.items.map((item) => (
-          <li key={item.id}>{item.text}</li>
+          <li className="projectManagerLi" key={item.id}>{item.text}</li>
         ))}
       </ul>
     );

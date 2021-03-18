@@ -35,27 +35,27 @@ const Timer = () => {
     return () => clearInterval(intervalId);
   }, [isActive, counter]);
 
-  function stopTimer() {
-    setIsActive(false);
-    setCounter(0);
-    setSecond("00");
-    setMinute("00");
-  }
+  // function stopTimer() {
+  //   setIsActive(false);
+  //   setCounter(0);
+  //   setSecond("00");
+  //   setMinute("00");
+  // }
 
   return (
-    <div class="container-fluid">
-      <div class="time">
-        <span class="minute">{minute}</span>
+    <div className="container-fluid">
+      <div className="time">
+        <span className="minute">{minute}</span>
         <span>:</span>
-        <span class="second">{second}</span>
+        <span className="second">{second}</span>
       </div>
-      <div class="buttons">
-        <button onClick={() => setIsActive(!isActive)} class="start">
-          {isActive ? "Pause" : "Start"}
+      <div className="buttons">
+        <button onClick={() => setIsActive(!isActive)} className="start">
+          {isActive ? "◼" : "▶"}
         </button>
-        <button onClick={stopTimer} class="reset">
+        {/* <button onClick={stopTimer} className="reset">
           Reset
-        </button>
+        </button> */}
       </div>
     </div>
   );
