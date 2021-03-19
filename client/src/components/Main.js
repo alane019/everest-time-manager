@@ -1,33 +1,34 @@
 import React, { useState } from "react";
-import {
-  Route,
-  NavLink,
-  HashRouter
-} from "react-router-dom";
-import ProjectManager from "./ProjectManager";
+import { Route, NavLink, HashRouter } from "react-router-dom";
+import Home from "./Home";
 import Chart from "../Chart";
 import Calendar from "../Calendar";
+import Nav from "./Nav";
 import "./index.css";
 
- 
 export default function Main() {
-    const [container] = useState("container");
-    return (
-      <HashRouter>
-          
-        <div className={container} id="container">
-          <h1>Productivity App</h1>
-            <ul className="header">
-              <li><NavLink to="/ProjectManager">Home</NavLink></li>
-              <li><NavLink to="/Chart">Charts</NavLink></li>
-              <li><NavLink to="/Calendar">Calendar</NavLink></li>
-            </ul>
-          <div className="content">
-            <Route path="/ProjectManager" component={ProjectManager}/>
-            <Route path="/Chart" component={Chart}/>
-            <Route path="/Calendar" component={Calendar}/>
-          </div>
+  const style = {
+    content: {
+      height: "100vh",
+      background: "none",
+      padding: "0",
+      width: "100%",
+    },
+    container: {
+      margin: "0px",
+      width: "100%",
+    },
+  };
+  return (
+    <HashRouter>
+      <div>
+        <Nav />
+        <div style={style.content} className="content">
+          <Route path="/Home" component={Home} />
+          <Route path="/Chart" component={Chart} />
+          <Route path="/Calendar" component={Calendar} />
         </div>
-      </HashRouter>
-    );
-  }
+      </div>
+    </HashRouter>
+  );
+}
