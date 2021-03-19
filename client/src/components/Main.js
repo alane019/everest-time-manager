@@ -8,11 +8,13 @@ import ProjectManager from "./ProjectManager";
 import Chart from "../Chart";
 import Calendar from "../Calendar";
 import "./index.css";
+
  
 export default function Main() {
     const [container] = useState("container");
     return (
       <HashRouter>
+          
         <div className={container} id="container">
           <h1>Productivity App</h1>
             <ul className="header">
