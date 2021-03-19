@@ -7,7 +7,15 @@ import ProjectListItem from "../ProjectListItem";
 function ProjectManager(props) {
   const [items, setItems] = useState([]);
   const [inputText, setInputText] = useState("");
-
+  const style = {
+    form: {},
+    ul: {
+      overflow: "auto",
+    },
+    h3: {
+      textAlign: "center",
+    },
+  };
   function handleSubmit(e) {
     e.preventDefault();
     if (inputText.length === 0) {
@@ -29,12 +37,11 @@ function ProjectManager(props) {
   }
 
   return (
-    <div className="container-fluid">
-      <h3>Manage Projects</h3>
-      <ul className="projectManagerUl">
+    <div id className="container-fluid">
+      <ul style={style.ul} className="projectManagerUl">
         <ProjectListItem items={items} />
       </ul>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form style={style.form} onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="new-project">Add a new project to your list.</label>
         <input
           id="new-project"
