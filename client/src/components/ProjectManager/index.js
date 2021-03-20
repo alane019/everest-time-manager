@@ -18,30 +18,34 @@ function ProjectManager(props) {
     },
   };
 
-  // form submit handler 
+  // form submit handler
   function handleSubmit(e) {
     e.preventDefault();
     if (inputText.length === 0) {
       return;
     }
-    const newItem = {
-      text:
-        inputText +
-        " . . .   (" +
-        new Intl.DateTimeFormat("en-US", {
-          dateStyle: "short",
-          timeStyle: "short",
-        }).format() +
-        ")",
-      id: Date.now(),
+    const newProjectData = {
+      color: "green",
+      name: inputText,
     };
-    setItems([...items, newItem]);
-    setInputText("");
+    API.addProject(newProjectData)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => console.log(error));
+  }
+  function displayProjects() {
+    API.getProjects()
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => console.log(error));
   }
 
-  // 
+  //
   return (
     <div className="container-fluid">
+      <button onClick={() => displayProjects()}>Get Projects</button>
       <ul style={style.ul} className="projectManagerUl">
         <ProjectListItem items={items} />
       </ul>
