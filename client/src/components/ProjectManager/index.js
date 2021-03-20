@@ -7,6 +7,7 @@ import ProjectListItem from "../ProjectListItem";
 function ProjectManager(props) {
   const [items, setItems] = useState([]);
   const [inputText, setInputText] = useState("");
+
   const style = {
     form: {},
     ul: {
@@ -16,6 +17,8 @@ function ProjectManager(props) {
       textAlign: "center",
     },
   };
+
+  // form submit handler 
   function handleSubmit(e) {
     e.preventDefault();
     if (inputText.length === 0) {
@@ -36,8 +39,9 @@ function ProjectManager(props) {
     setInputText("");
   }
 
+  // 
   return (
-    <div id className="container-fluid">
+    <div className="container-fluid">
       <ul style={style.ul} className="projectManagerUl">
         <ProjectListItem items={items} />
       </ul>
