@@ -1,4 +1,6 @@
 import axios from "axios";
+// const tokenHeader = new Headers();
+// tokenHeader.append("token", localStorage.getItem("token"));
 
 export default {
   //creates new user
@@ -16,11 +18,23 @@ export default {
     return axios.get("/api/users");
   },
 
-  // get current project data 
-  getProjects: function() {
-    return axios.get("/api/projects");
+  addProject: function (newProjectData) {
+    return axios.post(
+      `/api/projects/${localStorage.getItem("userId")}`,
+      {
+        ...newProjectData,
+      },
+      { headers: { token: `${localStorage.getItem("token")}` } }
+    );
+  },
 
-  }
+  // get current project data
+  getProjects: function () {
+    const tokenHeader = new Headers();
+    tokenHeader.append("token", localStorage.getItem("token"));
 
-
+    return axios.get(`/api/projects/${localStorage.getItem("userId")}`, {
+      headers: { token: `${localStorage.getItem("token")}` },
+    });
+  },
 };

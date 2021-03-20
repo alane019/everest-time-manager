@@ -20,6 +20,7 @@ export default function Main() {
       width: "100%",
     },
   };
+
   return (
     <HashRouter>
       <div>
