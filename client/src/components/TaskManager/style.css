@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+.taskManagerUl {
+  background-color: #c9d1c898;
+  overflow-y: scroll;
+  max-height: 60vh;
+  padding: 2px;
+}
+
+.taskManagerLi {
+  border: #5b706586 outset 2.5px;
+  list-style-type: none;
+  padding: 10px;
+}
+
+span {
+  font-size: 12px;
+}
+
+button {
+  border-radius: 20px;
+  border: 1px solid #638070;
+  background-color: #5b7065;
+  color: #ffffff;
+  box-shadow: gray 0 1px 1.5px 1px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:focus {
+  outline: none;
+}
+
+button.ghost {
+  background-color: transparent;
+  border-color: #ffffff;
+}
+
+form {
+  background-color: #c9d1c8de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+input {
+  background-color: #5b706542;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
