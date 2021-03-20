@@ -20,7 +20,13 @@ export default function Login() {
     return (
       <div className="login-wrap">
         <div className="login-html">
-          <input id="tab-1" type="radio" name="tab" className="sign-in" defaultChecked /> 
+          <input
+            id="tab-1"
+            type="radio"
+            name="tab"
+            className="sign-in"
+            defaultChecked
+          />
           <label htmlFor="tab-1" className="tab">
             Sign In
           </label>
@@ -54,7 +60,12 @@ export default function Login() {
                 />
               </div>
               <div className="group">
-                <input id="check" type="checkbox" className="check" defaultChecked /> 
+                <input
+                  id="check"
+                  type="checkbox"
+                  className="check"
+                  defaultChecked
+                />
               </div>
               <div className="group">
                 <input
@@ -153,6 +164,8 @@ export default function Login() {
         if (res.data.token) {
           console.log(res.data);
           setToken(res.data.token);
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("userId", res.data.user);
         }
       })
       .catch((err) => console.log(err));
