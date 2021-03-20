@@ -1,7 +1,7 @@
 import React from "react";
 import Main from "../Main";
 
-function ProjectListItem(props) {
+function TaskListItem(props) {
   
    const displayTasks = () => {
      // display a list item
@@ -9,12 +9,21 @@ function ProjectListItem(props) {
   
   return (
    
-   <div className="projectLi" onclick="displayTasks" key="1">   Project: Sport  </div>
+   <div>
+    {/* {props.items.map((item) => (
+        <li className="TaskLi" key={item.id}>
+          {item.text}
+        </li>
+      ))}  * */}
+  <ul>
+      <li className="taskLi" onclick="displayTasks" key="1"> Task: Jogging  </li>
+  </ul>
 
+    </div>
   );
 }
 
-export default ProjectListItem;
+export default TaskListItem;
 
 /*
 

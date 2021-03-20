@@ -22,6 +22,7 @@
   top: -20px;
   border-radius: 5px;
   border-radius: 5px;
+  cursor: pointer; 
 }
 #footerbuttonup {
   background-color: #042046;
@@ -36,6 +37,7 @@
   border-radius: 5px;
   border-radius: 5px;
   visibility: hidden;
+  cursor: pointer; 
 }
 #footercont {
   position: absolute;

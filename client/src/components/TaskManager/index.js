@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./style.css";
 import API from "../../utils/API";
-import ProjectListItem from "../ProjectListItem";
+import TaskListItem from "../TaskListItem";
 
-function ProjectManager(props) {
+
+function TaskManager(props) {
   const [items, setItems] = useState([]);
   const [inputText, setInputText] = useState("");
 
@@ -42,20 +43,20 @@ function ProjectManager(props) {
   // 
   return (
     <div className="container-fluid">
-      <ul style={style.ul} className="projectManagerUl">
-        <ProjectListItem items={items} />
+      <ul style={style.ul} className="TaskManagerUl">
+        <TaskListItem items={items} />
       </ul>
       <form style={style.form} onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor="new-project">Add a new project to your list.</label>
+        <label htmlFor="new-task">Add a new TASK to your list.</label>
         <input
-          id="new-project"
+          id="new-task"
           onChange={(e) => setInputText(e.target.value)}
           value={inputText}
         />
-        <button className="">Add Project {items.length + 1}</button>
+        <button className="">Add TASK {items.length + 1}</button>
       </form>
     </div>
   );
 }
 
-export default ProjectManager;
+export default TaskManager;

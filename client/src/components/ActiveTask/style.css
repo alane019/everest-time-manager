@@ -1,0 +1,28 @@
+
+.active-task {
+
+
+    text-align: center;
+    font-weight: bold;
+    transition: all 300ms ease-in-out;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  
+  
+    border-radius: 2px;
+    border: 1px solid #04202c;
+    background-color: #638070;
+    box-shadow: grey 0 1px 1.5px 1px;
+    color: whitesmoke;
+
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+    transition: -webkit-transform 80ms ease-in;
+    transition: transform 80ms ease-in;
+    transition: transform 80ms ease-in, -webkit-transform 80ms ease-in;
+
+}

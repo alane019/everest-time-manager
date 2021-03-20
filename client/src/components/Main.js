@@ -5,6 +5,7 @@ import Chart from "../Chart";
 import Calendar from "../Calendar";
 import Nav from "./Nav";
 import "./index.css";
+import ActiveTask from "./ActiveTask";
 
 export default function Main() {
   const style = {
@@ -23,6 +24,7 @@ export default function Main() {
     <HashRouter>
       <div>
         <Nav />
+        <ActiveTask />
         <div style={style.content} className="content">
           <Route path="/Home" component={Home} />
           <Route path="/Chart" component={Chart} />
