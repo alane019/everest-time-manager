@@ -5,7 +5,7 @@ function ProjectListItem(props) {
   return (
     <div>
       {props.items.map((item) => (
-        <li className="projectManagerLi" key={item.id}>
+        <li className="projectLi" key={item.id}>
           {item.text}
         </li>
       ))}
