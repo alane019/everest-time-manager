@@ -18,114 +18,114 @@ export default function Login() {
       return <Main token={token} />;
     }
     return (
-      <div class="login-wrap">
-        <div class="login-html">
-          <input id="tab-1" type="radio" name="tab" class="sign-in" checked />
-          <label for="tab-1" class="tab">
+      <div className="login-wrap">
+        <div className="login-html">
+          <input id="tab-1" type="radio" name="tab" className="sign-in" defaultChecked /> 
+          <label htmlFor="tab-1" className="tab">
             Sign In
           </label>
-          <input id="tab-2" type="radio" name="tab" class="sign-up" />
-          <label for="tab-2" class="tab">
+          <input id="tab-2" type="radio" name="tab" className="sign-up" />
+          <label htmlFor="tab-2" className="tab">
             Sign Up
           </label>
-          <div class="login-form">
-            <div class="sign-in-htm">
-              <div class="group">
-                <label for="user" class="label">
+          <div className="login-form">
+            <div className="sign-in-htm">
+              <div className="group">
+                <label htmlFor="user" className="label">
                   Email
                 </label>
                 <input
                   id="user"
                   type="text"
-                  class="input"
+                  className="input"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div class="group">
-                <label for="pass" class="label">
+              <div className="group">
+                <label htmlFor="pass" className="label">
                   Password
                 </label>
                 <input
                   id="pass"
                   type="password"
-                  class="input"
+                  className="input"
                   data-type="password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div class="group">
-                <input id="check" type="checkbox" class="check" checked />
+              <div className="group">
+                <input id="check" type="checkbox" className="check" defaultChecked /> 
               </div>
-              <div class="group">
+              <div className="group">
                 <input
                   type="submit"
-                  class="button"
+                  className="button"
                   value="Sign In"
                   onClick={(e) => handleSigninForm(e)}
                 />
               </div>
-              <div class="hr"></div>
-              <div class="foot-lnk">
+              <div className="hr"></div>
+              <div className="foot-lnk">
                 <a href="#forgot">Forgot Password?</a>
               </div>
             </div>
-            <div class="sign-up-htm">
-              <div class="group">
-                <label for="user" class="label">
+            <div className="sign-up-htm">
+              <div className="group">
+                <label htmlFor="user" className="label">
                   Full Name
                 </label>
                 <input
                   id="user"
                   type="text"
-                  class="input"
+                  className="input"
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div class="group">
-                <label for="pass" class="label">
+              <div className="group">
+                <label htmlFor="pass" className="label">
                   Password
                 </label>
                 <input
                   id="pass"
                   type="password"
-                  class="input"
+                  className="input"
                   data-type="password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div class="group">
-                <label for="pass" class="label">
+              <div className="group">
+                <label htmlFor="pass" className="label">
                   Repeat Password
                 </label>
                 <input
                   id="pass"
                   type="password"
-                  class="input"
+                  className="input"
                   data-type="password"
                   onChange={(e) => setRepeatedPassword(e.target.value)}
                 />
               </div>
-              <div class="group">
-                <label for="pass" class="label">
+              <div className="group">
+                <label htmlFor="pass" className="label">
                   Email Address
                 </label>
                 <input
                   id="pass"
                   type="text"
-                  class="input"
+                  className="input"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div class="group">
+              <div className="group">
                 <input
                   type="submit"
-                  class="button"
+                  className="button"
                   value="Sign Up"
                   onClick={(e) => handleSignupForm(e)}
                 />
               </div>
 
-              <div class="foot-lnk"></div>
+              <div className="foot-lnk"></div>
             </div>
           </div>
         </div>
