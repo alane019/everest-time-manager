@@ -146,16 +146,26 @@ export default function Login() {
 
   const handleSignupForm = (event) => {
     event.preventDefault();
-    console.log({ email: email, password: password, username: name });
-    API.signup({ email: email, password: password, username: name })
-      .then((res) => {
-        if (res.data.token) {
-          setToken(res.data.token);
-          localStorage.setItem("token", res.data.token);
-          localStorage.setItem("userId", res.data.user);
-        }
-      })
-      .catch((err) => console.log(err));
+    if (!name) {
+      alert("Don't forget to insert the Full name");
+    }
+    if (!email) {
+      alert("Don't forget the email");
+    }
+    if (!password || !repeatedPassword) {
+      alert("Make sure that you fill both password fields");
+    }
+    if (password === repeatedPassword) {
+      API.signup({ email: email, password: password, username: name })
+        .then((res) => {
+          if (res.data.token) {
+            setToken(res.data.token);
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("userId", res.data.user);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const handleSigninForm = (event) => {
