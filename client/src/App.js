@@ -6,7 +6,10 @@ import TaskManager from "./components/TaskManager";
 import ProjectListItem from "./components/ProjectListItem";
 import Main from "./components/Main";
 function App() {
-  return <Main />;
+  // if (localStorage.getItem("token")) {
+  //   return <Main></Main>;
+  // }
+  return <Login />;
 }
 
 export default App;
