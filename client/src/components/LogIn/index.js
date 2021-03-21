@@ -150,8 +150,9 @@ export default function Login() {
     API.signup({ email: email, password: password, username: name })
       .then((res) => {
         if (res.data.token) {
-          console.log(res.data);
           setToken(res.data.token);
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("userId", res.data.user);
         }
       })
       .catch((err) => console.log(err));
