@@ -2,27 +2,16 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Grid from "@material-ui/core/Grid";
-import FolderIcon from "@material-ui/icons/Folder";
-import DeleteIcon from "@material-ui/icons/Delete";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    maxWidth: 752,
-  },
-  demo: {
-    backgroundColor: theme.palette.background.paper,
-  },
-  title: {
-    margin: theme.spacing(4, 0, 2),
-  },
-}));
+import Grid from "@material-ui/core/Grid";
+
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import ThreeDotMenu from "../ThreeDotMenu";
+
+const useStyles = makeStyles((theme) => ({}));
 
 function generate(element) {
   return [0, 1, 2].map((value) =>
@@ -40,23 +29,23 @@ export default function InteractiveList() {
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <div className={classes.demo}>
             <List dense={dense}>
               <ListItem>
-                <ListItemAvatar>
-                  <Avatar>
-                    <FolderIcon />
-                  </Avatar>
-                </ListItemAvatar>
+                <FiberManualRecordIcon
+                  style={{
+                    fontSize: "40px",
+                    color: "brown",
+                  }}
+                ></FiberManualRecordIcon>
+
                 <ListItemText
-                  primary="Single-line item"
+                  primary="Sport"
                   secondary={secondary ? "Secondary text" : null}
                 />
                 <ListItemSecondaryAction>
-                  <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon />
-                  </IconButton>
+                  <ThreeDotMenu />
                 </ListItemSecondaryAction>
               </ListItem>
             </List>
