@@ -1,46 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import ProjectManager from "../ProjectManager";
 
 import "./style.css";
-const style = {
-  h2: {
-    textAlign: "center",
-  },
-  footer: {
-    height: "89vh",
-  },
-};
 
-function shrink() {
-  if ((document.getElementById("footer").style.height = "89vh")) {
-    document.getElementById("footer").style.height = "30px";
-    document.getElementById("footerbuttondown").style.visibility = "hidden";
-    document.getElementById("footerbuttonup").style.visibility = "visible";
-    document.getElementById("footercont").style.opacity = "0";
-    document.getElementById("footercont").style.visibility = "hidden";
-  }
-}
-
-function expand() {
-  if ((document.getElementById("footer").style.height = "30px")) {
-    document.getElementById("footer").style.height = "89vh";
-    document.getElementById("footerbuttondown").style.visibility = "visible";
-    document.getElementById("footerbuttonup").style.visibility = "hidden";
-    document.getElementById("footercont").style.opacity = "1";
-    document.getElementById("footercont").style.visibility = "visible";
-  }
-}
 export default function Input(props) {
+  const [footer, setFooter] = useState({
+    height: "30px",
+  });
+  const [footerbuttondown, setFooterbuttondown] = useState({
+    visibility: "hidden",
+  });
+  const [footerbuttonup, setFooterbuttonup] = useState({
+    visibility: "visible",
+  });
+  const [footercont, setFootercont] = useState({
+    opacity: "0",
+    visibility: "hidden",
+  });
+
+  const style = {
+    footer: footer,
+    footerbuttondown: footerbuttondown,
+    footerbuttonup: footerbuttonup,
+    footercont: footercont,
+  };
+  const shrink = () => {
+    setFooter({
+      height: "30px",
+    });
+    setFooterbuttondown({
+      visibility: "hidden",
+    });
+    setFooterbuttonup({
+      visibility: "visible",
+    });
+    setFootercont({
+      opacity: "0",
+      visibility: "hidden",
+    });
+  };
+  const expand = () => {
+    setFooter({
+      height: "94vh",
+    });
+    setFooterbuttondown({
+      visibility: "visible",
+    });
+    setFooterbuttonup({
+      visibility: "hidden",
+    });
+    setFootercont({
+      opacity: "1",
+      visibility: "visible",
+    });
+  };
+
   return (
     <div id="footer" style={style.footer}>
-      <div id="footerbuttondown" onClick={() => shrink()}>
+      <div
+        id="footerbuttondown"
+        style={style.footerbuttondown}
+        onClick={() => shrink()}
+      >
         &#9660;
       </div>
-      <div id="footerbuttonup" onClick={() => expand()}>
+      <div
+        id="footerbuttonup"
+        style={style.footerbuttonup}
+        onClick={() => expand()}
+      >
         &#9650;
       </div>
-
-      <div id="footercont">
+      <div id="footercont" style={style.footercont}>
         <ProjectManager />
       </div>
     </div>
