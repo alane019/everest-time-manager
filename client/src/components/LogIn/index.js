@@ -15,7 +15,7 @@ export default function Login() {
 
   function accessHomePage(token) {
     if (token) {
-      return <Main token={token} />;
+      return <Main />;
     }
     return (
       <div className="login-wrap">
