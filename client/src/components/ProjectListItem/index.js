@@ -36,10 +36,9 @@ export default function ProjectListItem(props) {
                   fontSize: "40px",
                   color: "brown",
                 }}
-                onClick={() => handleProjectOnClick()}
               />
 
-              <TextButton title="Sport" />
+              <h1 onClick={() => handleProjectOnClick()}>Sports</h1>
 
               <ListItemSecondaryAction>
                 <ThreeDotMenu />
