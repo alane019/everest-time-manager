@@ -4,6 +4,7 @@ import "./style.css";
 import API from "../../utils/API";
 import TaskListItem from "../TaskListItem";
 import ProjectContext from "../../utils/ProjectContext";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 function TaskManager(props) {
   const [items, setItems] = useState([]);
@@ -13,6 +14,7 @@ function TaskManager(props) {
     form: {},
     ul: {
       overflow: "auto",
+      paddingLeft: "0px",
     },
     h3: {
       textAlign: "center",
@@ -43,10 +45,16 @@ function TaskManager(props) {
   //
   return (
     <div className="container-fluid">
-      <button onClick={() => handleGoBack()} className="">
-        Go back{" "}
-      </button>
-      <ul style={style.ul} className="TaskManagerUl">
+      <ArrowBackIcon
+        onClick={() => handleGoBack()}
+        style={{
+          position: "absolute",
+          bottom: "88vh",
+          color: "#042046",
+        }}
+      />
+
+      <ul style={style.ul}>
         <TaskListItem items={items} />
       </ul>
       <form style={style.form} onSubmit={(e) => handleSubmit(e)}>
