@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import ReactDOM from "react-dom";
 import "./style.css";
 import API from "../../utils/API";
 import TaskListItem from "../TaskListItem";
-
+import ProjectContext from "../../utils/ProjectContext";
 
 function TaskManager(props) {
   const [items, setItems] = useState([]);
   const [inputText, setInputText] = useState("");
-
+  const handleGoBack = useContext(ProjectContext);
   const style = {
     form: {},
     ul: {
@@ -19,7 +19,7 @@ function TaskManager(props) {
     },
   };
 
-  // form submit handler 
+  // form submit handler
   function handleSubmit(e) {
     e.preventDefault();
     if (inputText.length === 0) {
@@ -40,9 +40,12 @@ function TaskManager(props) {
     setInputText("");
   }
 
-  // 
+  //
   return (
     <div className="container-fluid">
+      <button onClick={() => handleGoBack()} className="">
+        Go back{" "}
+      </button>
       <ul style={style.ul} className="TaskManagerUl">
         <TaskListItem items={items} />
       </ul>
