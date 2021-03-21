@@ -36,7 +36,7 @@ export default function TaskListItem(props) {
                   color: "brown",
                 }}
               />
-              <TextButton title="Boxing" />
+              <h1>Swimming</h1>
               <ListItemSecondaryAction>
                 <Box display="flex" flexDirection="row">
                   <Box>
