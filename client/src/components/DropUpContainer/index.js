@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import { set } from "mongoose";
+import React, { useState, useContext } from "react";
 import ProjectManager from "../ProjectManager";
-
+import TaskManager from "../TaskManager";
+import ProjectContext from "../../utils/ProjectContext";
 import "./style.css";
 
-export default function Input(props) {
+export default function DropUpContainer(props) {
+  const [componentState, setComponentState] = useState("project");
+
+  const handleProjectOnClick = () => {
+    setComponentState("task");
+  };
+  const handleGoBack = () => {
+    setComponentState("project");
+  };
   const [footer, setFooter] = useState({
     height: "30px",
   });
@@ -24,6 +34,7 @@ export default function Input(props) {
     footerbuttonup: footerbuttonup,
     footercont: footercont,
   };
+
   const shrink = () => {
     setFooter({
       height: "30px",
@@ -55,6 +66,24 @@ export default function Input(props) {
     });
   };
 
+  const displayState = (containerState) => {
+    switch (containerState) {
+      case "project":
+        return (
+          <ProjectContext.Provider value={handleProjectOnClick}>
+            <ProjectManager />;
+          </ProjectContext.Provider>
+        );
+
+      case "task":
+        return (
+          <ProjectContext.Provider value={handleGoBack}>
+            <TaskManager />;
+          </ProjectContext.Provider>
+        );
+    }
+  };
+
   return (
     <div id="footer" style={style.footer}>
       <div
@@ -72,7 +101,7 @@ export default function Input(props) {
         &#9650;
       </div>
       <div id="footercont" style={style.footercont}>
-        <ProjectManager />
+        {displayState(componentState)}
       </div>
     </div>
   );
