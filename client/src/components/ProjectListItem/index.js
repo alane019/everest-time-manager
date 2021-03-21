@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import ThreeDotMenu from "../ThreeDotMenu";
 import TextButton from "../TextButton";
+import ProjectContext from "../../utils/ProjectContext";
 
 const useStyles = makeStyles((theme) => ({}));
 
@@ -19,10 +20,11 @@ function generate(element) {
   );
 }
 
-export default function InteractiveList() {
+export default function ProjectListItem(props) {
   const classes = useStyles();
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
+  const handleProjectOnClick = useContext(ProjectContext);
 
   return (
     <Grid container spacing={2}>
@@ -35,8 +37,11 @@ export default function InteractiveList() {
                   fontSize: "40px",
                   color: "brown",
                 }}
+                onClick={() => handleProjectOnClick()}
               />
+
               <TextButton title="Sport" />
+
               <ListItemSecondaryAction>
                 <ThreeDotMenu />
               </ListItemSecondaryAction>
