@@ -2,14 +2,12 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
-
 import Grid from "@material-ui/core/Grid";
-
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import ThreeDotMenu from "../ThreeDotMenu";
+import TextButton from "../TextButton";
 
 const useStyles = makeStyles((theme) => ({}));
 
@@ -27,31 +25,25 @@ export default function InteractiveList() {
   const [secondary, setSecondary] = React.useState(false);
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <div className={classes.demo}>
-            <List dense={dense}>
-              <ListItem>
-                <FiberManualRecordIcon
-                  style={{
-                    fontSize: "40px",
-                    color: "brown",
-                  }}
-                ></FiberManualRecordIcon>
-
-                <ListItemText
-                  primary="Sport"
-                  secondary={secondary ? "Secondary text" : null}
-                />
-                <ListItemSecondaryAction>
-                  <ThreeDotMenu />
-                </ListItemSecondaryAction>
-              </ListItem>
-            </List>
-          </div>
-        </Grid>
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <div className={classes.demo}>
+          <List dense={dense}>
+            <ListItem>
+              <FiberManualRecordIcon
+                style={{
+                  fontSize: "40px",
+                  color: "brown",
+                }}
+              />
+              <TextButton title="Sport" />
+              <ListItemSecondaryAction>
+                <ThreeDotMenu />
+              </ListItemSecondaryAction>
+            </ListItem>
+          </List>
+        </div>
       </Grid>
-    </div>
+    </Grid>
   );
 }
