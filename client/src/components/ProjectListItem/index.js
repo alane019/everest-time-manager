@@ -22,15 +22,14 @@ function generate(element) {
 
 export default function ProjectListItem(props) {
   const classes = useStyles();
-  const [dense, setDense] = React.useState(false);
-  const [secondary, setSecondary] = React.useState(false);
+
   const handleProjectOnClick = useContext(ProjectContext);
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <div className={classes.demo}>
-          <List dense={dense}>
+          <List>
             <ListItem>
               <FiberManualRecordIcon
                 style={{
