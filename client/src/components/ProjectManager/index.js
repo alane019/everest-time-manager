@@ -45,7 +45,6 @@ function ProjectManager(props) {
   //
   return (
     <div className="container-fluid">
-      <button onClick={() => displayProjects()}>Get Projects</button>
       <ul style={style.ul} className="projectManagerUl">
         <ProjectListItem items={items} />
       </ul>
