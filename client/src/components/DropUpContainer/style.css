@@ -4,9 +4,9 @@
   background-color: rgb(171, 237, 253);
   color: white;
   position: fixed;
-  left: 20px;
+  left: 0;
   bottom: 0;
-  width: 97%;
+  width: 100%;
   -webkit-transition: height 1s, visibility 1s;
   transition: height 1s, visibility 1s;
 }
@@ -22,7 +22,7 @@
   top: -20px;
   border-radius: 5px;
   border-radius: 5px;
-  cursor: pointer; 
+  cursor: pointer;
 }
 #footerbuttonup {
   background-color: #042046;
@@ -37,7 +37,7 @@
   border-radius: 5px;
   border-radius: 5px;
   visibility: hidden;
-  cursor: pointer; 
+  cursor: pointer;
 }
 #footercont {
   position: absolute;
