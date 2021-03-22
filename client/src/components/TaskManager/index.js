@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import ReactDOM from "react-dom";
 import "./style.css";
 import API from "../../utils/API";
 import TaskListItem from "../TaskListItem";
-
+import ProjectContext from "../../utils/ProjectContext";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 function TaskManager(props) {
   const [items, setItems] = useState([]);
   const [inputText, setInputText] = useState("");
-
+  const handleGoBack = useContext(ProjectContext);
   const style = {
     form: {},
     ul: {
       overflow: "auto",
+      paddingLeft: "0px",
     },
     h3: {
       textAlign: "center",
     },
   };
 
-  // form submit handler 
+  // form submit handler
   function handleSubmit(e) {
     e.preventDefault();
     if (inputText.length === 0) {
@@ -40,10 +42,19 @@ function TaskManager(props) {
     setInputText("");
   }
 
-  // 
+  //
   return (
     <div className="container-fluid">
-      <ul style={style.ul} className="TaskManagerUl">
+      <ArrowBackIcon
+        onClick={() => handleGoBack()}
+        style={{
+          position: "absolute",
+          bottom: "88vh",
+          color: "#042046",
+        }}
+      />
+
+      <ul style={style.ul}>
         <TaskListItem items={items} />
       </ul>
       <form style={style.form} onSubmit={(e) => handleSubmit(e)}>
