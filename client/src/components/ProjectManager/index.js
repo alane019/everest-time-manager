@@ -11,6 +11,7 @@ function ProjectManager(props) {
   useEffect(() => {
     getProjects();
   }, []);
+
   const style = {
     form: {},
     ul: {
@@ -20,6 +21,16 @@ function ProjectManager(props) {
       textAlign: "center",
     },
   };
+
+  function deleteProject(id) {
+    API.deleteProject(id)
+      .then((res) => {
+        getProjects();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   // form submit handler
   function handleSubmit(e) {
@@ -51,7 +62,9 @@ function ProjectManager(props) {
       <ul style={style.ul} className="projectManagerUl">
         {projects.map((project) => (
           <ProjectListItem
+            deleteProject={deleteProject}
             key={project._id}
+            projectId={project._id}
             name={project.name}
             color={project.color}
           />
