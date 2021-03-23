@@ -46,4 +46,13 @@ export default {
       headers: { token: `${localStorage.getItem("token")}` },
     });
   },
+
+  getTasksByProject: function (projectId) {
+    return axios.get(
+      `/api/tasks/${localStorage.getItem("userId")}/${projectId}`,
+      {
+        headers: { token: `${localStorage.getItem("token")}` },
+      }
+    );
+  },
 };

@@ -7,7 +7,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import ThreeDotMenu from "../ThreeDotMenu";
-import TextButton from "../TextButton";
 import ProjectContext from "../../utils/ProjectContext";
 import Timer from "../Timer";
 import Box from "@material-ui/core/Box";
