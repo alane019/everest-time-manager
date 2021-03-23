@@ -7,7 +7,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import ThreeDotMenu from "../ThreeDotMenu";
-import TextButton from "../TextButton";
 import ProjectContext from "../../utils/ProjectContext";
 
 const useStyles = makeStyles((theme) => ({}));
@@ -38,7 +37,9 @@ export default function ProjectListItem(props) {
                 }}
               />
 
-              <h1 onClick={() => handleProjectOnClick()}>{props.name}</h1>
+              <h1 onClick={() => handleProjectOnClick(props.projectId)}>
+                {props.name}
+              </h1>
 
               <ListItemSecondaryAction>
                 <ThreeDotMenu

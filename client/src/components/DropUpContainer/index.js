@@ -3,16 +3,21 @@ import React, { useState, useContext } from "react";
 import ProjectManager from "../ProjectManager";
 import TaskManager from "../TaskManager";
 import ProjectContext from "../../utils/ProjectContext";
+import API from "../../utils/API";
 import "./style.css";
 
 export default function DropUpContainer(props) {
-  const [componentState, setComponentState] = useState("project");
+  const [componentState, setComponentState] = useState({ name: "projects" });
+  const [tasks, setTasks] = useState([]);
 
-  const handleProjectOnClick = () => {
-    setComponentState("task");
+  const handleProjectOnClick = (projectId) => {
+    setComponentState({
+      name: "tasks",
+      projectId: projectId,
+    });
   };
   const handleGoBack = () => {
-    setComponentState("project");
+    setComponentState({ name: "projects" });
   };
   const [footer, setFooter] = useState({
     height: "30px",
@@ -65,17 +70,33 @@ export default function DropUpContainer(props) {
       visibility: "visible",
     });
   };
-
+  const getTasks = (projectId) => {
+    API.getTasksByProject(projectId)
+      .then((res) => {
+        console.log(res.data);
+        setTasks(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const displayTasksByProject = (projectId) => {
+    tasks.map((task) => (
+      <ProjectContext.Provider value={handleProjectOnClick}>
+        <ProjectManager key={task._id} name={task.name} />;
+      </ProjectContext.Provider>
+    ));
+  };
   const displayState = (containerState) => {
-    switch (containerState) {
-      case "project":
+    switch (containerState.name) {
+      case "projects":
         return (
           <ProjectContext.Provider value={handleProjectOnClick}>
             <ProjectManager />;
           </ProjectContext.Provider>
         );
 
-      case "task":
+      case "tasks":
         return (
           <ProjectContext.Provider value={handleGoBack}>
             <TaskManager />;
