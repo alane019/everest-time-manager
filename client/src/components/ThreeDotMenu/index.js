@@ -8,7 +8,7 @@ const options = ["Delete", "Change Color", "Update"];
 
 const ITEM_HEIGHT = 40;
 
-export default function ThreeDotMenu() {
+export default function ThreeDotMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -47,7 +47,7 @@ export default function ThreeDotMenu() {
           <MenuItem
             key={option}
             selected={option === "Pyxis"}
-            onClick={handleClose}
+            onClick={() => props.deleteProject(props.projectId)}
           >
             {option}
           </MenuItem>

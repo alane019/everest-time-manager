@@ -18,6 +18,15 @@ export default {
     return axios.get("/api/users");
   },
 
+  deleteProject: function (projectId) {
+    return axios.delete(
+      `/api/projects/${localStorage.getItem("userId")}/${projectId}`,
+      {
+        headers: { token: `${localStorage.getItem("token")}` },
+      }
+    );
+  },
+
   addProject: function (newProjectData) {
     return axios.post(
       `/api/projects/${localStorage.getItem("userId")}`,

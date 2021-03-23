@@ -26,7 +26,7 @@ export default function ProjectListItem(props) {
   const handleProjectOnClick = useContext(ProjectContext);
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} key={props.projectId}>
       <Grid item xs={12}>
         <div className={classes.demo}>
           <List>
@@ -34,14 +34,17 @@ export default function ProjectListItem(props) {
               <FiberManualRecordIcon
                 style={{
                   fontSize: "40px",
-                  color: "brown",
+                  color: props.color,
                 }}
               />
 
-              <h1 onClick={() => handleProjectOnClick()}>Sports</h1>
+              <h1 onClick={() => handleProjectOnClick()}>{props.name}</h1>
 
               <ListItemSecondaryAction>
-                <ThreeDotMenu />
+                <ThreeDotMenu
+                  deleteProject={props.deleteProject}
+                  projectId={props.projectId}
+                />
               </ListItemSecondaryAction>
             </ListItem>
           </List>
