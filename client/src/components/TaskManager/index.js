@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useContext, useEffect } from "react";
 import "./style.css";
 import API from "../../utils/API";
 import TaskListItem from "../TaskListItem";
@@ -11,7 +10,7 @@ function TaskManager(props) {
   const [inputText, setInputText] = useState("");
   const handleGoBack = useContext(ProjectContext);
   const [tasks, setTasks] = useState([]);
-
+  useEffect(() => getTasks(props.projectId), []);
   const style = {
     form: {},
     ul: {
@@ -60,7 +59,6 @@ function TaskManager(props) {
       .catch((error) => console.log(error));
   };
 
-  getTasks(props.projectId);
   return (
     <div className="container-fluid">
       <ArrowBackIcon
