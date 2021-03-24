@@ -10,6 +10,8 @@ function TaskManager(props) {
   const [items, setItems] = useState([]);
   const [inputText, setInputText] = useState("");
   const handleGoBack = useContext(ProjectContext);
+  const [tasks, setTasks] = useState([]);
+
   const style = {
     form: {},
     ul: {
@@ -42,7 +44,23 @@ function TaskManager(props) {
     setInputText("");
   }
 
-  //
+  const getTasks = (projectId) => {
+    API.getTasksByProject(projectId)
+      .then((res) => {
+        console.log(res.data);
+        setTasks(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const addTask = (projectId, name, color) => {
+    API.addTask({ projectId, name, color })
+      .then(getTasks(projectId))
+      .catch((error) => console.log(error));
+  };
+
+  getTasks(props.projectId);
   return (
     <div className="container-fluid">
       <ArrowBackIcon
@@ -55,7 +73,9 @@ function TaskManager(props) {
       />
 
       <ul style={style.ul}>
-        <TaskListItem items={items} />
+        {tasks.map((task) => (
+          <TaskListItem key={task._id} name={task.name} />
+        ))}
       </ul>
       <form style={style.form} onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="new-task">Add a new TASK to your list.</label>
@@ -64,7 +84,12 @@ function TaskManager(props) {
           onChange={(e) => setInputText(e.target.value)}
           value={inputText}
         />
-        <button className="">Add TASK {items.length + 1}</button>
+        <button
+          className=""
+          onClick={() => addTask(props.projectId, inputText, "gray")}
+        >
+          Add TASK {items.length + 1}
+        </button>
       </form>
     </div>
   );
