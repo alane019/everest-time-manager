@@ -36,7 +36,6 @@ export default function ProjectListItem(props) {
                   color: props.color,
                 }}
               />
-
               <h1 onClick={() => handleProjectOnClick(props.projectId)}>
                 {props.name}
               </h1>

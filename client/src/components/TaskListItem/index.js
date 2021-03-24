@@ -24,7 +24,12 @@ function generate(element) {
 export default function TaskListItem(props) {
   const classes = useStyles();
   return (
-    <Grid container spacing={2} style={{ background: "#c9d1c8de" }}>
+    <Grid
+      key={props.key}
+      container
+      spacing={2}
+      style={{ background: "#c9d1c8de" }}
+    >
       <Grid item xs={12}>
         <div className={classes.demo}>
           <List>
@@ -35,7 +40,7 @@ export default function TaskListItem(props) {
                   color: "brown",
                 }}
               />
-              <h1>Swimming</h1>
+              <h1>{props.name}</h1>
               <ListItemSecondaryAction>
                 <Box display="flex" flexDirection="row">
                   <Box>
