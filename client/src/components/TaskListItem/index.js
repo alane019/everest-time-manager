@@ -3,23 +3,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import ThreeDotMenu from "../ThreeDotMenu";
-import ProjectContext from "../../utils/ProjectContext";
 import Timer from "../Timer";
 import Box from "@material-ui/core/Box";
 
-const useStyles = makeStyles((theme) => ({}));
-
-function generate(element) {
-  return [0, 1, 2].map((value) =>
-    React.cloneElement(element, {
-      key: value,
-    })
-  );
-}
+const useStyles = makeStyles(() => ({}));
 
 export default function TaskListItem(props) {
   const classes = useStyles();
