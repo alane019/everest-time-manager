@@ -13,6 +13,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DropUpContainer from "../DropUpContainer";
 import Chart from "../../Chart";
 import Calendar from "../../Calendar";
+import Home from "../Home";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -96,7 +97,7 @@ export default function ScrollableTabsButtonPrevent() {
       <TabPanel value={value} index={3}>
         Log Out
       </TabPanel>
-      <DropUpContainer></DropUpContainer>
+      <Home></Home>
     </div>
   );
 }

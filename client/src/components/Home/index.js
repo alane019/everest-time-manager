@@ -4,11 +4,12 @@ import ProjectListItem from "../ProjectListItem";
 function Home() {
   return (
     <div>
-      <h1>History list</h1>
-      <ul>
-        <li>First History item</li>
-      </ul>
-      <DropUpContainer />
+      <div>
+        <h1>Hello</h1>
+      </div>
+      <div>
+        <DropUpContainer />
+      </div>
     </div>
   );
 }
