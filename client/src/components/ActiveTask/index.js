@@ -16,25 +16,29 @@ export default function ActiveTask(props) {
       key={props.key}
       container
       spacing={2}
-      style={{ background: "#c9d1c8de" }}
+      style={{
+        background: "#c9d1c8de",
+        padding: "0px",
+        position: "absolute",
+        top: "7vh",
+        left: "0px",
+      }}
     >
       <Grid item xs={12}>
-        <div className={classes.demo}>
-          <List>
-            <ListItem>
-              <FiberManualRecordIcon
-                style={{
-                  fontSize: "40px",
-                  color: "brown",
-                }}
-              />
-              <h1>{props.name}</h1>
-              <ListItemSecondaryAction>
-                <Timer />
-              </ListItemSecondaryAction>
-            </ListItem>
-          </List>
-        </div>
+        <List>
+          <ListItem>
+            <FiberManualRecordIcon
+              style={{
+                fontSize: "40px",
+                color: "brown",
+              }}
+            />
+            <h3>Swimming</h3>
+            <ListItemSecondaryAction>
+              <Timer />
+            </ListItemSecondaryAction>
+          </ListItem>
+        </List>
       </Grid>
     </Grid>
   );
