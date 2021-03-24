@@ -55,4 +55,13 @@ export default {
       }
     );
   },
+  addTask: function (data) {
+    return axios.post(
+      `/api/tasks/${localStorage.getItem("userId")}/${data.projectId}`,
+      {
+        ...data,
+      },
+      { headers: { token: `${localStorage.getItem("token")}` } }
+    );
+  },
 };
