@@ -85,7 +85,9 @@ export default function ScrollableTabsButtonPrevent() {
           <Tab icon={<ExitToAppIcon />} aria-label="logout" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}></TabPanel>
+      <TabPanel value={value} index={0}>
+        <Home></Home>
+      </TabPanel>
 
       <TabPanel value={value} index={1}>
         <Chart></Chart>
@@ -96,7 +98,6 @@ export default function ScrollableTabsButtonPrevent() {
       <TabPanel value={value} index={3}>
         Log Out
       </TabPanel>
-      <Home></Home>
     </div>
   );
 }
