@@ -1,5 +1,5 @@
 import { set } from "mongoose";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ProjectManager from "../ProjectManager";
 import TaskManager from "../TaskManager";
 import ProjectContext from "../../utils/ProjectContext";
@@ -7,18 +7,14 @@ import API from "../../utils/API";
 import "./style.css";
 
 export default function DropUpContainer(props) {
-  const [componentState, setComponentState] = useState({ name: "projects" });
-  const [tasks, setTasks] = useState([]);
+  const [componentState, setComponentState] = useState("projects");
+  const [projectId, setProjectId] = useState("");
 
   const handleProjectOnClick = (projectId) => {
-    setComponentState({
-      name: "tasks",
-      projectId: projectId,
-    });
+    setComponentState("tasks");
+    setProjectId(projectId);
   };
-  const handleGoBack = () => {
-    setComponentState({ name: "projects" });
-  };
+
   const [footer, setFooter] = useState({
     height: "30px",
   });
@@ -40,6 +36,9 @@ export default function DropUpContainer(props) {
     footercont: footercont,
   };
 
+  const handleGoBack = () => {
+    setComponentState("projects");
+  };
   const shrink = () => {
     setFooter({
       height: "30px",
@@ -70,36 +69,20 @@ export default function DropUpContainer(props) {
       visibility: "visible",
     });
   };
-  const getTasks = (projectId) => {
-    API.getTasksByProject(projectId)
-      .then((res) => {
-        console.log(res.data);
-        setTasks(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  const displayTasksByProject = (projectId) => {
-    tasks.map((task) => (
-      <ProjectContext.Provider value={handleProjectOnClick}>
-        <ProjectManager key={task._id} name={task.name} />;
-      </ProjectContext.Provider>
-    ));
-  };
+
   const displayState = (containerState) => {
-    switch (containerState.name) {
+    switch (containerState) {
       case "projects":
         return (
           <ProjectContext.Provider value={handleProjectOnClick}>
-            <ProjectManager />;
+            <ProjectManager />
           </ProjectContext.Provider>
         );
 
       case "tasks":
         return (
           <ProjectContext.Provider value={handleGoBack}>
-            <TaskManager />;
+            <TaskManager projectId={projectId} />;
           </ProjectContext.Provider>
         );
     }
