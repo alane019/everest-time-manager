@@ -10,7 +10,7 @@ function TaskManager(props) {
   const [inputText, setInputText] = useState("");
   const handleGoBack = useContext(ProjectContext);
   const [tasks, setTasks] = useState([]);
-  useEffect(() => getTasks(props.projectId), []);
+  useEffect(() => getTasks(props.projectId), [props.projectId]);
   const style = {
     form: {},
     ul: {

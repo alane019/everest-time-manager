@@ -3,7 +3,6 @@ import "./style.css";
 import StopIcon from "@material-ui/icons/Stop";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import Box from "@material-ui/core/Box";
-import Icon from "@material-ui/core/Icon";
 const Timer = () => {
   const [second, setSecond] = useState("00");
   const [minute, setMinute] = useState("00");

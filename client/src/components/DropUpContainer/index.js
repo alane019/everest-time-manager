@@ -1,9 +1,7 @@
-import { set } from "mongoose";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import ProjectManager from "../ProjectManager";
 import TaskManager from "../TaskManager";
 import ProjectContext from "../../utils/ProjectContext";
-import API from "../../utils/API";
 import "./style.css";
 
 export default function DropUpContainer(props) {
@@ -83,6 +81,12 @@ export default function DropUpContainer(props) {
         return (
           <ProjectContext.Provider value={handleGoBack}>
             <TaskManager projectId={projectId} />;
+          </ProjectContext.Provider>
+        );
+      default:
+        return (
+          <ProjectContext.Provider value={handleProjectOnClick}>
+            <ProjectManager />
           </ProjectContext.Provider>
         );
     }
