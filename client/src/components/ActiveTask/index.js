@@ -1,25 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import Grid from "@material-ui/core/Grid";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import Timer from "../Timer";
-import "./style.css";
 
+const useStyles = makeStyles(() => ({}));
 
-//    <Timer /> 
-
-// This will display data for a given project if time is actively being tracked to it
-function ActiveTask() {
-
-    return (
-    <div>
-      
-
-        <Timer />
-    </div>
-    );
-  }
-
-  export default ActiveTask;
-  
-
-
-
-
+export default function ActiveTask(props) {
+  const classes = useStyles();
+  return (
+    <Grid
+      key={props.key}
+      container
+      spacing={2}
+      style={{ background: "#c9d1c8de" }}
+    >
+      <Grid item xs={12}>
+        <div className={classes.demo}>
+          <List>
+            <ListItem>
+              <FiberManualRecordIcon
+                style={{
+                  fontSize: "40px",
+                  color: "brown",
+                }}
+              />
+              <h1>{props.name}</h1>
+              <ListItemSecondaryAction>
+                <Timer />
+              </ListItemSecondaryAction>
+            </ListItem>
+          </List>
+        </div>
+      </Grid>
+    </Grid>
+  );
+}
