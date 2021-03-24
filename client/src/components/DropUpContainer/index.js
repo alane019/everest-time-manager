@@ -54,7 +54,7 @@ export default function DropUpContainer(props) {
   };
   const expand = () => {
     setFooter({
-      height: "94vh",
+      height: props.height,
     });
     setFooterbuttondown({
       visibility: "visible",
