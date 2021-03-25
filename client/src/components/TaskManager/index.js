@@ -4,13 +4,16 @@ import API from "../../utils/API";
 import TaskListItem from "../TaskListItem";
 import ProjectContext from "../../utils/ProjectContext";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import HomeContext from "../../utils/HomeContext";
 
 function TaskManager(props) {
   const [items, setItems] = useState([]);
   const [inputText, setInputText] = useState("");
   const handleGoBack = useContext(ProjectContext);
   const [tasks, setTasks] = useState([]);
+  const { containerStyle } = useContext(HomeContext);
   useEffect(() => getTasks(props.projectId), [props.projectId]);
+
   const style = {
     form: {},
     ul: {
@@ -65,7 +68,7 @@ function TaskManager(props) {
         onClick={() => handleGoBack()}
         style={{
           position: "absolute",
-          bottom: "88vh",
+          bottom: containerStyle.goBackIconHeight,
           color: "#042046",
         }}
       />

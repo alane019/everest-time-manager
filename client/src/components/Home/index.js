@@ -9,6 +9,7 @@ function Home() {
     footerbuttondown: { visibility: "hidden" },
     footerbuttonup: { visibility: "visible" },
     footercont: { opacity: "0", visibility: "hidden" },
+    goBackIconHeight: "88vh",
   });
 
   const expand = () => {
@@ -18,6 +19,7 @@ function Home() {
         footerbuttondown: { visibility: "visible" },
         footerbuttonup: { visibility: "hidden" },
         footercont: { opacity: "1", visibility: "visible" },
+        goBackIconHeight: "77vh",
       });
     } else {
       setContainerStyle({
@@ -25,6 +27,7 @@ function Home() {
         footerbuttondown: { visibility: "visible" },
         footerbuttonup: { visibility: "hidden" },
         footercont: { opacity: "1", visibility: "visible" },
+        goBackIconHeight: "88vh",
       });
     }
   };
@@ -45,6 +48,7 @@ function Home() {
         footerbuttondown: { visibility: "visible" },
         footerbuttonup: { visibility: "hidden" },
         footercont: { opacity: "1", visibility: "visible" },
+        goBackIconHeight: "77vh",
       });
     } else {
       setContainerStyle({
@@ -52,6 +56,7 @@ function Home() {
         footerbuttondown: { visibility: "visible" },
         footerbuttonup: { visibility: "hidden" },
         footercont: { opacity: "1", visibility: "visible" },
+        goBackIconHeight: "88vh",
       });
     }
   };
@@ -60,7 +65,12 @@ function Home() {
       return (
         <div>
           <ActiveTask />
-          <HomeContext.Provider value={{ handleActiveStatus }}>
+          <HomeContext.Provider
+            value={{
+              handleActiveStatus: handleActiveStatus,
+              containerStyle: containerStyle,
+            }}
+          >
             <DropUpContainer
               shrink={shrink}
               expand={expand}
@@ -73,7 +83,12 @@ function Home() {
       return (
         <div>
           <h1>History list</h1>
-          <HomeContext.Provider value={{ handleActiveStatus }}>
+          <HomeContext.Provider
+            value={{
+              handleActiveStatus: handleActiveStatus,
+              containerStyle: containerStyle,
+            }}
+          >
             <DropUpContainer
               shrink={shrink}
               expand={expand}
