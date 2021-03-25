@@ -4,17 +4,12 @@ import StopIcon from "@material-ui/icons/Stop";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import Box from "@material-ui/core/Box";
 import HomeContext from "../../utils/HomeContext";
+import TimeCounter from "../TimeCounter";
 const Timer = (props) => {
   const { handleStartAction, handleEndAction, isActive } = useContext(
     HomeContext
   );
 
-  // function stopTimer() {
-  //   setIsActive(false);
-  //   setCounter(0);
-  //   setSecond("00");
-  //   setMinute("00");
-  // }
   return (
     <div className="container-fluid">
       <Box display="flex" flexDirection="row">
@@ -51,7 +46,9 @@ const Timer = (props) => {
           }}
         >
           {isActive ? (
-            <div className="time">Stop</div>
+            <div className="time">
+              <TimeCounter startTime={props.startTime} />
+            </div>
           ) : (
             <span style={{ fontSize: "16px" }}>Start</span>
           )}

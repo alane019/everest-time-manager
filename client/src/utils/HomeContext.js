@@ -5,6 +5,7 @@ const HomeContext = React.createContext({
   handleEndAction: null,
   containerStyle: null,
   isActive: null,
+  activeTaskId: null,
 });
 
 export default HomeContext;

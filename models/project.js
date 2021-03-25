@@ -2,10 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({
-  userId: String,
+  user: { type: Schema.Types.ObjectId, ref: "User" },
   name: String,
-  color: String
-  
+  color: String,
 });
 
 const Project = mongoose.model("Project", projectSchema);

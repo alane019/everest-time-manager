@@ -7,9 +7,9 @@ const actionSchema = new Schema({
   startTime: Date,
   endTime: Date,
   duration: Date,
-  taskId: String,
-  userId: String,
-  projectId: String,
+  task: { type: Schema.Types.ObjectId, ref: "Task" },
+  user: { type: Schema.Types.ObjectId, ref: "User" },
+  project: { type: Schema.Types.ObjectId, ref: "Project" },
 });
 const Action = mongoose.model("Action", actionSchema);
 

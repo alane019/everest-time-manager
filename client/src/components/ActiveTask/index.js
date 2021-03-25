@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -6,11 +6,22 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Grid from "@material-ui/core/Grid";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import Timer from "../Timer";
+import HomeContext from "../../utils/HomeContext";
+import API from "../../utils/API";
 
 const useStyles = makeStyles(() => ({}));
 
 export default function ActiveTask(props) {
+  const { isActive, activeTaskId } = useContext(HomeContext);
+  const [action, setAction] = useState({});
   const classes = useStyles();
+  useEffect(() => {
+    API.getAction(activeTaskId).then((res) => {
+      console.log(res.data);
+      setAction(res.data);
+    });
+  }, [activeTaskId]);
+
   return (
     <Grid
       key={props.key}
@@ -33,9 +44,9 @@ export default function ActiveTask(props) {
                 color: "brown",
               }}
             />
-            <h3>Swimming</h3>
+            <h3>{action.startTime}</h3>
             <ListItemSecondaryAction>
-              <Timer />
+              <Timer startTime={action.startTime} />
             </ListItemSecondaryAction>
           </ListItem>
         </List>

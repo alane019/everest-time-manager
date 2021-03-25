@@ -8,16 +8,16 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   findActionById: function (req, res) {
-    db.Action.findById({ _id: req.params.taskId })
+    db.Action.findById({ _id: req.params.actionId })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
   addAction: function (req, res) {
     db.Action.create({
       ...req.body,
-      userId: req.params.userId,
-      projectId: req.params.projectId,
-      taskId: req.params.taskId,
+      user: req.params.userId,
+      project: req.params.projectId,
+      task: req.params.taskId,
     })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));

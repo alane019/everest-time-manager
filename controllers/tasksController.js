@@ -15,8 +15,8 @@ module.exports = {
   createTask: function (req, res) {
     db.Task.create({
       ...req.body,
-      userId: req.params.userId,
-      projectId: req.params.projectId,
+      user: req.params.userId,
+      project: req.params.projectId,
     })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));

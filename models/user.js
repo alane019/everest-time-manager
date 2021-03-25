@@ -14,8 +14,6 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  startTime: { type: Date, default: Date.now },
-  active: Boolean,
   createdAt: {
     type: Date,
     default: Date.now(),
