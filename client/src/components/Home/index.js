@@ -91,7 +91,15 @@ function Home() {
     if (active) {
       return (
         <div>
-          <ActiveTask />
+          <HomeContext.Provider
+            value={{
+              handleStartAction: handleStartAction,
+              handleEndAction: handleEndAction,
+              isActive: activeTaskStatus,
+            }}
+          >
+            <ActiveTask />
+          </HomeContext.Provider>
           <HomeContext.Provider
             value={{
               handleStartAction: handleStartAction,
