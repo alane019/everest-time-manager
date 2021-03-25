@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = {
   findAllTasks: function (req, res) {
-    db.Task.find({ projectId: req.params.projectId })
+    db.Task.find({ project: req.params.projectId })
       .sort({ date: -1 })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
