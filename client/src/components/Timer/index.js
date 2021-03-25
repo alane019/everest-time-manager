@@ -4,10 +4,10 @@ import StopIcon from "@material-ui/icons/Stop";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import Box from "@material-ui/core/Box";
 import HomeContext from "../../utils/HomeContext";
-const Timer = () => {
-  const [isActive, setIsActive] = useState(false);
-
-  const { handleActiveStatus } = useContext(HomeContext);
+const Timer = (props) => {
+  const { handleStartAction, handleEndAction, isActive } = useContext(
+    HomeContext
+  );
 
   // function stopTimer() {
   //   setIsActive(false);
@@ -25,13 +25,21 @@ const Timer = () => {
             background: "#c9d1c8de",
           }}
           p={1}
-          onClick={() => {
-            setIsActive(!isActive);
-            handleActiveStatus(!isActive);
-          }}
           className="start"
         >
-          {isActive ? <StopIcon /> : <PlayArrowIcon />}
+          {isActive ? (
+            <StopIcon
+              onClick={() => {
+                handleEndAction(props.projectId, props.taskId);
+              }}
+            />
+          ) : (
+            <PlayArrowIcon
+              onClick={() => {
+                handleStartAction(props.projectId, props.taskId, "Running");
+              }}
+            />
+          )}
         </Box>
         <Box
           p={1}

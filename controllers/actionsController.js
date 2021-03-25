@@ -12,7 +12,7 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  createAction: function (req, res) {
+  addAction: function (req, res) {
     db.Action.create({
       ...req.body,
       userId: req.params.userId,
@@ -22,8 +22,8 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  updateAction: function (req, res) {
-    db.Action.findOneAndUpdate({ _id: req.params.taskId }, req.body)
+  endAction: function (req, res) {
+    db.Action.findOneAndUpdate({ _id: req.params.actionId }, req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },

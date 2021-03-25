@@ -64,4 +64,27 @@ export default {
       { headers: { token: `${localStorage.getItem("token")}` } }
     );
   },
+
+  addAction: function (data) {
+    return axios.post(
+      `/api/actions/${localStorage.getItem("userId")}/${data.projectId}/${
+        data.taskId
+      }`,
+      {
+        ...data,
+      },
+      { headers: { token: `${localStorage.getItem("token")}` } }
+    );
+  },
+  endAction: function (data) {
+    return axios.put(
+      `/api/actions/${localStorage.getItem("userId")}/${data.projectId}/${
+        data.taskId
+      }/${data._id}`,
+      {
+        endTime: Date.now(),
+      },
+      { headers: { token: `${localStorage.getItem("token")}` } }
+    );
+  },
 };
