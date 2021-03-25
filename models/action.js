@@ -5,7 +5,7 @@ const actionSchema = new Schema({
   name: String,
   color: String,
   startTime: Date,
-  endTime: { type: Date, default: Date.now },
+  endTime: Date,
   duration: Date,
   taskId: String,
   userId: String,
