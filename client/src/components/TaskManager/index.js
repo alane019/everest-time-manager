@@ -1,16 +1,18 @@
-import React, { useState, useContext } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useContext, useEffect } from "react";
 import "./style.css";
 import API from "../../utils/API";
 import TaskListItem from "../TaskListItem";
 import ProjectContext from "../../utils/ProjectContext";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import HomeContext from "../../utils/HomeContext";
 
 function TaskManager(props) {
   const [items, setItems] = useState([]);
   const [inputText, setInputText] = useState("");
   const handleGoBack = useContext(ProjectContext);
   const [tasks, setTasks] = useState([]);
+  const { containerStyle } = useContext(HomeContext);
+  useEffect(() => getTasks(props.projectId), [props.projectId]);
 
   const style = {
     form: {},
@@ -60,14 +62,13 @@ function TaskManager(props) {
       .catch((error) => console.log(error));
   };
 
-  getTasks(props.projectId);
   return (
     <div className="container-fluid">
       <ArrowBackIcon
         onClick={() => handleGoBack()}
         style={{
           position: "absolute",
-          bottom: "88vh",
+          bottom: containerStyle.goBackIconHeight,
           color: "#042046",
         }}
       />

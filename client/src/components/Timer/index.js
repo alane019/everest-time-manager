@@ -1,41 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./style.css";
 import StopIcon from "@material-ui/icons/Stop";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import Box from "@material-ui/core/Box";
-import Icon from "@material-ui/core/Icon";
+import HomeContext from "../../utils/HomeContext";
 const Timer = () => {
-  const [second, setSecond] = useState("00");
-  const [minute, setMinute] = useState("00");
   const [isActive, setIsActive] = useState(false);
-  const [counter, setCounter] = useState(0);
 
-  useEffect(() => {
-    let intervalId;
-
-    if (isActive) {
-      intervalId = setInterval(() => {
-        const secondCounter = counter % 60;
-        const minuteCounter = Math.floor(counter / 60);
-
-        let computedSecond =
-          String(secondCounter).length === 1
-            ? `0${secondCounter}`
-            : secondCounter;
-        let computedMinute =
-          String(minuteCounter).length === 1
-            ? `0${minuteCounter}`
-            : minuteCounter;
-
-        setSecond(computedSecond);
-        setMinute(computedMinute);
-
-        setCounter((counter) => counter + 1);
-      }, 1000);
-    }
-
-    return () => clearInterval(intervalId);
-  }, [isActive, counter]);
+  const { handleActiveStatus } = useContext(HomeContext);
 
   // function stopTimer() {
   //   setIsActive(false);
@@ -43,7 +15,6 @@ const Timer = () => {
   //   setSecond("00");
   //   setMinute("00");
   // }
-
   return (
     <div className="container-fluid">
       <Box display="flex" flexDirection="row">
@@ -54,7 +25,10 @@ const Timer = () => {
             background: "#c9d1c8de",
           }}
           p={1}
-          onClick={() => setIsActive(!isActive)}
+          onClick={() => {
+            setIsActive(!isActive);
+            handleActiveStatus(!isActive);
+          }}
           className="start"
         >
           {isActive ? <StopIcon /> : <PlayArrowIcon />}
@@ -69,13 +43,9 @@ const Timer = () => {
           }}
         >
           {isActive ? (
-            <div className="time">
-              <span className="minute">{minute}</span>
-              <span>:</span>
-              <span className="second">{second}</span>
-            </div>
+            <div className="time">Stop</div>
           ) : (
-            <span style={{ fontSize: "16px" }}>start</span>
+            <span style={{ fontSize: "16px" }}>Start</span>
           )}
         </Box>
       </Box>

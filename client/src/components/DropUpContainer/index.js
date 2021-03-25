@@ -1,9 +1,7 @@
-import { set } from "mongoose";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import ProjectManager from "../ProjectManager";
 import TaskManager from "../TaskManager";
 import ProjectContext from "../../utils/ProjectContext";
-import API from "../../utils/API";
 import "./style.css";
 
 export default function DropUpContainer(props) {
@@ -14,62 +12,9 @@ export default function DropUpContainer(props) {
     setComponentState("tasks");
     setProjectId(projectId);
   };
-
-  const [footer, setFooter] = useState({
-    height: "30px",
-  });
-  const [footerbuttondown, setFooterbuttondown] = useState({
-    visibility: "hidden",
-  });
-  const [footerbuttonup, setFooterbuttonup] = useState({
-    visibility: "visible",
-  });
-  const [footercont, setFootercont] = useState({
-    opacity: "0",
-    visibility: "hidden",
-  });
-
-  const style = {
-    footer: footer,
-    footerbuttondown: footerbuttondown,
-    footerbuttonup: footerbuttonup,
-    footercont: footercont,
-  };
-
   const handleGoBack = () => {
     setComponentState("projects");
   };
-  const shrink = () => {
-    setFooter({
-      height: "30px",
-    });
-    setFooterbuttondown({
-      visibility: "hidden",
-    });
-    setFooterbuttonup({
-      visibility: "visible",
-    });
-    setFootercont({
-      opacity: "0",
-      visibility: "hidden",
-    });
-  };
-  const expand = () => {
-    setFooter({
-      height: "94vh",
-    });
-    setFooterbuttondown({
-      visibility: "visible",
-    });
-    setFooterbuttonup({
-      visibility: "hidden",
-    });
-    setFootercont({
-      opacity: "1",
-      visibility: "visible",
-    });
-  };
-
   const displayState = (containerState) => {
     switch (containerState) {
       case "projects":
@@ -89,22 +34,22 @@ export default function DropUpContainer(props) {
   };
 
   return (
-    <div id="footer" style={style.footer}>
+    <div id="footer" style={props.containerStyle.footer}>
       <div
         id="footerbuttondown"
-        style={style.footerbuttondown}
-        onClick={() => shrink()}
+        style={props.containerStyle.footerbuttondown}
+        onClick={() => props.shrink()}
       >
         &#9660;
       </div>
       <div
         id="footerbuttonup"
-        style={style.footerbuttonup}
-        onClick={() => expand()}
+        style={props.containerStyle.footerbuttonup}
+        onClick={() => props.expand()}
       >
         &#9650;
       </div>
-      <div id="footercont" style={style.footercont}>
+      <div id="footercont" style={props.containerStyle.footercont}>
         {displayState(componentState)}
       </div>
     </div>

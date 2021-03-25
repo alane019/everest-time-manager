@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import ProjectListItem from "../ProjectListItem";
 
 function ProjectManager(props) {
-  const [items, setItems] = useState([]);
+  const [items] = useState([]);
   const [inputText, setInputText] = useState("");
   const [projects, setProjects] = useState([]);
 
@@ -59,7 +59,7 @@ function ProjectManager(props) {
   //
   return (
     <div className="container-fluid">
-      <ul style={style.ul} className="projectManagerUl">
+      <div style={style.ul} className="projectManagerUl">
         {projects.map((project) => (
           <ProjectListItem
             deleteProject={deleteProject}
@@ -69,7 +69,7 @@ function ProjectManager(props) {
             color={project.color}
           />
         ))}
-      </ul>
+      </div>
       <form style={style.form} onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="new-project">Add a new project to your list.</label>
         <input
@@ -77,7 +77,7 @@ function ProjectManager(props) {
           onChange={(e) => setInputText(e.target.value)}
           value={inputText}
         />
-        <button className="">Add Project {items.length + 1}</button>
+        <button className="">Add Project</button>
       </form>
     </div>
   );
