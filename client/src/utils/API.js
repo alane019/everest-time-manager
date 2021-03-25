@@ -39,9 +39,6 @@ export default {
 
   // get current project data
   getProjects: function () {
-    const tokenHeader = new Headers();
-    tokenHeader.append("token", localStorage.getItem("token"));
-
     return axios.get(`/api/projects/${localStorage.getItem("userId")}`, {
       headers: { token: `${localStorage.getItem("token")}` },
     });
