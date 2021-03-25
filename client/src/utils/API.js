@@ -87,4 +87,14 @@ export default {
       { headers: { token: `${localStorage.getItem("token")}` } }
     );
   },
+  getAction: function (actionId) {
+    return axios.get(
+      `/api/actions/${localStorage.getItem(
+        "userId"
+      )}/projects/tasks/${actionId}`,
+      {
+        headers: { token: `${localStorage.getItem("token")}` },
+      }
+    );
+  },
 };
