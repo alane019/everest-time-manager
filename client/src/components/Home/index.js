@@ -6,7 +6,7 @@ import API from "../../utils/API";
 function Home() {
   const [activeTaskStatus, setActiveStatus] = useState(false);
   const [activeTaskId, setActiveTaskId] = useState("");
-  const [activities, setActivities] = useState({});
+  const [actions, setActions] = useState({});
   const [timeCount, setTimeCount] = useState("");
   const [containerStyle, setContainerStyle] = useState({
     footer: { height: "30px" },
@@ -96,6 +96,7 @@ function Home() {
               handleStartAction: handleStartAction,
               handleEndAction: handleEndAction,
               isActive: activeTaskStatus,
+              activeTaskId: activeTaskId,
             }}
           >
             <ActiveTask />
