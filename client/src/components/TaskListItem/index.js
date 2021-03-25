@@ -29,7 +29,7 @@ export default function TaskListItem(props) {
               <ListItemSecondaryAction>
                 <Box display="flex" flexDirection="row">
                   <Box>
-                    <Timer />
+                    <Timer taskId={props.taskId} projectId={props.projectId} />
                   </Box>
                   <Box>
                     <ThreeDotMenu />
