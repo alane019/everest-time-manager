@@ -13,7 +13,7 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   createProject: function (req, res) {
-    db.Project.create({ ...req.body, userId: req.params.userId })
+    db.Project.create({ ...req.body, user: req.params.userId })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },

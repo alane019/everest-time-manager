@@ -15,9 +15,9 @@ module.exports = {
   addAction: function (req, res) {
     db.Action.create({
       ...req.body,
-      userId: req.params.userId,
-      projectId: req.params.projectId,
-      taskId: req.params.taskId,
+      user: req.params.userId,
+      project: req.params.projectId,
+      task: req.params.taskId,
     })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
