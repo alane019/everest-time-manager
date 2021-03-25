@@ -75,7 +75,12 @@ function TaskManager(props) {
 
       <ul style={style.ul}>
         {tasks.map((task) => (
-          <TaskListItem key={task._id} name={task.name} />
+          <TaskListItem
+            key={task._id}
+            taskId={task._id}
+            projectId={props.projectId}
+            name={task.name}
+          />
         ))}
       </ul>
       <form style={style.form} onSubmit={(e) => handleSubmit(e)}>
