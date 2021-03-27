@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DropUpContainer from "../DropUpContainer";
 import ActiveTask from "../ActiveTask";
 import HomeContext from "../../utils/HomeContext";
 import API from "../../utils/API";
 import moment from "moment";
+import HistoryListItem from '../HistoryList/index.js';
 
 function Home() {
   const [activeTaskStatus, setActiveStatus] = useState(false);
@@ -102,6 +103,8 @@ function Home() {
             }}
           >
             <ActiveTask />
+  
+
           </HomeContext.Provider>
           <HomeContext.Provider
             value={{
@@ -120,9 +123,53 @@ function Home() {
         </div>
       );
     } else {
+
+    {/* ------------------------------ */}
+
+
+      useEffect(() =>  {
+        
+
+      } , []);
+
+/*  ( For reference:   utils/API: 
+  getAction: function (actionId) {
+    return axios.get(
+      `/api/actions/${localStorage.getItem(
+        "userId"
+      )}/projects/tasks/${actionId}`,
+      {
+        headers: { token: `${localStorage.getItem("token")}` },
+      }
+    );
+  },
+
+*/
+
+      const handleHistoryList = (projectId, taskId, name) => {
+        API.addAction({
+          projectId: projectId,
+          taskId: taskId,
+          name: name,
+          startTime: moment(),
+        })
+          .then((res) => {
+            console.log(res.data);
+            setActiveTaskId(res.data._id);
+            setTimeCount(res.startTime); 
+          })
+          .catch((e) => console.log(e));
+      };
+
+
+
+
       return (
         <div>
+          
           <h1>History list</h1>
+          <HistoryListItem />
+
           <HomeContext.Provider
             value={{
               handleStartAction: handleStartAction,
@@ -131,6 +178,8 @@ function Home() {
               isActive: activeTaskStatus,
             }}
           >
+
+          {/* ------------------------------ */}
             <DropUpContainer
               shrink={shrink}
               expand={expand}
