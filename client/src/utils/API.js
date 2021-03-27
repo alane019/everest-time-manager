@@ -94,4 +94,15 @@ export default {
       }
     );
   },
+  getUserChartData: function (data) {
+    return axios.get(
+      `/api/actions/${localStorage.getItem("userId")}/${data.projectId}/${
+        data.taskId
+      }`,
+      {
+        ...data,
+      },
+      { headers: { token: `${localStorage.getItem("token")}` } }
+    );
+  },
 };
