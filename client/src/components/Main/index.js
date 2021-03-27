@@ -70,7 +70,7 @@ export default function ScrollableTabsButtonPrevent() {
   };
 
   return (
-    <div className={classes.root}>
+    <div>
       <AppBar style={style.nav} position="static">
         <Tabs
           value={value}

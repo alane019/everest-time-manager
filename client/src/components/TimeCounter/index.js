@@ -1,14 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import HomeContext from "../../utils/HomeContext";
+import moment from "moment";
 const TimeCounter = ({ startTime }) => {
   const { isActive } = useContext(HomeContext);
-
-  const displayTimeCounter = (startTime) => {
-    //display the time functionality using startTime initial value
-    return <div className="time">11:11</div>;
-  };
+  const [now, setNow] = useState(moment());
+  let start = moment(startTime);
+  useEffect(() => {
+    setNow(moment());
+  }, [now]);
+  let rawDifference = now.diff(start) / 1000 / 60;
   return isActive ? (
-    displayTimeCounter(startTime)
+    <div className="time">
+      {Math.floor(rawDifference)}:
+      {Math.floor(((rawDifference % 1) * 6000) / 100)}
+    </div>
   ) : (
     <div className="time">Start</div>
   );
