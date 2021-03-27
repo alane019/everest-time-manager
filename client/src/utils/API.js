@@ -1,6 +1,5 @@
 import axios from "axios";
-// const tokenHeader = new Headers();
-// tokenHeader.append("token", localStorage.getItem("token"));
+import moment from "moment";
 
 export default {
   //creates new user
@@ -79,7 +78,7 @@ export default {
         data.taskId
       }/${data._id}`,
       {
-        endTime: Date.now(),
+        endTime: moment(),
       },
       { headers: { token: `${localStorage.getItem("token")}` } }
     );

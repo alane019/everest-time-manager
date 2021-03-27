@@ -11,14 +11,12 @@ import ProjectContext from "../../utils/ProjectContext";
 const useStyles = makeStyles((theme) => ({}));
 
 export default function ProjectListItem(props) {
-  const classes = useStyles();
-
   const handleProjectOnClick = useContext(ProjectContext);
 
   return (
     <Grid container spacing={2} key={props.projectId}>
       <Grid item xs={12}>
-        <div className={classes.demo}>
+        <div>
           <List>
             <ListItem>
               <FiberManualRecordIcon
