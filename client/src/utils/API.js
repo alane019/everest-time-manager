@@ -93,14 +93,9 @@ export default {
       }
     );
   },
-  getUserChartData: function (data) {
+  getProjects: function () {
     return axios.get(
-      `/api/actions/${localStorage.getItem("userId")}/${data.projectId}/${
-        data.taskId
-      }`,
-      {
-        ...data,
-      },
+      `/api/projects/${localStorage.getItem("userId")}`,
       { headers: { token: `${localStorage.getItem("token")}` } }
     );
   },
