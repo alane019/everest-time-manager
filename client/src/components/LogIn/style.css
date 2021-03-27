@@ -25,7 +25,9 @@ a {
   position: relative;
   background: #638070;
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5%;
+  margin-top: 5%;
 }
 .login-html {
   width: 100%;
@@ -33,6 +35,7 @@ a {
   position: absolute;
   padding: 90px 70px 50px 70px;
   background: rgba(40, 57, 101, 0.9);
+  border-radius: 5%;
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm {
