@@ -3,6 +3,8 @@ import DropUpContainer from "../DropUpContainer";
 import ActiveTask from "../ActiveTask";
 import HomeContext from "../../utils/HomeContext";
 import API from "../../utils/API";
+import moment from "moment";
+
 function Home() {
   const [activeTaskStatus, setActiveStatus] = useState(false);
   const [activeTaskId, setActiveTaskId] = useState("");
@@ -49,7 +51,7 @@ function Home() {
       projectId: projectId,
       taskId: taskId,
       name: name,
-      startTime: Date.now(),
+      startTime: moment(),
     })
       .then((res) => {
         console.log(res.data);
