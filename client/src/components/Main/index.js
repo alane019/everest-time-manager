@@ -10,7 +10,7 @@ import Box from "@material-ui/core/Box";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import EventIcon from "@material-ui/icons/Event";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import Chart from "../Chart/App";
+import Chart from "../Chart/index";
 import Calendar from "../../Calendar";
 import Home from "../Home";
 
