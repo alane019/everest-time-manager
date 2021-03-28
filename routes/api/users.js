@@ -133,7 +133,13 @@ router.post(
         },
         (err, token) => {
           if (err) throw err;
-          res.status(200).json({ token: token, user: user.id });
+          res
+            .status(200)
+            .json({
+              token: token,
+              user: user.id,
+              activeAction: user.activeAction,
+            });
         }
       );
     } catch (e) {
