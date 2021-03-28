@@ -13,7 +13,7 @@ export default function Login() {
 
   function accessHomePage(token) {
     if (token) {
-      return <Main />;
+      return <Main removeToken={removeToken} />;
     }
     return (
       <div className="login-wrap">
@@ -165,13 +165,16 @@ export default function Login() {
         .catch((err) => console.log(err));
     }
   };
-
+  const removeToken = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    setToken(null);
+  };
   const handleSigninForm = (event) => {
     event.preventDefault();
     API.login({ email: email, password: password })
       .then((res) => {
         if (res.data.token) {
-          console.log(res.data);
           setToken(res.data.token);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("userId", res.data.user);
