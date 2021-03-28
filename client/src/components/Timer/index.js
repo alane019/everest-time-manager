@@ -31,7 +31,7 @@ const Timer = (props) => {
           ) : (
             <PlayArrowIcon
               onClick={() => {
-                handleStartAction(props.projectId, props.taskId, "Running");
+                handleStartAction(props.projectId, props.taskId);
               }}
             />
           )}
