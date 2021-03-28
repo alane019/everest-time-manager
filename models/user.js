@@ -18,6 +18,7 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
+  activeAction: { type: Schema.Types.ObjectId, ref: "Action" },
 });
 
 const User = mongoose.model("User", userSchema);
