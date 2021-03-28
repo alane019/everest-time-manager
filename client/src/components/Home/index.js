@@ -3,14 +3,11 @@ import DropUpContainer from "../DropUpContainer";
 import ActiveTask from "../ActiveTask";
 import HomeContext from "../../utils/HomeContext";
 import API from "../../utils/API";
-import moment, { duration } from "moment";
-import DeviceGpsOff from "material-ui/svg-icons/device/gps-off";
+import moment from "moment";
 
 function Home() {
   const [activeTaskStatus, setActiveStatus] = useState(false);
   const [activeTaskId, setActiveTaskId] = useState("");
-  const [actions, setActions] = useState({});
-  const [timeCount, setTimeCount] = useState("");
   const [containerStyle, setContainerStyle] = useState({
     footer: { height: "30px" },
     footerbuttondown: { visibility: "hidden" },

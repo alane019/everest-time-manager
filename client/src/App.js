@@ -1,6 +1,5 @@
 import React from "react";
 import Login from "./components/LogIn";
-import TimeCounter from "./components/TimeCounter";
 
 function App() {
   // if (localStorage.getItem("token")) {
