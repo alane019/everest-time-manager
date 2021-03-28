@@ -94,6 +94,8 @@ export default {
     );
   },
   
+
+  //    /api/actions/
   getAllActions: function () {
     return axios.get(
       `/api/actions/${localStorage.getItem(
@@ -105,7 +107,7 @@ export default {
         );
       },
       
-      
+
     getUserChartData: function (data) {
     
     return axios.get(

@@ -4,7 +4,7 @@ import ActiveTask from "../ActiveTask";
 import HomeContext from "../../utils/HomeContext";
 import API from "../../utils/API";
 import moment from "moment";
-import HistoryListItem from '../HistoryList/index.js';
+import HistoryListItem from '../HistoryListItem/index.js';
 
 function Home() {
   const [activeTaskStatus, setActiveStatus] = useState(false);
@@ -124,13 +124,7 @@ function Home() {
       );
     } else {
 
-    {/* ------------------------------ */}
-
-
-      useEffect(() =>  {
-        
-
-      } , []);
+   {/* ----[begin action-history-list section]---------------- */}
 
 /*  ( For reference:   utils/API: 
   getAction: function (actionId) {
@@ -145,30 +139,42 @@ function Home() {
   },
 
 */
+const HandleHistoryList = (projectId, taskId, name) => {
+      
+  useEffect(() =>  {
+    console.log("hello");
+  } , []);
+  
+  
+  API.getAllActions({
+      projectId: projectId,
+      taskId: taskId,
+      name: name,
+      startTime: moment(),
+    })
+      .then((res) => {
+        console.log(res.data);
+        setActiveTaskId(res.data._id);
+        setTimeCount(res.startTime); 
+      })
+      .catch((e) => console.log(e));
+  };
 
-      const handleHistoryList = (projectId, taskId, name) => {
-        API.addAction({
-          projectId: projectId,
-          taskId: taskId,
-          name: name,
-          startTime: moment(),
-        })
-          .then((res) => {
-            console.log(res.data);
-            setActiveTaskId(res.data._id);
-            setTimeCount(res.startTime); 
-          })
-          .catch((e) => console.log(e));
-      };
 
 
+ 
+        
+     return (
+      <div id="main-homepage-parent-container">
+          <div id="history-section">
+          <h1> History </h1>
+          <br></br>
+            <div id="search-form">
+                <HistoryListItem />
+              <div className="d-flex text-white justify-content-center"></div>
+            </div>
+      </div>
 
-
-      return (
-        <div>
-          
-          <h1>History list</h1>
-          <HistoryListItem />
 
           <HomeContext.Provider
             value={{
@@ -179,14 +185,19 @@ function Home() {
             }}
           >
 
-          {/* ------------------------------ */}
+  {/* ----[end action-history-list section]---------------- */}
+
+  
+
+
             <DropUpContainer
               shrink={shrink}
               expand={expand}
               containerStyle={containerStyle}
             />
           </HomeContext.Provider>
-        </div>
+        </div> 
+   // End of main-homepage-parent-container
       );
     }
   };
