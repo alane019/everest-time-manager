@@ -7,7 +7,7 @@ function App() {
   // if (localStorage.getItem("token")) {
   //   return <Main></Main>;
   // }
-  return <Main />;
+  return <Login />;
 }
 
 export default App;
