@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
@@ -9,12 +9,10 @@ import Timer from "../Timer";
 import HomeContext from "../../utils/HomeContext";
 import API from "../../utils/API";
 
-const useStyles = makeStyles(() => ({}));
-
 export default function ActiveTask(props) {
-  const { isActive, activeTaskId } = useContext(HomeContext);
+  const { activeTaskId } = useContext(HomeContext);
   const [action, setAction] = useState({});
-  const classes = useStyles();
+
   useEffect(() => {
     API.getAction(activeTaskId).then((res) => {
       console.log(res.data);

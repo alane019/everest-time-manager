@@ -3,14 +3,11 @@ import DropUpContainer from "../DropUpContainer";
 import ActiveTask from "../ActiveTask";
 import HomeContext from "../../utils/HomeContext";
 import API from "../../utils/API";
-import moment, { duration } from "moment";
-import DeviceGpsOff from "material-ui/svg-icons/device/gps-off";
+import moment from "moment";
 
 function Home() {
   const [activeTaskStatus, setActiveStatus] = useState(false);
   const [activeTaskId, setActiveTaskId] = useState("");
-  const [actions, setActions] = useState({});
-  const [timeCount, setTimeCount] = useState("");
   const [containerStyle, setContainerStyle] = useState({
     footer: { height: "30px" },
     footerbuttondown: { visibility: "hidden" },
@@ -57,7 +54,6 @@ function Home() {
       .then((res) => {
         console.log(res.data);
         setActiveTaskId(res.data._id);
-        setTimeCount(0);
         setActiveStatus(true);
         setContainerStyle({
           footer: { height: "83vh" },
@@ -99,7 +95,7 @@ function Home() {
   const displayHome = (active) => {
     if (active) {
       return (
-        <div>
+        <div component={"span"}>
           <HomeContext.Provider
             value={{
               handleStartAction: handleStartAction,
@@ -128,7 +124,7 @@ function Home() {
       );
     } else {
       return (
-        <div>
+        <>
           <h1>History list</h1>
           <HomeContext.Provider
             value={{
@@ -144,7 +140,7 @@ function Home() {
               containerStyle={containerStyle}
             />
           </HomeContext.Provider>
-        </div>
+        </>
       );
     }
   };

@@ -13,7 +13,7 @@ export default function Login() {
 
   function accessHomePage(token) {
     if (token) {
-      return <Main />;
+      return <Main removeToken={removeToken} />;
     }
     return (
       <div className="login-wrap">
@@ -35,22 +35,22 @@ export default function Login() {
           <div className="login-form">
             <div className="sign-in-htm">
               <div className="group">
-                <label htmlFor="user" className="label">
+                <label htmlFor="user1" className="label">
                   Email
                 </label>
                 <input
-                  id="user"
+                  id="user1"
                   type="text"
                   className="input"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="group">
-                <label htmlFor="pass" className="label">
+                <label htmlFor="pass4" className="label">
                   Password
                 </label>
                 <input
-                  id="pass"
+                  id="pass4"
                   type="password"
                   className="input"
                   data-type="password"
@@ -80,14 +80,25 @@ export default function Login() {
             </div>
             <div className="sign-up-htm">
               <div className="group">
-                <label htmlFor="user" className="label">
+                <label htmlFor="name" className="label">
                   Full Name
                 </label>
                 <input
-                  id="user"
+                  id="name"
                   type="text"
                   className="input"
                   onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="group">
+                <label htmlFor="email" className="label">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="text"
+                  className="input"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="group">
@@ -103,26 +114,15 @@ export default function Login() {
                 />
               </div>
               <div className="group">
-                <label htmlFor="pass" className="label">
+                <label htmlFor="pass2" className="label">
                   Repeat Password
                 </label>
                 <input
-                  id="pass"
+                  id="pass2"
                   type="password"
                   className="input"
                   data-type="password"
                   onChange={(e) => setRepeatedPassword(e.target.value)}
-                />
-              </div>
-              <div className="group">
-                <label htmlFor="pass" className="label">
-                  Email Address
-                </label>
-                <input
-                  id="pass"
-                  type="text"
-                  className="input"
-                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="group">
@@ -165,13 +165,16 @@ export default function Login() {
         .catch((err) => console.log(err));
     }
   };
-
+  const removeToken = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    setToken(null);
+  };
   const handleSigninForm = (event) => {
     event.preventDefault();
     API.login({ email: email, password: password })
       .then((res) => {
         if (res.data.token) {
-          console.log(res.data);
           setToken(res.data.token);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("userId", res.data.user);
