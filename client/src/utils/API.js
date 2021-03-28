@@ -94,9 +94,26 @@ export default {
       }
     );
   },
+  
+
+  //    /api/actions/
   getAllActions: function () {
-    return axios.get(`/api/actions/${localStorage.getItem("userId")}`, {
-      headers: { token: `${localStorage.getItem("token")}` },
-    });
+    return axios.get(
+      `/api/actions/${localStorage.getItem(
+        "userId"
+        )}/projects/tasks`,
+        {
+          headers: { token: `${localStorage.getItem("token")}`},
+        }
+        );
+      },
+      
+
+    getUserChartData: function (data) {
+    
+    return axios.get(
+      `/api/projects/${localStorage.getItem("userId")}`,
+      { headers: { token: `${localStorage.getItem("token")}` } }
+    );
   },
 };
