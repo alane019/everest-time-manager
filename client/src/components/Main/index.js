@@ -27,7 +27,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          <Typography component="span">{children}</Typography>
         </Box>
       )}
     </div>
@@ -86,9 +86,8 @@ export default function ScrollableTabsButtonPrevent() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Home></Home>
+        <Home />
       </TabPanel>
-
       <TabPanel value={value} index={1}>
         <Chart></Chart>
       </TabPanel>

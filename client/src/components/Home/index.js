@@ -57,7 +57,6 @@ function Home() {
       .then((res) => {
         console.log(res.data);
         setActiveTaskId(res.data._id);
-        setTimeCount(0);
         setActiveStatus(true);
         setContainerStyle({
           footer: { height: "83vh" },
@@ -99,7 +98,7 @@ function Home() {
   const displayHome = (active) => {
     if (active) {
       return (
-        <div>
+        <div component={"span"}>
           <HomeContext.Provider
             value={{
               handleStartAction: handleStartAction,
@@ -128,7 +127,7 @@ function Home() {
       );
     } else {
       return (
-        <div>
+        <>
           <h1>History list</h1>
           <HomeContext.Provider
             value={{
@@ -144,7 +143,7 @@ function Home() {
               containerStyle={containerStyle}
             />
           </HomeContext.Provider>
-        </div>
+        </>
       );
     }
   };
