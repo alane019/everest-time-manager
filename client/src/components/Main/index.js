@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -47,22 +46,16 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    width: "100%",
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
-
-export default function ScrollableTabsButtonPrevent() {
+export default function ScrollableTabsButtonPrevent(props) {
   const style = {
     nav: {
       background: "#042046",
       height: "6vh",
     },
+    navItemWidth: {
+      width: "25%",
+    },
   };
-  const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -79,10 +72,31 @@ export default function ScrollableTabsButtonPrevent() {
           scrollButtons="off"
           aria-label="scrollable prevent tabs example"
         >
-          <Tab icon={<HomeIcon />} aria-label="home" {...a11yProps(0)} />
-          <Tab icon={<EqualizerIcon />} aria-label="charts" {...a11yProps(1)} />
-          <Tab icon={<EventIcon />} aria-label="calendar" {...a11yProps(2)} />
-          <Tab icon={<ExitToAppIcon />} aria-label="logout" {...a11yProps(3)} />
+          <Tab
+            style={style.navItemWidth}
+            icon={<HomeIcon />}
+            aria-label="home"
+            {...a11yProps(0)}
+          />
+          <Tab
+            style={style.navItemWidth}
+            icon={<EqualizerIcon />}
+            aria-label="charts"
+            {...a11yProps(1)}
+          />
+          <Tab
+            style={style.navItemWidth}
+            icon={<EventIcon />}
+            aria-label="calendar"
+            {...a11yProps(2)}
+          />
+          <Tab
+            style={style.navItemWidth}
+            icon={<ExitToAppIcon />}
+            aria-label="logout"
+            {...a11yProps(3)}
+            onClick={() => props.removeToken()}
+          />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -93,9 +107,6 @@ export default function ScrollableTabsButtonPrevent() {
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Calendar></Calendar>
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Log Out
       </TabPanel>
     </div>
   );
