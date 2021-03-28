@@ -3,7 +3,8 @@ import DropUpContainer from "../DropUpContainer";
 import ActiveTask from "../ActiveTask";
 import HomeContext from "../../utils/HomeContext";
 import API from "../../utils/API";
-import moment from "moment";
+import moment, { duration } from "moment";
+import DeviceGpsOff from "material-ui/svg-icons/device/gps-off";
 
 function Home() {
   const [activeTaskStatus, setActiveStatus] = useState(false);
@@ -56,7 +57,7 @@ function Home() {
       .then((res) => {
         console.log(res.data);
         setActiveTaskId(res.data._id);
-        setTimeCount(res.startTime);
+        setTimeCount(0);
         setActiveStatus(true);
         setContainerStyle({
           footer: { height: "83vh" },
@@ -69,24 +70,30 @@ function Home() {
       .catch((e) => console.log(e));
   };
   const handleEndAction = (projectId, taskId) => {
-    API.endAction({
-      projectId: projectId,
-      taskId: taskId,
-      _id: activeTaskId,
-    })
-      .then((data) => {
-        console.log(data.data);
-        setTimeCount(data.startTime);
-        setActiveStatus(false);
-        setContainerStyle({
-          footer: { height: "94vh" },
-          footerbuttondown: { visibility: "visible" },
-          footerbuttonup: { visibility: "hidden" },
-          footercont: { opacity: "1", visibility: "visible" },
-          goBackIconHeight: "88vh",
-        });
+    API.getAction(activeTaskId).then((res) => {
+      let now = moment();
+      //calculates the duration in seconds of the action
+      let duration = Math.floor(now.diff(moment(res.data.startTime)) / 1000);
+      API.endAction({
+        projectId: projectId,
+        taskId: taskId,
+        _id: activeTaskId,
+        duration: duration,
+        endTime: now,
       })
-      .catch((e) => console.log(e));
+        .then((res) => {
+          console.log(res.data.startTime);
+          setActiveStatus(false);
+          setContainerStyle({
+            footer: { height: "94vh" },
+            footerbuttondown: { visibility: "visible" },
+            footerbuttonup: { visibility: "hidden" },
+            footercont: { opacity: "1", visibility: "visible" },
+            goBackIconHeight: "88vh",
+          });
+        })
+        .catch((e) => console.log(e));
+    });
   };
 
   const displayHome = (active) => {
