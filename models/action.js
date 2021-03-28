@@ -2,11 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const actionSchema = new Schema({
-  name: String,
-  color: String,
   startTime: Date,
   endTime: Date,
-  duration: Date,
+  duration: Number,
   task: { type: Schema.Types.ObjectId, ref: "Task" },
   user: { type: Schema.Types.ObjectId, ref: "User" },
   project: { type: Schema.Types.ObjectId, ref: "Project" },

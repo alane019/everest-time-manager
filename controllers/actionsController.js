@@ -2,8 +2,10 @@ const db = require("../models");
 
 module.exports = {
   findAllActions: function (req, res) {
-    db.Action.find({ project: req.params.projectId })
+    db.Action.find({ user: req.params.userId })
       .sort({ date: -1 })
+      .populate("task")
+      .populate("project")
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },

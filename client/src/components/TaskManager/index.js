@@ -56,8 +56,8 @@ function TaskManager(props) {
         console.log(error);
       });
   };
-  const addTask = (projectId, name, color) => {
-    API.addTask({ projectId, name, color })
+  const addTask = (projectId, name) => {
+    API.addTask({ projectId, name })
       .then(getTasks(projectId))
       .catch((error) => console.log(error));
   };
@@ -92,7 +92,7 @@ function TaskManager(props) {
         />
         <button
           className=""
-          onClick={() => addTask(props.projectId, inputText, "gray")}
+          onClick={() => addTask(props.projectId, inputText)}
         >
           Add TASK {items.length + 1}
         </button>

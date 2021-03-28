@@ -78,11 +78,13 @@ export default {
         data.taskId
       }/${data._id}`,
       {
-        endTime: moment(),
+        endTime: data.endTime,
+        duration: data.duration,
       },
       { headers: { token: `${localStorage.getItem("token")}` } }
     );
   },
+
   getAction: function (actionId) {
     return axios.get(
       `/api/actions/${localStorage.getItem(
@@ -93,10 +95,9 @@ export default {
       }
     );
   },
-  getProjects: function () {
-    return axios.get(
-      `/api/projects/${localStorage.getItem("userId")}`,
-      { headers: { token: `${localStorage.getItem("token")}` } }
-    );
+  getAllActions: function () {
+    return axios.get(`/api/actions/${localStorage.getItem("userId")}`, {
+      headers: { token: `${localStorage.getItem("token")}` },
+    });
   },
 };
