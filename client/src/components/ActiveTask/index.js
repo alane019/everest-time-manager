@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
@@ -10,16 +9,7 @@ import HomeContext from "../../utils/HomeContext";
 import API from "../../utils/API";
 
 export default function ActiveTask(props) {
-  const { activeTaskId } = useContext(HomeContext);
-  const [action, setAction] = useState({});
-
-  useEffect(() => {
-    API.getAction(activeTaskId).then((res) => {
-      console.log(res.data);
-      setAction(res.data);
-    });
-  }, [activeTaskId]);
-
+  const { activeTaskData } = useContext(HomeContext);
   return (
     <Grid
       key={props.key}
@@ -42,9 +32,9 @@ export default function ActiveTask(props) {
                 color: "brown",
               }}
             />
-            <h3>{action.startTime}</h3>
+            <h3>{activeTaskData.task.name}</h3>
             <ListItemSecondaryAction>
-              <Timer startTime={action.startTime} />
+              <Timer />
             </ListItemSecondaryAction>
           </ListItem>
         </List>
