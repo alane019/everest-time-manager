@@ -4,11 +4,13 @@ module.exports = {
   findAllTasks: function (req, res) {
     db.Task.find({ project: req.params.projectId })
       .sort({ date: -1 })
+      .populate("project")
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
   findTaskById: function (req, res) {
     db.Task.findById({ _id: req.params.taskId })
+      .populate("project")
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
