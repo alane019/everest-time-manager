@@ -160,6 +160,7 @@ export default function Login() {
             setToken(res.data.token);
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("userId", res.data.user);
+            localStorage.setItem("activeAction", res.data.activeAction);
           }
         })
         .catch((err) => console.log(err));
@@ -168,6 +169,7 @@ export default function Login() {
   const removeToken = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
+    localStorage.removeItem("activeAction");
     setToken(null);
   };
   const handleSigninForm = (event) => {
@@ -175,9 +177,11 @@ export default function Login() {
     API.login({ email: email, password: password })
       .then((res) => {
         if (res.data.token) {
+          console.log(res.data);
           setToken(res.data.token);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("userId", res.data.user);
+          localStorage.setItem("activeAction", res.data.activeAction);
         }
       })
       .catch((err) => console.log(err));
