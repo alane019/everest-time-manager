@@ -52,7 +52,6 @@ function ProjectManager(props) {
     API.getProjects()
       .then((res) => {
         setProjects(res.data);
-        console.log(res.data);
       })
       .catch((error) => console.log(error));
   }
