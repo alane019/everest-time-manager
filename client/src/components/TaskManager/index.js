@@ -49,7 +49,6 @@ function TaskManager(props) {
   const getTasks = (projectId) => {
     API.getTasksByProject(projectId)
       .then((res) => {
-        console.log(res.data);
         setTasks(res.data);
       })
       .catch((error) => {
