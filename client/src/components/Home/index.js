@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DropUpContainer from "../DropUpContainer";
 import ActiveTask from "../ActiveTask";
 import HomeContext from "../../utils/HomeContext";
@@ -6,8 +6,13 @@ import API from "../../utils/API";
 import moment from "moment";
 
 function Home() {
-  const [activeTaskStatus, setActiveStatus] = useState(false);
-  const [activeTaskId, setActiveTaskId] = useState("");
+  const [activeTaskId, setActiveTaskId] = useState(false);
+  const [activeTaskData, setActiveTaskData] = useState({
+    _id: null,
+    startTime: null,
+    task: { name: "", _id: null, project: null },
+  });
+
   const [containerStyle, setContainerStyle] = useState({
     footer: { height: "30px" },
     footerbuttondown: { visibility: "hidden" },
@@ -16,8 +21,37 @@ function Home() {
     goBackIconHeight: "88vh",
   });
 
+  //checks on load weather there is an active item in local storage or not
+  useEffect(() => {
+    if (localStorage.getItem("activeAction")) {
+      API.getAction({
+        activeAction: localStorage.getItem("activeAction"),
+      }).then((res) => {
+        setActiveTaskData(res.data);
+        return handleStartAction(res.data.task.project, res.data.task._id);
+      });
+    }
+    return;
+  }, []);
+
+  //on change should make a new api request
+  // useEffect(() => {
+  //   if (!activeTaskData._id && activeTaskData.task._id) {
+  //     return handleStartAction(
+  //       activeTaskData.task.project,
+  //       activeTaskData.task._id
+  //     );
+  //   }
+  //   if (false) {
+  //     return handleEndAction(
+  //       activeTaskData.task.project,
+  //       activeTaskData.task._id
+  //     );
+  //   }
+  // }, [activeTaskData]);
+
   const expand = () => {
-    if (activeTaskStatus) {
+    if (activeTaskData._id) {
       setContainerStyle({
         footer: { height: "83vh" },
         footerbuttondown: { visibility: "visible" },
@@ -44,17 +78,28 @@ function Home() {
     });
   };
 
-  const handleStartAction = (projectId, taskId, name) => {
+  const handleActiveTaskStatus = async (projectId, taskId, status) => {
+    if (status === "start") {
+      await handleStartAction(projectId, taskId);
+      await API.updateUser({ activeAction: activeTaskId })
+        .then((res) => console.log(res.data))
+        .catch((e) => console.log(e));
+    }
+    if (status === "end") {
+      await handleEndAction(projectId, taskId);
+    }
+  };
+  const handleStartAction = (activeProjectId, activeTaskId) => {
     API.addAction({
-      projectId: projectId,
-      taskId: taskId,
-      name: name,
+      projectId: activeProjectId,
+      taskId: activeTaskId,
       startTime: moment(),
     })
       .then((res) => {
-        console.log(res.data);
-        setActiveTaskId(res.data._id);
-        setActiveStatus(true);
+        API.updateUser({ activeAction: res.data._id }).then((res) =>
+          console.log(res.data)
+        );
+        setActiveTaskData(res.data);
         setContainerStyle({
           footer: { height: "83vh" },
           footerbuttondown: { visibility: "visible" },
@@ -66,52 +111,59 @@ function Home() {
       .catch((e) => console.log(e));
   };
   const handleEndAction = (projectId, taskId) => {
-    API.getAction(activeTaskId).then((res) => {
-      let now = moment();
-      //calculates the duration in seconds of the action
-      let duration = Math.floor(now.diff(moment(res.data.startTime)) / 1000);
-      API.endAction({
-        projectId: projectId,
-        taskId: taskId,
-        _id: activeTaskId,
-        duration: duration,
-        endTime: now,
-      })
-        .then((res) => {
-          console.log(res.data.startTime);
-          setActiveStatus(false);
-          setContainerStyle({
-            footer: { height: "94vh" },
-            footerbuttondown: { visibility: "visible" },
-            footerbuttonup: { visibility: "hidden" },
-            footercont: { opacity: "1", visibility: "visible" },
-            goBackIconHeight: "88vh",
-          });
+    API.getAction({ activeAction: localStorage.getItem("activeAction") }).then(
+      (res) => {
+        let now = moment();
+        //calculates the duration in seconds of the action
+        let duration = Math.floor(now.diff(moment(res.data.startTime)) / 1000);
+        API.endAction({
+          projectId: projectId,
+          taskId: taskId,
+          _id: activeTaskData._id,
+          duration: duration,
+          endTime: now,
         })
-        .catch((e) => console.log(e));
-    });
+          .then((res) => {
+            API.updateUser({ activeAction: null }).then((res) =>
+              console.log(res.data)
+            );
+            setActiveTaskData({
+              _id: null,
+              startTime: null,
+              task: { name: "", _id: null, project: null },
+            });
+            setContainerStyle({
+              footer: { height: "94vh" },
+              footerbuttondown: { visibility: "visible" },
+              footerbuttonup: { visibility: "hidden" },
+              footercont: { opacity: "1", visibility: "visible" },
+              goBackIconHeight: "88vh",
+            });
+          })
+          .catch((e) => console.log(e));
+      }
+    );
   };
 
-  const displayHome = (active) => {
-    if (active) {
+  const displayHome = (activeTaskId) => {
+    if (activeTaskData._id) {
       return (
         <div component={"span"}>
           <HomeContext.Provider
             value={{
-              handleStartAction: handleStartAction,
-              handleEndAction: handleEndAction,
-              isActive: activeTaskStatus,
+              handleActiveTaskStatus: handleActiveTaskStatus,
               activeTaskId: activeTaskId,
+              activeTaskData: activeTaskData,
             }}
           >
             <ActiveTask />
           </HomeContext.Provider>
           <HomeContext.Provider
             value={{
-              handleStartAction: handleStartAction,
-              handleEndAction: handleEndAction,
+              handleActiveTaskStatus: handleActiveTaskStatus,
               containerStyle: containerStyle,
-              isActive: activeTaskStatus,
+              activeTaskId: activeTaskId,
+              activeTaskData: activeTaskData,
             }}
           >
             <DropUpContainer
@@ -128,10 +180,10 @@ function Home() {
           <h1>History list</h1>
           <HomeContext.Provider
             value={{
-              handleStartAction: handleStartAction,
-              handleEndAction: handleEndAction,
+              handleActiveTaskStatus: handleActiveTaskStatus,
               containerStyle: containerStyle,
-              isActive: activeTaskStatus,
+              activeTaskId: activeTaskId,
+              activeTaskData: activeTaskData,
             }}
           >
             <DropUpContainer
@@ -144,7 +196,7 @@ function Home() {
       );
     }
   };
-  return displayHome(activeTaskStatus);
+  return displayHome(activeTaskId);
 }
 
 export default Home;

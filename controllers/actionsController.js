@@ -11,6 +11,7 @@ module.exports = {
   },
   findActionById: function (req, res) {
     db.Action.findById({ _id: req.params.actionId })
+      .populate("task")
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
@@ -21,7 +22,11 @@ module.exports = {
       project: req.params.projectId,
       task: req.params.taskId,
     })
-      .then((dbModel) => res.json(dbModel))
+      .then((dbModel) => {
+        return db.Action.findById({ _id: dbModel._id })
+          .populate("task")
+          .then((dbModel) => res.json(dbModel));
+      })
       .catch((err) => res.status(422).json(err));
   },
   endAction: function (req, res) {
