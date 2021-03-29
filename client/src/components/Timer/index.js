@@ -1,14 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./style.css";
 import StopIcon from "@material-ui/icons/Stop";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import Box from "@material-ui/core/Box";
 import HomeContext from "../../utils/HomeContext";
-import TimeCounter from "../TimeCounter";
+import moment from "moment";
 const Timer = (props) => {
-  const { handleStartAction, handleEndAction, isActive } = useContext(
+  const { handleActiveTaskStatus, activeTaskId, activeTaskData } = useContext(
     HomeContext
   );
+
+  const [now, setNow] = useState(moment(moment()));
+  var start = moment(activeTaskData.startTime);
+
+  // var timeCounter = setInterval(function () {
+  //   setNow(moment());
+  // }, 1000);
+
+  let rawDifference = now.diff(start) / 1000 / 60;
 
   return (
     <div className="container-fluid">
@@ -22,16 +31,17 @@ const Timer = (props) => {
           p={1}
           className="start"
         >
-          {isActive ? (
+          {activeTaskData.task._id == props.taskId ? (
             <StopIcon
               onClick={() => {
-                handleEndAction(props.projectId, props.taskId);
+                // clearInterval(timeCounter);
+                handleActiveTaskStatus(props.projectId, props.taskId, "end");
               }}
             />
           ) : (
             <PlayArrowIcon
               onClick={() => {
-                handleStartAction(props.projectId, props.taskId);
+                handleActiveTaskStatus(props.projectId, props.taskId, "start");
               }}
             />
           )}
@@ -45,13 +55,10 @@ const Timer = (props) => {
             background: "#c9d1c8de",
           }}
         >
-          {isActive ? (
-            <div className="time">
-              <TimeCounter startTime={props.startTime} />
-            </div>
-          ) : (
-            <span style={{ fontSize: "16px" }}>Start</span>
-          )}
+          <div className="time">
+            {Math.floor(rawDifference)}:
+            {Math.floor(((rawDifference % 1) * 6000) / 100)}
+          </div>
         </Box>
       </Box>
       <div className="buttons"></div>
