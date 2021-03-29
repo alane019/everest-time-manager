@@ -9,7 +9,7 @@ function Home() {
   const [activeTaskData, setActiveTaskData] = useState({
     _id: null,
     startTime: null,
-    task: { name: "", _id: null, project: null },
+    task: { name: "", _id: null, project: { color: null } },
   });
 
   //initial state of the container if there is no active tasks
@@ -32,6 +32,16 @@ function Home() {
     }
     return;
   }, []);
+  useEffect(() => {
+    if (activeTaskData._id === null) {
+      API.getAction({
+        activeAction: localStorage.getItem("activeAction"),
+      }).then((res) => {
+        setActiveTaskData(res.data);
+      });
+    }
+    return;
+  }, [activeTaskData]);
 
   const displayHome = () => {
     if (activeTaskData._id !== null) {

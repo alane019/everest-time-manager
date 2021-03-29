@@ -77,6 +77,7 @@ function TaskManager(props) {
           <TaskListItem
             key={task._id}
             taskId={task._id}
+            color={task.project.color}
             projectId={props.projectId}
             name={task.name}
           />

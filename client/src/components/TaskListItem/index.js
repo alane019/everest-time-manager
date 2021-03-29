@@ -14,12 +14,7 @@ const useStyles = makeStyles(() => ({}));
 
 export default function TaskListItem(props) {
   const classes = useStyles();
-  const {
-    handleStartAction,
-    handleEndAction,
-    activeTaskId,
-    activeTaskData,
-  } = useContext(HomeContext);
+  const { activeTaskData } = useContext(HomeContext);
   return (
     <Grid container spacing={2} style={{ background: "#c9d1c8de" }}>
       <Grid item xs={12}>
@@ -29,7 +24,7 @@ export default function TaskListItem(props) {
               <FiberManualRecordIcon
                 style={{
                   fontSize: "40px",
-                  color: "brown",
+                  color: props.color,
                 }}
               />
               <h1>{props.name}</h1>

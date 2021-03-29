@@ -11,6 +11,7 @@ module.exports = {
   },
   findActionById: function (req, res) {
     db.Action.findById({ _id: req.params.actionId })
+      .populate("project")
       .populate("task")
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
