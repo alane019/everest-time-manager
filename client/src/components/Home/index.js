@@ -34,7 +34,7 @@ function Home() {
   }, []);
 
   const displayHome = () => {
-    if (localStorage.getItem("activeAction")) {
+    if (activeTaskData._id !== null) {
       return (
         <div component={"span"}>
           <HomeContext.Provider
@@ -97,10 +97,11 @@ function Home() {
     })
       .then((res) => {
         setActiveTaskData(res.data);
-        API.updateUser({ activeAction: res.data._id }).then((res) =>
-          console.log(res.data)
-        );
+        API.updateUser({ activeAction: res.data._id }).then((res) => {
+          console.log(res.data);
+        });
         localStorage.setItem("activeAction", activeTaskId);
+
         setContainerStyle({
           footer: { height: "83vh" },
           footerbuttondown: { visibility: "visible" },
@@ -147,7 +148,7 @@ function Home() {
   };
 
   const expand = () => {
-    if (activeTaskData._id) {
+    if (activeTaskData._id !== null) {
       setContainerStyle({
         footer: { height: "83vh" },
         footerbuttondown: { visibility: "visible" },
