@@ -31,7 +31,7 @@ const Timer = (props) => {
           p={1}
           className="start"
         >
-          {activeTaskData.task._id == props.taskId ? (
+          {localStorage.getItem("activeAction") ? (
             <StopIcon
               onClick={() => {
                 // clearInterval(timeCounter);

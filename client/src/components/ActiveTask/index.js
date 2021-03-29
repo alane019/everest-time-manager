@@ -10,6 +10,7 @@ import API from "../../utils/API";
 
 export default function ActiveTask(props) {
   const { activeTaskData } = useContext(HomeContext);
+  console.log(activeTaskData);
   return (
     <Grid
       key={props.key}
@@ -29,7 +30,7 @@ export default function ActiveTask(props) {
             <FiberManualRecordIcon
               style={{
                 fontSize: "40px",
-                color: "brown",
+                color: activeTaskData.project.color,
               }}
             />
             <h3>{activeTaskData.task.name}</h3>
