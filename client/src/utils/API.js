@@ -15,6 +15,15 @@ export default {
   getUsers: function () {
     return axios.get("/api/users");
   },
+  updateUser: function (data) {
+    return axios.put(
+      `/api/users/${localStorage.getItem("userId")}`,
+      {
+        ...data,
+      },
+      { headers: { token: `${localStorage.getItem("token")}` } }
+    );
+  },
 
   deleteProject: function (projectId) {
     return axios.delete(
@@ -84,11 +93,11 @@ export default {
     );
   },
 
-  getAction: function (actionId) {
+  getAction: function (data) {
     return axios.get(
-      `/api/actions/${localStorage.getItem(
-        "userId"
-      )}/projects/tasks/${actionId}`,
+      `/api/actions/${localStorage.getItem("userId")}/projects/tasks/${
+        data.activeAction
+      }`,
       {
         headers: { token: `${localStorage.getItem("token")}` },
       }
