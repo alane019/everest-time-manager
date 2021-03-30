@@ -16,7 +16,6 @@ const Timer = (props) => {
   }, 1000);
 
   let rawDifference = now.diff(start) / 1000 / 60;
-
   return (
     <div className="container-fluid">
       <Box display="flex" flexDirection="row">
@@ -29,7 +28,7 @@ const Timer = (props) => {
           p={1}
           className="start"
         >
-          {localStorage.getItem("activeAction") ? (
+          {activeTaskData.task._id ? (
             <StopIcon
               onClick={() => {
                 clearInterval(timeCounter);
@@ -39,6 +38,7 @@ const Timer = (props) => {
           ) : (
             <PlayArrowIcon
               onClick={() => {
+                clearInterval(timeCounter);
                 handleActiveTaskStatus(props.projectId, props.taskId, "start");
               }}
             />

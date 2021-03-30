@@ -17,7 +17,7 @@ const StartStop = (props) => {
           p={1}
           className="start"
         >
-          {activeTaskData._id ? (
+          {activeTaskData.task._id === props.taskId ? (
             <StopIcon
               onClick={() => {
                 handleActiveTaskStatus(props.projectId, props.taskId, "end");
