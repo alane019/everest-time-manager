@@ -9,7 +9,8 @@ function Home() {
   const [activeTaskData, setActiveTaskData] = useState({
     _id: null,
     startTime: null,
-    task: { name: "", _id: null, project: { color: null } },
+    task: { name: "", _id: null },
+    project: { color: "" },
   });
 
   //initial state of the container if there is no active tasks
