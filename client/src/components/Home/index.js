@@ -8,6 +8,8 @@ import ActionHistory from "../ActionHistory";
 
 function Home() {
   const [activeTaskId, setActiveTaskId] = useState(false);
+
+
   const [activeTaskData, setActiveTaskData] = useState({
     _id: null,
     startTime: null,
@@ -155,7 +157,6 @@ function Home() {
 
   const displayHome = (activeTaskId) => {
 
-    
     if (activeTaskData._id) {
       return (
         <div component={"span"}>
@@ -187,6 +188,7 @@ function Home() {
     } else {
       return (
         <>
+      
           <h1>History list</h1>
           <ActionHistory/>
 

@@ -33,7 +33,7 @@ return (
     </ListGroupItem>
     {/* Inactive date example */}
     <ListGroupItem>
-    <ListGroupItemHeading>March 29, 2021</ListGroupItemHeading>
+    <ListGroupItemHeading>March 27, 2021</ListGroupItemHeading>
     <ListGroupItemText>
         <Row>
           <Col>Task</Col> <Col>Project</Col> <Col>Start Time</Col> 
