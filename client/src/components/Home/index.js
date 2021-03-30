@@ -86,7 +86,7 @@ function Home(props) {
   };
 
   const expand = () => {
-    if (activeTaskData._id !== null) {
+    if (activeTaskData._id) {
       setContainerStyle({
         footer: { height: "83vh" },
         footerbuttondown: { visibility: "visible" },
@@ -112,7 +112,7 @@ function Home(props) {
       footercont: { opacity: "0", visibility: "hidden" },
     });
   };
-  const displayHome = () => {
+  const displayActiveTask = () => {
     if (activeTaskData._id) {
       return (
         <div component={"span"}>
@@ -124,44 +124,30 @@ function Home(props) {
           >
             <ActiveTask />
           </HomeContext.Provider>
-          <HomeContext.Provider
-            value={{
-              handleActiveTaskStatus: handleActiveTaskStatus,
-              containerStyle: containerStyle,
-              activeTaskData: activeTaskData,
-            }}
-          >
-            <DropUpContainer
-              shrink={shrink}
-              expand={expand}
-              containerStyle={containerStyle}
-            />
-          </HomeContext.Provider>
         </div>
-      );
-    } else {
-      return (
-        <>
-          <h1>History list</h1>
-          <HomeContext.Provider
-            value={{
-              handleActiveTaskStatus: handleActiveTaskStatus,
-              containerStyle: containerStyle,
-              activeTaskData: activeTaskData,
-            }}
-          >
-            <DropUpContainer
-              shrink={shrink}
-              expand={expand}
-              containerStyle={containerStyle}
-            />
-          </HomeContext.Provider>
-        </>
       );
     }
   };
 
-  return displayHome();
+  return (
+    <>
+      {displayActiveTask()}
+      <h1>History List</h1>
+      <HomeContext.Provider
+        value={{
+          handleActiveTaskStatus: handleActiveTaskStatus,
+          containerStyle: containerStyle,
+          activeTaskData: activeTaskData,
+        }}
+      >
+        <DropUpContainer
+          shrink={shrink}
+          expand={expand}
+          containerStyle={containerStyle}
+        />
+      </HomeContext.Provider>
+    </>
+  );
 }
 
 export default Home;
