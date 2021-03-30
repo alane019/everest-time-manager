@@ -13,7 +13,7 @@ import Chart from "../Chart/index";
 import Calendar from "../../Calendar";
 import Home from "../Home";
 import API from "../../utils/API";
-
+import LogOutCard from "../LogOutCard";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -112,13 +112,19 @@ export default function ScrollableTabsButtonPrevent(props) {
             aria-label="calendar"
             {...a11yProps(2)}
           />
-          <Tab
+          <LogOutCard
+            style={style.navItemWidth}
+            icon={<ExitToAppIcon />}
+            {...a11yProps(2)}
+            removeToken={props.removeToken}
+          ></LogOutCard>
+          {/* <Tab
             style={style.navItemWidth}
             icon={<ExitToAppIcon />}
             aria-label="logout"
             {...a11yProps(3)}
             onClick={() => props.removeToken()}
-          />
+          /> */}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
