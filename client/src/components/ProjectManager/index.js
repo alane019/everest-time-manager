@@ -4,7 +4,6 @@ import API from "../../utils/API";
 import ProjectListItem from "../ProjectListItem";
 
 function ProjectManager(props) {
-  const [items] = useState([]);
   const [inputText, setInputText] = useState("");
   const [projects, setProjects] = useState([]);
 

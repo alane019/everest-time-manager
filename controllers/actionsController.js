@@ -4,8 +4,8 @@ module.exports = {
   findAllActions: function (req, res) {
     db.Action.find({ user: req.params.userId })
       .sort({ date: -1 })
-      .populate("task")
       .populate("project")
+      .populate("task")
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
@@ -26,6 +26,7 @@ module.exports = {
       .then((dbModel) => {
         return db.Action.findById({ _id: dbModel._id })
           .populate("task")
+          .populate("project")
           .then((dbModel) => res.json(dbModel));
       })
       .catch((err) => res.status(422).json(err));

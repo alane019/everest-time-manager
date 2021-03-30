@@ -10,7 +10,7 @@ import API from "../../utils/API";
 
 export default function ActiveTask(props) {
   const { activeTaskData } = useContext(HomeContext);
-  console.log(activeTaskData);
+
   return (
     <Grid
       key={props.key}

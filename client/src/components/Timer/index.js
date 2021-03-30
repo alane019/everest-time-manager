@@ -13,9 +13,9 @@ const Timer = (props) => {
   const [now, setNow] = useState(moment(moment()));
   var start = moment(activeTaskData.startTime);
 
-  // var timeCounter = setInterval(function () {
-  //   setNow(moment());
-  // }, 1000);
+  var timeCounter = setInterval(function () {
+    setNow(moment());
+  }, 1000);
 
   let rawDifference = now.diff(start) / 1000 / 60;
 
@@ -34,7 +34,7 @@ const Timer = (props) => {
           {localStorage.getItem("activeAction") ? (
             <StopIcon
               onClick={() => {
-                // clearInterval(timeCounter);
+                clearInterval(timeCounter);
                 handleActiveTaskStatus(props.projectId, props.taskId, "end");
               }}
             />
