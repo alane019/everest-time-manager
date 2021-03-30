@@ -4,6 +4,7 @@ import ActiveTask from "../ActiveTask";
 import HomeContext from "../../utils/HomeContext";
 import API from "../../utils/API";
 import moment from "moment";
+import ActionHistory from "../ActionHistory";
 
 function Home() {
   const [activeTaskId, setActiveTaskId] = useState(false);
@@ -20,6 +21,11 @@ function Home() {
     footercont: { opacity: "0", visibility: "hidden" },
     goBackIconHeight: "88vh",
   });
+
+
+
+
+
 
   //checks on load weather there is an active item in local storage or not
   useEffect(() => {
@@ -145,7 +151,11 @@ function Home() {
     );
   };
 
+
+
   const displayHome = (activeTaskId) => {
+
+    
     if (activeTaskData._id) {
       return (
         <div component={"span"}>
@@ -178,6 +188,8 @@ function Home() {
       return (
         <>
           <h1>History list</h1>
+          <ActionHistory/>
+
           <HomeContext.Provider
             value={{
               handleActiveTaskStatus: handleActiveTaskStatus,
@@ -186,6 +198,8 @@ function Home() {
               activeTaskData: activeTaskData,
             }}
           >
+           
+
             <DropUpContainer
               shrink={shrink}
               expand={expand}
