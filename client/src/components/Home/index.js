@@ -7,9 +7,9 @@ import moment from "moment";
 
 function Home() {
   const [activeTaskData, setActiveTaskData] = useState({
-    _id: null,
-    startTime: null,
-    task: { name: "", _id: null },
+    _id: "",
+    startTime: "",
+    task: { name: "", _id: "" },
     project: { color: "" },
   });
 
@@ -28,13 +28,14 @@ function Home() {
       API.getAction({
         activeAction: localStorage.getItem("activeAction"),
       }).then((res) => {
+        console.log(res.data);
         setActiveTaskData(res.data);
       });
     }
     return;
   }, []);
   useEffect(() => {
-    if (activeTaskData._id === null) {
+    if (activeTaskData._id === "") {
       API.getAction({
         activeAction: localStorage.getItem("activeAction"),
       }).then((res) => {
@@ -42,56 +43,8 @@ function Home() {
       });
     }
     return;
-  }, [activeTaskData]);
+  }, [activeTaskData._id]);
 
-  const displayHome = () => {
-    if (activeTaskData._id !== null) {
-      return (
-        <div component={"span"}>
-          <HomeContext.Provider
-            value={{
-              handleActiveTaskStatus: handleActiveTaskStatus,
-              activeTaskData: activeTaskData,
-            }}
-          >
-            <ActiveTask />
-          </HomeContext.Provider>
-          <HomeContext.Provider
-            value={{
-              handleActiveTaskStatus: handleActiveTaskStatus,
-              containerStyle: containerStyle,
-              activeTaskData: activeTaskData,
-            }}
-          >
-            <DropUpContainer
-              shrink={shrink}
-              expand={expand}
-              containerStyle={containerStyle}
-            />
-          </HomeContext.Provider>
-        </div>
-      );
-    } else {
-      return (
-        <>
-          <h1>History list</h1>
-          <HomeContext.Provider
-            value={{
-              handleActiveTaskStatus: handleActiveTaskStatus,
-              containerStyle: containerStyle,
-              activeTaskData: activeTaskData,
-            }}
-          >
-            <DropUpContainer
-              shrink={shrink}
-              expand={expand}
-              containerStyle={containerStyle}
-            />
-          </HomeContext.Provider>
-        </>
-      );
-    }
-  };
   const handleActiveTaskStatus = async (projectId, taskId, status) => {
     if (status === "start") {
       await handleStartAction(projectId, taskId);
@@ -184,6 +137,54 @@ function Home() {
       footerbuttonup: { visibility: "visible" },
       footercont: { opacity: "0", visibility: "hidden" },
     });
+  };
+  const displayHome = () => {
+    if (activeTaskData._id) {
+      return (
+        <div component={"span"}>
+          <HomeContext.Provider
+            value={{
+              handleActiveTaskStatus: handleActiveTaskStatus,
+              activeTaskData: activeTaskData,
+            }}
+          >
+            <ActiveTask />
+          </HomeContext.Provider>
+          <HomeContext.Provider
+            value={{
+              handleActiveTaskStatus: handleActiveTaskStatus,
+              containerStyle: containerStyle,
+              activeTaskData: activeTaskData,
+            }}
+          >
+            <DropUpContainer
+              shrink={shrink}
+              expand={expand}
+              containerStyle={containerStyle}
+            />
+          </HomeContext.Provider>
+        </div>
+      );
+    } else {
+      return (
+        <>
+          <h1>History list</h1>
+          <HomeContext.Provider
+            value={{
+              handleActiveTaskStatus: handleActiveTaskStatus,
+              containerStyle: containerStyle,
+              activeTaskData: activeTaskData,
+            }}
+          >
+            <DropUpContainer
+              shrink={shrink}
+              expand={expand}
+              containerStyle={containerStyle}
+            />
+          </HomeContext.Provider>
+        </>
+      );
+    }
   };
 
   return displayHome();

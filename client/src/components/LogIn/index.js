@@ -9,10 +9,10 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(null);
 
-  function accessHomePage(token) {
-    if (token) {
+  function accessHomePage(tokenId) {
+    if (tokenId) {
       return <Main removeToken={removeToken} />;
     }
     return (
@@ -157,31 +157,33 @@ export default function Login() {
       API.signup({ email: email, password: password, username: name })
         .then((res) => {
           if (res.data.token) {
-            setToken(res.data.token);
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("userId", res.data.user);
             localStorage.setItem("activeAction", res.data.activeAction);
+            setToken(res.data.token);
           }
         })
         .catch((err) => console.log(err));
     }
   };
+
   const removeToken = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("activeAction");
     setToken(null);
   };
+
   const handleSigninForm = (event) => {
     event.preventDefault();
     API.login({ email: email, password: password })
       .then((res) => {
         if (res.data.token) {
           console.log(res.data);
-          setToken(res.data.token);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("userId", res.data.user);
           localStorage.setItem("activeAction", res.data.activeAction);
+          setToken(res.data.token);
         }
       })
       .catch((err) => console.log(err));

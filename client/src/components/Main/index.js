@@ -102,6 +102,7 @@ export default function ScrollableTabsButtonPrevent(props) {
       <TabPanel value={value} index={0}>
         <Home />
       </TabPanel>
+
       <TabPanel value={value} index={1}>
         <Chart></Chart>
       </TabPanel>
