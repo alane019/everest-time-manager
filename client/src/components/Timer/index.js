@@ -6,11 +6,9 @@ import Box from "@material-ui/core/Box";
 import HomeContext from "../../utils/HomeContext";
 import moment from "moment";
 const Timer = (props) => {
-  const { handleActiveTaskStatus, activeTaskId, activeTaskData } = useContext(
-    HomeContext
-  );
+  const { handleActiveTaskStatus, activeTaskData } = useContext(HomeContext);
 
-  const [now, setNow] = useState(moment(moment()));
+  const [now, setNow] = useState(moment());
   var start = moment(activeTaskData.startTime);
 
   var timeCounter = setInterval(function () {
