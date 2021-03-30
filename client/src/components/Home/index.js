@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import DropUpContainer from "../DropUpContainer";
 import ActiveTask from "../ActiveTask";
 import HomeContext from "../../utils/HomeContext";
 import API from "../../utils/API";
 import moment from "moment";
 
-function Home() {
-  const [activeTaskData, setActiveTaskData] = useState({
-    _id: "",
-    startTime: "",
-    task: { name: "", _id: "" },
-    project: { color: "" },
-  });
+function Home(props) {
+  const activeTaskData = props.activeTaskData;
+  const setActiveTaskData = props.updateActiveTaskData;
 
   //initial state of the container if there is no active tasks
   const [containerStyle, setContainerStyle] = useState({
@@ -23,27 +19,6 @@ function Home() {
   });
 
   //checks on load weather there is an active item in local storage or not
-  useEffect(() => {
-    if (localStorage.getItem("activeAction")) {
-      API.getAction({
-        activeAction: localStorage.getItem("activeAction"),
-      }).then((res) => {
-        console.log(res.data);
-        setActiveTaskData(res.data);
-      });
-    }
-    return;
-  }, []);
-  useEffect(() => {
-    if (activeTaskData._id === "") {
-      API.getAction({
-        activeAction: localStorage.getItem("activeAction"),
-      }).then((res) => {
-        setActiveTaskData(res.data);
-      });
-    }
-    return;
-  }, [activeTaskData._id]);
 
   const handleActiveTaskStatus = async (projectId, taskId, status) => {
     if (status === "start") {
@@ -61,9 +36,9 @@ function Home() {
     })
       .then((res) => {
         setActiveTaskData(res.data);
-        API.updateUser({ activeAction: res.data._id }).then((res) => {
-          console.log(res.data);
-        });
+        API.updateUser({ activeAction: res.data._id }).catch((e) =>
+          console.log(e)
+        );
         localStorage.setItem("activeAction", activeTaskId);
 
         setContainerStyle({
@@ -90,14 +65,13 @@ function Home() {
         endTime: now,
       })
         .then((res) => {
-          API.updateUser({ activeAction: null }).then((res) =>
-            console.log(res.data)
-          );
+          API.updateUser({ activeAction: null }).catch((e) => console.log(e));
           localStorage.removeItem("activeAction");
           setActiveTaskData({
-            _id: null,
-            startTime: null,
-            task: { name: "", _id: null, project: null },
+            _id: "",
+            startTime: "",
+            task: { name: "", _id: "" },
+            project: { color: "" },
           });
           setContainerStyle({
             footer: { height: "94vh" },
