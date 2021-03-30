@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
@@ -12,6 +12,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Chart from "../Chart/index";
 import Calendar from "../../Calendar";
 import Home from "../Home";
+import API from "../../utils/API";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,6 +48,26 @@ function a11yProps(index) {
 }
 
 export default function ScrollableTabsButtonPrevent(props) {
+  useLayoutEffect(() => {
+    if (localStorage.getItem("activeAction")) {
+      API.getAction({
+        activeAction: localStorage.getItem("activeAction"),
+      }).then((res) => {
+        console.log(res.data);
+        setActiveTaskData(res.data);
+      });
+    }
+    return;
+  }, []);
+  const updateActiveTaskData = (data) => {
+    setActiveTaskData(data);
+  };
+  const [activeTaskData, setActiveTaskData] = useState({
+    _id: "",
+    startTime: "",
+    task: { name: "", _id: "" },
+    project: { color: "" },
+  });
   const style = {
     nav: {
       background: "#042046",
@@ -56,6 +77,7 @@ export default function ScrollableTabsButtonPrevent(props) {
       width: "25%",
     },
   };
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -100,7 +122,10 @@ export default function ScrollableTabsButtonPrevent(props) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Home />
+        <Home
+          activeTaskData={activeTaskData}
+          updateActiveTaskData={updateActiveTaskData}
+        />
       </TabPanel>
 
       <TabPanel value={value} index={1}>
