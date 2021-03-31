@@ -3,6 +3,7 @@ import DropUpContainer from "../DropUpContainer";
 import ActiveTask from "../ActiveTask";
 import HomeContext from "../../utils/HomeContext";
 import API from "../../utils/API";
+import ActionHistory from "../ActionHistory";
 import moment from "moment";
 
 function Home(props) {
@@ -123,6 +124,7 @@ function Home(props) {
             }}
           >
             <ActiveTask />
+        
           </HomeContext.Provider>
         </div>
       );
@@ -133,6 +135,7 @@ function Home(props) {
     <>
       {displayActiveTask()}
       <h1>History List</h1>
+      <ActionHistory />
       <HomeContext.Provider
         value={{
           handleActiveTaskStatus: handleActiveTaskStatus,
