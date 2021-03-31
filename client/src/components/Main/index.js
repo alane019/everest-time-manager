@@ -48,6 +48,7 @@ function a11yProps(index) {
 }
 
 export default function ScrollableTabsButtonPrevent(props) {
+  const [actions, setActions] = useState([])
   useLayoutEffect(() => {
     if (localStorage.getItem("activeAction")) {
       API.getAction({
@@ -57,8 +58,16 @@ export default function ScrollableTabsButtonPrevent(props) {
         setActiveTaskData(res.data);
       });
     }
+
+    API.getAllActions()
+        .then(res => {
+          setActions(res.data)
+            })
+
+
     return;
   }, []);
+  console.log(actions)
   const updateActiveTaskData = (data) => {
     setActiveTaskData(data);
   };
@@ -135,7 +144,7 @@ export default function ScrollableTabsButtonPrevent(props) {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        <Chart></Chart>
+        <Chart actions={actions}></Chart>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Calendar></Calendar>
