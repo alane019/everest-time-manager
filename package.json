@@ -39,6 +39,7 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.1.0",
     "react-chartjs-2": "^2.11.1",
+    "react-social-icons": "^5.0.0",
     "react-spring": "^9.0.0",
     "reactstrap": "^8.9.0"
   }

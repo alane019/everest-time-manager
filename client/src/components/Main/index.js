@@ -7,13 +7,14 @@ import HomeIcon from "@material-ui/icons/Home";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
-import EventIcon from "@material-ui/icons/Event";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Chart from "../Chart/index";
-import Calendar from "../../Calendar";
+import MeetTheTeam from "../MeetTheTeam";
 import Home from "../Home";
 import API from "../../utils/API";
 import LogOutCard from "../LogOutCard";
+import GroupIcon from "@material-ui/icons/Group";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -116,7 +117,7 @@ export default function ScrollableTabsButtonPrevent(props) {
           />
           <Tab
             style={style.navItemWidth}
-            icon={<EventIcon />}
+            icon={<GroupIcon />}
             aria-label="calendar"
             {...a11yProps(2)}
           />
@@ -139,7 +140,7 @@ export default function ScrollableTabsButtonPrevent(props) {
         <Chart actions={actions}></Chart>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Calendar></Calendar>
+        <MeetTheTeam></MeetTheTeam>
       </TabPanel>
     </div>
   );
