@@ -61,7 +61,7 @@ function ProjectManager(props) {
       <div className="projectManagerUl">
         {projects.map((project) => (
           <ProjectListItem
-            deleteProject={deleteProject}
+            deleteProject={() => deleteProject(project._id)}
             key={project._id}
             projectId={project._id}
             name={project.name}
