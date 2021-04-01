@@ -6,6 +6,10 @@ import Grid from "@material-ui/core/Grid";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import ThreeDotMenu from "../ThreeDotMenu";
 import ProjectContext from "../../utils/ProjectContext";
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
+import ViewListIcon from "@material-ui/icons/ViewList";
+import EditIcon from "@material-ui/icons/Edit";
 
 export default function ProjectListItem(props) {
   const handleProjectOnClick = useContext(ProjectContext);
@@ -22,15 +26,25 @@ export default function ProjectListItem(props) {
                   color: props.color,
                 }}
               />
-              <h1 onClick={() => handleProjectOnClick(props.projectId)}>
+              <h2
+                style={{ color: "black" }}
+                onClick={() => handleProjectOnClick(props.projectId)}
+              >
                 {props.name}
-              </h1>
+              </h2>
 
               <ListItemSecondaryAction>
-                <ThreeDotMenu
-                  deleteProject={props.deleteProject}
-                  projectId={props.projectId}
-                />
+                <IconButton
+                  onClick={() => handleProjectOnClick(props.projectId)}
+                >
+                  <ViewListIcon />
+                </IconButton>
+                <IconButton>
+                  <EditIcon />
+                </IconButton>
+                <IconButton onClick={() => props.deleteProject}>
+                  <DeleteIcon />
+                </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
           </List>
