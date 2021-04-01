@@ -17,7 +17,6 @@ const useStyles = makeStyles(() => ({}));
 
 export default function TaskListItem(props) {
   const classes = useStyles();
-  const { activeTaskData } = useContext(HomeContext);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -44,7 +43,7 @@ export default function TaskListItem(props) {
                     <IconButton>
                       <EditIcon />
                     </IconButton>
-                    <IconButton onClick={() => props.deleteProject}>
+                    <IconButton onClick={() => props.deleteTask()}>
                       <DeleteIcon />
                     </IconButton>
                   </Box>

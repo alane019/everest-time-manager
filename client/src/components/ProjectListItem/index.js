@@ -18,7 +18,7 @@ export default function ProjectListItem(props) {
     <Grid container spacing={2} key={props.projectId}>
       <Grid item xs={12}>
         <div>
-          <List>
+          <List style={{ borderRadius: "15px", background: "lightblue" }}>
             <ListItem>
               <FiberManualRecordIcon
                 style={{
@@ -42,7 +42,7 @@ export default function ProjectListItem(props) {
                 <IconButton>
                   <EditIcon />
                 </IconButton>
-                <IconButton onClick={() => props.deleteProject}>
+                <IconButton onClick={() => props.deleteProject()}>
                   <DeleteIcon />
                 </IconButton>
               </ListItemSecondaryAction>

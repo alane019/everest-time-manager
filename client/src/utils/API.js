@@ -68,6 +68,14 @@ export default {
       { headers: { token: `${localStorage.getItem("token")}` } }
     );
   },
+  deleteTask: function (taskId) {
+    return axios.delete(
+      `/api/tasks/${localStorage.getItem("userId")}/projects/${taskId}`,
+      {
+        headers: { token: `${localStorage.getItem("token")}` },
+      }
+    );
+  },
 
   addAction: function (data) {
     return axios.post(

@@ -5,6 +5,7 @@ import TaskListItem from "../TaskListItem";
 import ProjectContext from "../../utils/ProjectContext";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import HomeContext from "../../utils/HomeContext";
+import AddTaskForm from "../AddTaskForm";
 
 function TaskManager(props) {
   const [items, setItems] = useState([]);
@@ -19,32 +20,20 @@ function TaskManager(props) {
     ul: {
       overflow: "auto",
       paddingLeft: "0px",
-      height: "50vh",
+      height: "56vh",
     },
     h3: {
       textAlign: "center",
     },
   };
-
-  // form submit handler
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (inputText.length === 0) {
-      return;
-    }
-    const newItem = {
-      text:
-        inputText +
-        " . . .   (" +
-        new Intl.DateTimeFormat("en-US", {
-          dateStyle: "short",
-          timeStyle: "short",
-        }).format() +
-        ")",
-      id: Date.now(),
-    };
-    setItems([...items, newItem]);
-    setInputText("");
+  function deleteTask(taskId, projectId) {
+    API.deleteTask(taskId)
+      .then(() => {
+        getTasks(projectId);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   const getTasks = (projectId) => {
@@ -57,6 +46,9 @@ function TaskManager(props) {
       });
   };
   const addTask = (projectId, name) => {
+    if (name.length === 0) {
+      return;
+    }
     API.addTask({ projectId, name })
       .then(getTasks(projectId))
       .catch((error) => console.log(error));
@@ -73,11 +65,12 @@ function TaskManager(props) {
         }}
       />
       <h3 style={{ textAlign: "center", padding: "10px", color: "black" }}>
-        Project Task
+        Project Tasks
       </h3>
-      <ul style={style.ul}>
+      <div style={style.ul}>
         {tasks.map((task) => (
           <TaskListItem
+            deleteTask={() => deleteTask(task._id, props.projectId)}
             key={task._id}
             taskId={task._id}
             color={task.project.color}
@@ -85,21 +78,8 @@ function TaskManager(props) {
             name={task.name}
           />
         ))}
-      </ul>
-      <form style={style.form} onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor="new-task">Add a new TASK to your list.</label>
-        <input
-          id="new-task"
-          onChange={(e) => setInputText(e.target.value)}
-          value={inputText}
-        />
-        <button
-          className=""
-          onClick={() => addTask(props.projectId, inputText)}
-        >
-          Add TASK {items.length + 1}
-        </button>
-      </form>
+      </div>
+      <AddTaskForm addTask={addTask} projectId={props.projectId} />
     </div>
   );
 }
