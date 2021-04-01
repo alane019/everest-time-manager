@@ -12,7 +12,7 @@ function ProjectManager(props) {
   }, []);
 
   const style = {
-    form: { background: "#042046" },
+    form: {},
     ul: {
       overflow: "auto",
     },

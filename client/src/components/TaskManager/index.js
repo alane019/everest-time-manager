@@ -5,6 +5,7 @@ import TaskListItem from "../TaskListItem";
 import ProjectContext from "../../utils/ProjectContext";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import HomeContext from "../../utils/HomeContext";
+import AddTaskForm from "../AddTaskForm";
 
 function TaskManager(props) {
   const [items, setItems] = useState([]);
@@ -86,20 +87,7 @@ function TaskManager(props) {
           />
         ))}
       </ul>
-      <form style={style.form} onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor="new-task">Add a new TASK to your list.</label>
-        <input
-          id="new-task"
-          onChange={(e) => setInputText(e.target.value)}
-          value={inputText}
-        />
-        <button
-          className=""
-          onClick={() => addTask(props.projectId, inputText)}
-        >
-          Add TASK {items.length + 1}
-        </button>
-      </form>
+      <AddTaskForm addTask={addTask} projectId={props.projectId} />
     </div>
   );
 }
