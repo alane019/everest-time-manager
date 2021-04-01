@@ -20,7 +20,7 @@ function TaskManager(props) {
     ul: {
       overflow: "auto",
       paddingLeft: "0px",
-      height: "55vh",
+      height: "56vh",
     },
     h3: {
       textAlign: "center",
@@ -46,6 +46,9 @@ function TaskManager(props) {
       });
   };
   const addTask = (projectId, name) => {
+    if (name.length === 0) {
+      return;
+    }
     API.addTask({ projectId, name })
       .then(getTasks(projectId))
       .catch((error) => console.log(error));
@@ -62,9 +65,9 @@ function TaskManager(props) {
         }}
       />
       <h3 style={{ textAlign: "center", padding: "10px", color: "black" }}>
-        Project Task
+        Project Tasks
       </h3>
-      <ul style={style.ul}>
+      <div style={style.ul}>
         {tasks.map((task) => (
           <TaskListItem
             deleteTask={() => deleteTask(task._id, props.projectId)}
@@ -75,7 +78,7 @@ function TaskManager(props) {
             name={task.name}
           />
         ))}
-      </ul>
+      </div>
       <AddTaskForm addTask={addTask} projectId={props.projectId} />
     </div>
   );
