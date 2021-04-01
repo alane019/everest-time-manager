@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PieChart from '../PieChart';
+import React, { Component } from "react";
+import PieChart from "../PieChart";
 
 class Task {
   constructor(actionData) {
@@ -25,27 +25,29 @@ class Chart extends Component {
         acc[curr.task._id] = [curr];
       }
       return acc;
-    }, {})
+    }, {});
 
     const tasks = Object.keys(taskMap).map((taskId) => {
       const actionData = taskMap[taskId];
       return new Task(actionData);
-    })
+    });
 
     console.log(tasks);
 
     this.state = {
       chartData: {
-        labels: tasks.map(t => `${t.projectName} - ${t.name}`),
-        datasets: [{
-          label: "Minutes",
-          data: tasks.map(t => t.duration),
-          backgroundColor: tasks.map(t => t.color),
-          borderColor: tasks.map(t => t.color),
-          borderWidth: 2,
-        }],
-      }
-    }
+        labels: tasks.map((t) => `${t.projectName} - ${t.name}`),
+        datasets: [
+          {
+            label: "Minutes",
+            data: tasks.map((t) => t.duration),
+            backgroundColor: tasks.map((t) => t.color),
+            borderColor: "white",
+            borderWidth: 2,
+          },
+        ],
+      },
+    };
   }
 
   componentDidMount() {
@@ -53,52 +55,39 @@ class Chart extends Component {
   }
 
   getChartData() {
-
     this.setState({
       chartData: {
-        labels: ['Cleaning', 'Biking', 'Reading', 'Coding', 'Working'],
+        labels: ["Cleaning", "Biking", "Reading", "Coding", "Working"],
         datasets: [
           {
-            label: 'Minutes',
-            data: [
-              30,
-              60,
-              70,
-              90,
-              100
-            ],
+            label: "Minutes",
+            data: [30, 60, 70, 90, 100],
             backgroundColor: [
-              '#8e9aaf',
-              '#cbc0d3',
-              '#efd3d7',
-              '#feeafa',
-              '#dee2ff',
+              "#8e9aaf",
+              "#cbc0d3",
+              "#efd3d7",
+              "#feeafa",
+              "#dee2ff",
             ],
-            borderColor: [
-              '#8e9aaf',
-              '#cbc0d3',
-              '#efd3d7',
-              '#feeafa',
-              '#dee2ff',
-            ],
+            borderColor: ["black"],
             borderWidth: 2,
-          }
-        ]
-      }
+          },
+        ],
+      },
     });
   }
 
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Chart Page</h2>
-        </div>
-        {Object.keys(this.state.chartData).length &&
-          <PieChart chartData={this.state.chartData}
+        <div className="App-header"></div>
+        {Object.keys(this.state.chartData).length && (
+          <PieChart
+            chartData={this.state.chartData}
             Project="Minutes"
-            legendPosition="bottom" />
-        }
+            legendPosition="bottom"
+          />
+        )}
       </div>
     );
   }
