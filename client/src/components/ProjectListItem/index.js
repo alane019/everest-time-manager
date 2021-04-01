@@ -42,7 +42,7 @@ export default function ProjectListItem(props) {
                 <IconButton>
                   <EditIcon />
                 </IconButton>
-                <IconButton onClick={() => props.deleteProject}>
+                <IconButton onClick={() => props.deleteProject()}>
                   <DeleteIcon />
                 </IconButton>
               </ListItemSecondaryAction>
