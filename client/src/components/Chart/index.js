@@ -80,9 +80,7 @@ class Chart extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Chart Page</h2>
-        </div>
+        <div className="App-header"></div>
         {Object.keys(this.state.chartData).length && (
           <PieChart
             chartData={this.state.chartData}
