@@ -48,7 +48,7 @@ function a11yProps(index) {
 }
 
 export default function ScrollableTabsButtonPrevent(props) {
-  const [actions, setActions] = useState([])
+  const [actions, setActions] = useState([]);
   useLayoutEffect(() => {
     if (localStorage.getItem("activeAction")) {
       API.getAction({
@@ -59,15 +59,14 @@ export default function ScrollableTabsButtonPrevent(props) {
       });
     }
 
-    API.getAllActions()
-        .then(res => {
-          setActions(res.data)
-            })
-
+    API.getAllActions().then((res) => {
+      console.log(res.data);
+      setActions(res.data);
+    });
 
     return;
   }, []);
-  console.log(actions)
+  console.log(actions);
   const updateActiveTaskData = (data) => {
     setActiveTaskData(data);
   };
@@ -127,13 +126,6 @@ export default function ScrollableTabsButtonPrevent(props) {
             {...a11yProps(2)}
             removeToken={props.removeToken}
           ></LogOutCard>
-          {/* <Tab
-            style={style.navItemWidth}
-            icon={<ExitToAppIcon />}
-            aria-label="logout"
-            {...a11yProps(3)}
-            onClick={() => props.removeToken()}
-          /> */}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
