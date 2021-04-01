@@ -20,32 +20,20 @@ function TaskManager(props) {
     ul: {
       overflow: "auto",
       paddingLeft: "0px",
-      height: "50vh",
+      height: "55vh",
     },
     h3: {
       textAlign: "center",
     },
   };
-
-  // form submit handler
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (inputText.length === 0) {
-      return;
-    }
-    const newItem = {
-      text:
-        inputText +
-        " . . .   (" +
-        new Intl.DateTimeFormat("en-US", {
-          dateStyle: "short",
-          timeStyle: "short",
-        }).format() +
-        ")",
-      id: Date.now(),
-    };
-    setItems([...items, newItem]);
-    setInputText("");
+  function deleteTask(taskId, projectId) {
+    API.deleteTask(taskId)
+      .then(() => {
+        getTasks(projectId);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   const getTasks = (projectId) => {
@@ -79,6 +67,7 @@ function TaskManager(props) {
       <ul style={style.ul}>
         {tasks.map((task) => (
           <TaskListItem
+            deleteTask={() => deleteTask(task._id, props.projectId)}
             key={task._id}
             taskId={task._id}
             color={task.project.color}
