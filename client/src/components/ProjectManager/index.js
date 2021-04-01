@@ -12,7 +12,7 @@ function ProjectManager(props) {
   }, []);
 
   const style = {
-    form: {},
+    form: { background: "#042046" },
     ul: {
       overflow: "auto",
     },
@@ -58,7 +58,7 @@ function ProjectManager(props) {
   //
   return (
     <div className="container-fluid">
-      <div style={style.ul} className="projectManagerUl">
+      <div className="projectManagerUl">
         {projects.map((project) => (
           <ProjectListItem
             deleteProject={deleteProject}

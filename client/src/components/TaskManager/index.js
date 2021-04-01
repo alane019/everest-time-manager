@@ -19,6 +19,7 @@ function TaskManager(props) {
     ul: {
       overflow: "auto",
       paddingLeft: "0px",
+      height: "50vh",
     },
     h3: {
       textAlign: "center",
@@ -71,7 +72,9 @@ function TaskManager(props) {
           color: "#042046",
         }}
       />
-
+      <h3 style={{ textAlign: "center", padding: "10px", color: "black" }}>
+        Project Task
+      </h3>
       <ul style={style.ul}>
         {tasks.map((task) => (
           <TaskListItem
