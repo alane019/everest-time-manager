@@ -18,7 +18,7 @@ export default function ProjectListItem(props) {
     <Grid container spacing={2} key={props.projectId}>
       <Grid item xs={12}>
         <div>
-          <List style={{ borderRadius: "15px", background: "lightblue" }}>
+          <List style={{ borderRadius: "15px", background: `linear-gradient(to right, ${props.color}  , #b6e7ea)` }}>
             <ListItem>
               <FiberManualRecordIcon
                 style={{

@@ -61,10 +61,10 @@ function TaskManager(props) {
         style={{
           position: "absolute",
           bottom: containerStyle.goBackIconHeight,
-          color: "#042046",
+          color: "white",
         }}
       />
-      <h3 style={{ textAlign: "center", padding: "10px", color: "black" }}>
+      <h3 style={{ textAlign: "center", padding: "10px", color: "white" }}>
         Project Tasks
       </h3>
       <div style={style.ul}>
