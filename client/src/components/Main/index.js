@@ -10,7 +10,7 @@ import EqualizerIcon from "@material-ui/icons/Equalizer";
 import EventIcon from "@material-ui/icons/Event";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Chart from "../Chart/index";
-import Calendar from "../../Calendar";
+import MeetTheTeam from "../MeetTheTeam";
 import Home from "../Home";
 import API from "../../utils/API";
 import LogOutCard from "../LogOutCard";
@@ -147,7 +147,7 @@ export default function ScrollableTabsButtonPrevent(props) {
         <Chart actions={actions}></Chart>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Calendar></Calendar>
+        <MeetTheTeam></MeetTheTeam>
       </TabPanel>
     </div>
   );
