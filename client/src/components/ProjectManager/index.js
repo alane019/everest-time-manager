@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./style.css";
 import API from "../../utils/API";
 import ProjectListItem from "../ProjectListItem";
-
+import AddProjectForm from "../AddProjectForm";
 function ProjectManager(props) {
   const [inputText, setInputText] = useState("");
   const [projects, setProjects] = useState([]);
@@ -32,8 +32,7 @@ function ProjectManager(props) {
   }
 
   // form submit handler
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(inputText) {
     if (inputText.length === 0) {
       return;
     }
@@ -58,10 +57,19 @@ function ProjectManager(props) {
   //
   return (
     <div className="container-fluid">
-      <div style={style.ul} className="projectManagerUl">
+      <h3 style={{ textAlign: "center", padding: "10px", color: "white" }}>
+        All Projects
+      </h3>
+      <div
+        style={{
+          overflow: "auto",
+          paddingLeft: "0px",
+          height: "60vh",
+        }}
+      >
         {projects.map((project) => (
           <ProjectListItem
-            deleteProject={deleteProject}
+            deleteProject={() => deleteProject(project._id)}
             key={project._id}
             projectId={project._id}
             name={project.name}
@@ -69,15 +77,7 @@ function ProjectManager(props) {
           />
         ))}
       </div>
-      <form style={style.form} onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor="new-project">Add a new project to your list.</label>
-        <input
-          id="new-project"
-          onChange={(e) => setInputText(e.target.value)}
-          value={inputText}
-        />
-        <button className="">Add Project</button>
-      </form>
+      <AddProjectForm addProject={handleSubmit} projectId={props.projectId} />
     </div>
   );
 }

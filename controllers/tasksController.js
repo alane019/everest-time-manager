@@ -29,7 +29,7 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   removeTask: function (req, res) {
-    db.Task.findById({ _id: req.params.projectId })
+    db.Task.findById({ _id: req.params.taskId })
       .then((dbModel) => dbModel.remove())
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));

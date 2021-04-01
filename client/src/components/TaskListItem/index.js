@@ -9,35 +9,43 @@ import ThreeDotMenu from "../ThreeDotMenu";
 import StartStop from "../StartStop";
 import Box from "@material-ui/core/Box";
 import HomeContext from "../../utils/HomeContext";
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
+import EditIcon from "@material-ui/icons/Edit";
 
 const useStyles = makeStyles(() => ({}));
 
 export default function TaskListItem(props) {
   const classes = useStyles();
-  const { activeTaskData } = useContext(HomeContext);
   return (
-    <Grid container spacing={2} style={{ background: "#c9d1c8de" }}>
+    <Grid container spacing={2}>
       <Grid item xs={12}>
         <div className={classes.demo}>
-          <List>
+          <List
+            style={{
+              background: `linear-gradient(to right, ${props.color}  , #b6e7ea)`,
+              borderRadius: "15px",
+            }}
+          >
             <ListItem>
-              <FiberManualRecordIcon
-                style={{
-                  fontSize: "40px",
-                  color: props.color,
-                }}
-              />
-              <h1>{props.name}</h1>
+              <h3 style={{ color: "black" }}>{props.name}</h3>
               <ListItemSecondaryAction>
                 <Box display="flex" flexDirection="row">
-                  <Box>
-                    <StartStop
-                      taskId={props.taskId}
-                      projectId={props.projectId}
-                    />
+                  <Box style={{ color: "black" }}>
+                    <IconButton>
+                      <StartStop
+                        taskId={props.taskId}
+                        projectId={props.projectId}
+                      />
+                    </IconButton>
                   </Box>
                   <Box>
-                    <ThreeDotMenu />
+                    <IconButton>
+                      <EditIcon />
+                    </IconButton>
+                    <IconButton onClick={() => props.deleteTask()}>
+                      <DeleteIcon />
+                    </IconButton>
                   </Box>
                 </Box>
               </ListItemSecondaryAction>
