@@ -53,7 +53,15 @@ function ProjectManager(props) {
       })
       .catch((error) => console.log(error));
   }
-
+  const saveProjectName = (val, projectId) => {
+    console.log("Edited Value -> ", val);
+    API.updateProject({ name: val }, projectId)
+      .then(() => {
+        getProjects();
+        console.log("saved");
+      })
+      .catch((e) => console.log(e));
+  };
   //
   return (
     <div className="container-fluid">
@@ -69,6 +77,7 @@ function ProjectManager(props) {
       >
         {projects.map((project) => (
           <ProjectListItem
+            saveProjectName={saveProjectName}
             deleteProject={() => deleteProject(project._id)}
             key={project._id}
             projectId={project._id}
