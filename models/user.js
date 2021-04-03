@@ -18,6 +18,8 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
+  question: { type: String, required: true },
+  answer: { type: String, required: true },
   activeAction: { type: Schema.Types.ObjectId, ref: "Action" },
 });
 
