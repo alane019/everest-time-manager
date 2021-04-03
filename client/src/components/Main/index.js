@@ -99,6 +99,7 @@ export default function ScrollableTabsButtonPrevent(props) {
     <div>
       <AppBar style={style.nav} position="static">
         <Tabs
+          indicatorColor="primary"
           value={value}
           onChange={handleChange}
           variant="scrollable"
