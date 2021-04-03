@@ -133,7 +133,7 @@ function Home(props) {
   return (
     <>
       {displayActiveTask()}
-      {/* <ActionHistory /> */}
+      <ActionHistory />
       <HomeContext.Provider
         value={{
           handleActiveTaskStatus: handleActiveTaskStatus,

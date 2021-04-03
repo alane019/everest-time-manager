@@ -16,8 +16,11 @@ export default function Login() {
       return <Main removeToken={removeToken} />;
     }
     return (
+      <main className="cont" style={{ backgroundImage: `url(${require("../../images/everest.jpg")})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', overflow: "auto", height: "100%" }}>
       <div className="login-wrap">
         <div className="login-html">
+          {/* <h4 className="title" style={{color: "whitesmoke"}}>WELCOME TO</h4> */}
+          <h1 className="title" style={{color: "whitesmoke"}}>WELCOME TO EVEREST</h1>
           <input
             id="tab-1"
             type="radio"
@@ -139,6 +142,7 @@ export default function Login() {
           </div>
         </div>
       </div>
+      </main>
     );
   }
 
