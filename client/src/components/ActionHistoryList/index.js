@@ -2,7 +2,6 @@ import React from "react";
 import HistoryIcon from "../../assets/OutlineHistoryBlack24dp.png";
 import "./style.css";
 const ActionHistoryList = (props) => {
-  console.log("props, before return statement: " + props);
   return (
     <div className="card" key={props.projectId}>
       <div className="card-body">
@@ -14,7 +13,6 @@ const ActionHistoryList = (props) => {
           style={{ backgroundColor: props.projectColor, color: "white" }}
         >
           <h6 className="card-subtitle mb-2 text-muted">
-            {" "}
             Project: {props.projectName}
           </h6>
         </div>
