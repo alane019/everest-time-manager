@@ -10,6 +10,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
+import EdiText from "react-editext";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -87,20 +88,14 @@ export default function SpringModal(props) {
         <Fade in={open}>
           <div className="card" id="pop-up-card">
             <div className="card-body">
-              <h5 className="card-title">Hello Eric and Adam!</h5>
+              <EdiText
+                type="text"
+                value={props.name}
+                onSave={(value) =>
+                  props.saveProjectName(value, props.projectId)
+                }
+              />
             </div>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">
-                <strong>
-                  <IconButton aria-label="delete" onClick={() => handleClose()}>
-                    <CloseIcon />
-                  </IconButton>
-                  <IconButton>
-                    <CheckIcon />
-                  </IconButton>
-                </strong>
-              </li>
-            </ul>
           </div>
         </Fade>
       </Modal>
