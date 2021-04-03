@@ -8,8 +8,6 @@ import HomeContext from "../../utils/HomeContext";
 import AddTaskForm from "../AddTaskForm";
 
 function TaskManager(props) {
-  const [items, setItems] = useState([]);
-  const [inputText, setInputText] = useState("");
   const handleGoBack = useContext(ProjectContext);
   const [tasks, setTasks] = useState([]);
   const { containerStyle } = useContext(HomeContext);
@@ -27,14 +25,22 @@ function TaskManager(props) {
     },
   };
   function deleteTask(taskId, projectId) {
-    API.deleteTask(taskId)
-      .then(() => {
+    API.updateTask({ disable: true }, taskId)
+      .then((res) => {
         getTasks(projectId);
+        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }
+  const saveTaskName = (val, projectId, taskId) => {
+    API.updateTask({ name: val }, taskId)
+      .then(() => {
+        getTasks(projectId);
+      })
+      .catch((e) => console.log(e));
+  };
 
   const getTasks = (projectId) => {
     API.getTasksByProject(projectId)
@@ -68,16 +74,21 @@ function TaskManager(props) {
         Project Tasks
       </h3>
       <div style={style.ul}>
-        {tasks.map((task) => (
-          <TaskListItem
-            deleteTask={() => deleteTask(task._id, props.projectId)}
-            key={task._id}
-            taskId={task._id}
-            color={task.project.color}
-            projectId={props.projectId}
-            name={task.name}
-          />
-        ))}
+        {tasks.map((task) =>
+          !task.disable ? (
+            <TaskListItem
+              saveTaskName={saveTaskName}
+              deleteTask={() => deleteTask(task._id, props.projectId)}
+              key={task._id}
+              taskId={task._id}
+              color={task.project.color}
+              projectId={props.projectId}
+              name={task.name}
+            />
+          ) : (
+            <></>
+          )
+        )}
       </div>
       <AddTaskForm addTask={addTask} projectId={props.projectId} />
     </div>

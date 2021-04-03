@@ -7,13 +7,17 @@ import HomeIcon from "@material-ui/icons/Home";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
-import EventIcon from "@material-ui/icons/Event";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Chart from "../Chart/index";
 import MeetTheTeam from "../MeetTheTeam";
 import Home from "../Home";
 import API from "../../utils/API";
 import LogOutCard from "../LogOutCard";
+import GroupIcon from "@material-ui/icons/Group";
+import LiveHelpIcon from "@material-ui/icons/LiveHelp";
+import About from "../About";
+import DropUpContainer from "../DropUpContainer";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -48,7 +52,7 @@ function a11yProps(index) {
 }
 
 export default function ScrollableTabsButtonPrevent(props) {
-  const [actions, setActions] = useState([])
+  const [actions, setActions] = useState([]);
   useLayoutEffect(() => {
     if (localStorage.getItem("activeAction")) {
       API.getAction({
@@ -59,15 +63,14 @@ export default function ScrollableTabsButtonPrevent(props) {
       });
     }
 
-    API.getAllActions()
-        .then(res => {
-          setActions(res.data)
-            })
-
+    API.getAllActions().then((res) => {
+      console.log(res.data);
+      setActions(res.data);
+    });
 
     return;
   }, []);
-  console.log(actions)
+  console.log(actions);
   const updateActiveTaskData = (data) => {
     setActiveTaskData(data);
   };
@@ -117,23 +120,22 @@ export default function ScrollableTabsButtonPrevent(props) {
           />
           <Tab
             style={style.navItemWidth}
-            icon={<EventIcon />}
+            icon={<GroupIcon />}
             aria-label="calendar"
             {...a11yProps(2)}
+          />
+          <Tab
+            style={style.navItemWidth}
+            icon={<LiveHelpIcon />}
+            aria-label="calendar"
+            {...a11yProps(3)}
           />
           <LogOutCard
             style={style.navItemWidth}
             icon={<ExitToAppIcon />}
-            {...a11yProps(2)}
+            {...a11yProps(4)}
             removeToken={props.removeToken}
           ></LogOutCard>
-          {/* <Tab
-            style={style.navItemWidth}
-            icon={<ExitToAppIcon />}
-            aria-label="logout"
-            {...a11yProps(3)}
-            onClick={() => props.removeToken()}
-          /> */}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -148,6 +150,9 @@ export default function ScrollableTabsButtonPrevent(props) {
       </TabPanel>
       <TabPanel value={value} index={2}>
         <MeetTheTeam></MeetTheTeam>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <About />
       </TabPanel>
     </div>
   );

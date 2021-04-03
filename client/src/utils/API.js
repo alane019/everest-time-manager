@@ -59,6 +59,15 @@ export default {
       }
     );
   },
+  updateProject: function (data, projectId) {
+    return axios.put(
+      `/api/projects/${localStorage.getItem("userId")}/${projectId}`,
+      {
+        ...data,
+      },
+      { headers: { token: `${localStorage.getItem("token")}` } }
+    );
+  },
   addTask: function (data) {
     return axios.post(
       `/api/tasks/${localStorage.getItem("userId")}/${data.projectId}`,
@@ -74,6 +83,15 @@ export default {
       {
         headers: { token: `${localStorage.getItem("token")}` },
       }
+    );
+  },
+  updateTask: function (data, taskId) {
+    return axios.put(
+      `/api/tasks/${localStorage.getItem("userId")}/projectId/${taskId}`,
+      {
+        ...data,
+      },
+      { headers: { token: `${localStorage.getItem("token")}` } }
     );
   },
 
