@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+HK&display=swap');
+
+.body {
+    background-color: #8e9aaf;
+}
+
+.main {
+    height: 100%;
+}
