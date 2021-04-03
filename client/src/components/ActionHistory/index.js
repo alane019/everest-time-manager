@@ -3,10 +3,10 @@ import "./style.css";
 import React, { useState, useEffect } from "react";
 import ActionHistoryList from "../ActionHistoryList";
 import HistoryIcon from "../../assets/OutlineHistoryBlack24dp.png";
+const moment = require('moment');
 
 function ActionHistory(props) {
   const [actionData, setActions] = useState([]);
-
   useEffect(() => {
     getAllActions();
   }, []);
@@ -15,23 +15,26 @@ function ActionHistory(props) {
     API.getAllActions()
       .then((res) => {
         setActions(res.data);
-        console.log("res.data: .......");
-        console.log(res.data);
       })
+  
       .catch((error) => console.log(error));
   }
+      
+
 
   return (
     <div className="card-container">
-      {actionData.map((action) => (
+     {
+      actionData.sort((a, b) => b.startTime - a.startTime).reverse()
+      .map((action) => (
         <ActionHistoryList
           key={action._id}
           taskName={action.task.name}
           projectName={action.project.name}
           projectColor={action.project.color}
-          startTime={action.startTime}
-          endTime={action.endTime}
-          duration={action.duration}
+          startTime={moment(action.startTime).format("dddd, MMMM DD YYYY, h:mm a")}
+          endTime={moment(action.endTime).format("dddd, MMMM DD YYYY, h:mm a")}
+          duration={(moment.utc(action.duration*1000).format('HH:mm:ss'))}
         />
       ))}
     </div>

@@ -15,10 +15,11 @@ const ActionHistoryList = (props) => {
                         </div> 
                         <p className="card-text start-time"> Start: {props.startTime} </p>
                         <p className="card-text end-time"> End: {props.endTime} </p>
-                        <p className="card-text duration"> Duration: {props.duration} </p>
+                        <p className="card-text duration"> Duration: {props.duration} &nbsp;
+                             <span style={{color: "gray"}}>(hr:min:sec) </span> </p>
                     </div>
             </div>
-    )
+    ) 
 };
 
 export default ActionHistoryList;
