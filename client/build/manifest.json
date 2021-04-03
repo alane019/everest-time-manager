@@ -1,15 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64",
-      "type": "image/png"
-    }
-  ],
-  "start_url": "./index.html",
+  "short_name": "Everest",
+  "name": "Everest Productivity Tracker",
+ "icons":[{
+   "src":"/android-chrome-192x192-1.png",
+   "sizes":"192x192","type":"image/png"
+   },{
+     "src":"/android-chrome-512x512-1.png",
+     "sizes":"512x512",
+     "type":"image/png"
+     }],
+  "theme_color": "#5b7065",
+  "background_color": "#c9d1c8",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
-}
+  "start_url": "./index.html"
+ }
