@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+HK&display=swap');
 
-
-
-
 .history-icon{
     height: 24px;
     width: 24px;
     display: inline-block;
+}
+
+.card-container{
+    overflow: auto; 
 }

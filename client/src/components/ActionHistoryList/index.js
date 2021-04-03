@@ -5,9 +5,7 @@ const ActionHistoryList = (props) => {
 
     console.log("props, before return statement: " + props);
     return (
-
-             <div className="card" key={props.projectId}>
-                   
+             <div className="card" key={props.projectId}>  
                     <div className="card-body">
                     <img className="history-icon" src={HistoryIcon}></img>  
                        <h3 className="card-title task-name">Task: {props.taskName}</h3> 
@@ -20,7 +18,6 @@ const ActionHistoryList = (props) => {
                         <p className="card-text duration"> Duration: {props.duration} </p>
                     </div>
             </div>
-
     )
 };
 

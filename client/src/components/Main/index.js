@@ -13,6 +13,7 @@ import MeetTheTeam from "../MeetTheTeam";
 import Home from "../Home";
 import API from "../../utils/API";
 import LogOutCard from "../LogOutCard";
+import "./style.css";
 import GroupIcon from "@material-ui/icons/Group";
 import LiveHelpIcon from "@material-ui/icons/LiveHelp";
 import About from "../About";
@@ -131,6 +132,8 @@ export default function ScrollableTabsButtonPrevent(props) {
             {...a11yProps(3)}
           />
           <LogOutCard
+            id="scrollable-prevent-tab-logout"
+            className="logout-card"
             style={style.navItemWidth}
             icon={<ExitToAppIcon />}
             {...a11yProps(4)}
