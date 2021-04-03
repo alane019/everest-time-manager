@@ -4,14 +4,12 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Grid from "@material-ui/core/Grid";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
-import ThreeDotMenu from "../ThreeDotMenu";
 import StartStop from "../StartStop";
 import Box from "@material-ui/core/Box";
-import HomeContext from "../../utils/HomeContext";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
-import EditIcon from "@material-ui/icons/Edit";
+import EditTaskCard from "../EditTaskCard";
+import ConfirmDeleting from "../ConfirmDeleting";
 
 const useStyles = makeStyles(() => ({}));
 
@@ -41,10 +39,18 @@ export default function TaskListItem(props) {
                   </Box>
                   <Box>
                     <IconButton>
-                      <EditIcon />
+                      <EditTaskCard
+                        saveTaskName={props.saveTaskName}
+                        taskId={props.taskId}
+                        projectId={props.projectId}
+                        name={props.name}
+                      />
                     </IconButton>
-                    <IconButton onClick={() => props.deleteTask()}>
-                      <DeleteIcon />
+                    <IconButton>
+                      <ConfirmDeleting
+                        name={props.name}
+                        deleteItem={props.deleteTask}
+                      />
                     </IconButton>
                   </Box>
                 </Box>

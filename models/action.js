@@ -8,6 +8,7 @@ const actionSchema = new Schema({
   task: { type: Schema.Types.ObjectId, ref: "Task" },
   user: { type: Schema.Types.ObjectId, ref: "User" },
   project: { type: Schema.Types.ObjectId, ref: "Project" },
+  disable: { type: Boolean, default: false },
 });
 const Action = mongoose.model("Action", actionSchema);
 
