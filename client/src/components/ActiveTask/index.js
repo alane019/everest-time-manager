@@ -7,7 +7,6 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import Timer from "../Timer";
 import HomeContext from "../../utils/HomeContext";
 import API from "../../utils/API";
-import "./style.css";
 
 export default function ActiveTask(props) {
   const { activeTaskData } = useContext(HomeContext);
@@ -18,14 +17,14 @@ export default function ActiveTask(props) {
       container
       spacing={2}
       style={{
-        background: "#c9d1c8f7",
+        background: "#ffffff",
         padding: "0px",
         position: "absolute",
-
+        top: "8vh",
         left: "0px",
         zIndex: "2",
         height: "8vh",
-        boxShadow: "#ad194e7a 0 0 8px 3px",
+        boxShadow: "gray 0px 0px 2px 2px",
       }}
     >
       <Grid id="active-task" item xs={12}>
