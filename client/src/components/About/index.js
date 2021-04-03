@@ -1,29 +1,27 @@
 import React from "react";
+import "./style.css";
 
 function About() {
   return (
-    <div>
-      <p>
-        The Productivity Tracker App is about achieving your desired goals
-        through customizable tasks and activities that you track with ease
-        daily.
-      </p>
-      <p>
-        Establishing daily goals in a visible format is scientifically proven to
-        provide an enhanced focus that leads to increased productivity (and
-        likely increased earnings!). In 1979, researchers at "The Harvard MBA
-        Business School" conducted a study highlighting the importance of goal
-        setting. Furthermore, writing down those desired goals is essential to
-        the likelihood of achieving your goals.
-        https://www.forbes.com/sites/annabelacton/2017/11/03/how-to-set-goals-and-why-you-should-do-it/?sh=199f3e97162d
-      </p>
-      <p>
-        The Productivity Tracker App is an amazing and convenient tool to stay
-        on-task, get more done, and enjoy the personal rewards of
-        accomplishment! Sign-up now and start getting more done in your life
-        today!
-      </p>
-    </div>
+    <main className="container">
+      <section className="card mx-auto" style={{ width: 'fit-content' }}>
+        <div className="row" style={{ padding: '10px' }}>
+          <div className="col-md-12">
+            <div className="page-header">
+              <h1 style={{ textAlign: 'center' }}>Welcome To Everest</h1>
+              <br></br>
+              <h2 style={{ textAlign: 'center' }}>The Everest App is about achieving your desired goals through customizable tasks and activities that you track with ease on a daily basis.</h2>
+              <br></br>
+              <h3 style={{ textAlign: 'center' }}>Establishing daily goals in a tangible format is scientifically proven to provide an enhanced focus that leads to increased productivity. In 1979, researchers at "The Harvard MBA Business School" conducted a study highlighting the importance of goal setting. Furthermore, documenting those desired goals is essential to the likelihood of achieving your goals.</h3>
+              <br></br>
+              <h5 style={{ textAlign: 'center' }}>https://www.forbes.com/sites/annabelacton/2017/11/03/how-to-set-goals-and-why-you-should-do-it/?sh=199f3e97162d</h5>
+              <br></br>
+              <h2 style={{ textAlign: 'center' }}>The Everest App is an amazingly simple and convenient tool to stay on-task, get more done, and enjoy the personal rewards of accomplishment! Start getting more done in your life today!</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+      </main>
   );
 }
 
