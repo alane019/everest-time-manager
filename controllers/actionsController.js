@@ -3,7 +3,6 @@ const db = require("../models");
 module.exports = {
   findAllActions: function (req, res) {
     db.Action.find({ user: req.params.userId })
-      .sort({ date: -1 })
       .populate("project")
       .populate("task")
       .then((dbModel) => res.json(dbModel))
