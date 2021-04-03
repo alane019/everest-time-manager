@@ -22,7 +22,7 @@ function ProjectManager(props) {
   };
 
   function deleteProject(id) {
-    API.deleteProject(id)
+    API.updateProject({ disable: true }, id)
       .then((res) => {
         getProjects();
       })
@@ -75,16 +75,20 @@ function ProjectManager(props) {
           height: "60vh",
         }}
       >
-        {projects.map((project) => (
-          <ProjectListItem
-            saveProjectName={saveProjectName}
-            deleteProject={() => deleteProject(project._id)}
-            key={project._id}
-            projectId={project._id}
-            name={project.name}
-            color={project.color}
-          />
-        ))}
+        {projects.map((project) =>
+          !project.disable ? (
+            <ProjectListItem
+              saveProjectName={saveProjectName}
+              deleteProject={() => deleteProject(project._id)}
+              key={project._id}
+              projectId={project._id}
+              name={project.name}
+              color={project.color}
+            />
+          ) : (
+            <></>
+          )
+        )}
       </div>
       <AddProjectForm addProject={handleSubmit} projectId={props.projectId} />
     </div>
