@@ -8,8 +8,6 @@ import HomeContext from "../../utils/HomeContext";
 import AddTaskForm from "../AddTaskForm";
 
 function TaskManager(props) {
-  const [items, setItems] = useState([]);
-  const [inputText, setInputText] = useState("");
   const handleGoBack = useContext(ProjectContext);
   const [tasks, setTasks] = useState([]);
   const { containerStyle } = useContext(HomeContext);
@@ -36,11 +34,9 @@ function TaskManager(props) {
       });
   }
   const saveTaskName = (val, projectId, taskId) => {
-    console.log("Edited Value -> ", val);
     API.updateTask({ name: val }, taskId)
       .then(() => {
         getTasks(projectId);
-        console.log("task saved");
       })
       .catch((e) => console.log(e));
   };
