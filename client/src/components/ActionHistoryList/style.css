@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+
+.project-tag h6{
+    width: fit-content !important;
+    /* font-family: 'Anton', sans-serif; */
+    font-family: 'Noto Sans HK', sans-serif;
+    padding: 3px 6px;
+    color: white !important;
+    text-shadow: .25px 1px .5px rgba(0, 0, 0, 0.795),  1px 1px 6px gray !important;
+    width: fit-content !important;
+}
+
+
+.history-icon{
+    height: 24px;
+    width: 24px;
+    margin: 7px;
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+
+.task-name{
+    display: inline-block; 
+}

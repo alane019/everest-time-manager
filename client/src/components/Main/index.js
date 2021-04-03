@@ -14,6 +14,9 @@ import Home from "../Home";
 import API from "../../utils/API";
 import LogOutCard from "../LogOutCard";
 import GroupIcon from "@material-ui/icons/Group";
+import LiveHelpIcon from "@material-ui/icons/LiveHelp";
+import About from "../About";
+import DropUpContainer from "../DropUpContainer";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -121,10 +124,16 @@ export default function ScrollableTabsButtonPrevent(props) {
             aria-label="calendar"
             {...a11yProps(2)}
           />
+          <Tab
+            style={style.navItemWidth}
+            icon={<LiveHelpIcon />}
+            aria-label="calendar"
+            {...a11yProps(3)}
+          />
           <LogOutCard
             style={style.navItemWidth}
             icon={<ExitToAppIcon />}
-            {...a11yProps(2)}
+            {...a11yProps(4)}
             removeToken={props.removeToken}
           ></LogOutCard>
         </Tabs>
@@ -141,6 +150,9 @@ export default function ScrollableTabsButtonPrevent(props) {
       </TabPanel>
       <TabPanel value={value} index={2}>
         <MeetTheTeam></MeetTheTeam>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <About />
       </TabPanel>
     </div>
   );

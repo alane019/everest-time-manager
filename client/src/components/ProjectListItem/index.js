@@ -10,6 +10,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import ViewListIcon from "@material-ui/icons/ViewList";
 import EditIcon from "@material-ui/icons/Edit";
+import EditProjectCard from "../EditProjectCard";
 
 export default function ProjectListItem(props) {
   const handleProjectOnClick = useContext(ProjectContext);
@@ -18,7 +19,12 @@ export default function ProjectListItem(props) {
     <Grid container spacing={2} key={props.projectId}>
       <Grid item xs={12}>
         <div>
-          <List style={{ borderRadius: "15px", background: `linear-gradient(to right, ${props.color}  , #b6e7ea)` }}>
+          <List
+            style={{
+              borderRadius: "15px",
+              background: `linear-gradient(to right, ${props.color}  , #b6e7ea)`,
+            }}
+          >
             <ListItem>
               <FiberManualRecordIcon
                 style={{
@@ -40,7 +46,7 @@ export default function ProjectListItem(props) {
                   <ViewListIcon />
                 </IconButton>
                 <IconButton>
-                  <EditIcon />
+                  <EditProjectCard />
                 </IconButton>
                 <IconButton onClick={() => props.deleteProject()}>
                   <DeleteIcon />
