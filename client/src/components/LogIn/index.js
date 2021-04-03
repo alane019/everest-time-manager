@@ -3,6 +3,7 @@ import API from "../../utils/API";
 // import ProjectManager from "../ProjectManager";
 import Main from "../Main";
 import "./style.css";
+import DropDownSecurityQuestions from "../DropDownSecurityQuestions";
 
 export default function Login() {
   const [name, setName] = useState("");
@@ -10,7 +11,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
   const [token, setToken] = useState(null);
-
+  const [securityCheck, setSecurityCheck] = useState(null);
   function accessHomePage(tokenId) {
     if (tokenId) {
       return <Main removeToken={removeToken} />;
@@ -94,7 +95,7 @@ export default function Login() {
               <div className="sign-up-htm">
                 <div className="group">
                   <label htmlFor="name" className="label">
-                    Full Name
+                    Full Name*
                   </label>
                   <input
                     id="name"
@@ -105,7 +106,7 @@ export default function Login() {
                 </div>
                 <div className="group">
                   <label htmlFor="email" className="label">
-                    Email
+                    Email*
                   </label>
                   <input
                     id="email"
@@ -116,7 +117,7 @@ export default function Login() {
                 </div>
                 <div className="group">
                   <label htmlFor="pass" className="label">
-                    Password
+                    Password*
                   </label>
                   <input
                     id="pass"
@@ -128,7 +129,7 @@ export default function Login() {
                 </div>
                 <div className="group">
                   <label htmlFor="pass2" className="label">
-                    Repeat Password
+                    Repeat Password*
                   </label>
                   <input
                     id="pass2"
@@ -138,6 +139,9 @@ export default function Login() {
                     onChange={(e) => setRepeatedPassword(e.target.value)}
                   />
                 </div>
+                <DropDownSecurityQuestions
+                  handleSetSecQuestion={handleSetSecQuestion}
+                />
                 <div className="group">
                   <input
                     type="submit"
@@ -155,20 +159,29 @@ export default function Login() {
       </main>
     );
   }
-
+  function handleSetSecQuestion(data) {
+    setSecurityCheck(data);
+  }
   const handleSignupForm = (event) => {
     event.preventDefault();
     if (!name) {
       alert("Don't forget to insert the Full name");
-    }
-    if (!email) {
+    } else if (!email) {
       alert("Don't forget the email");
-    }
-    if (!password || !repeatedPassword) {
-      alert("Make sure that you fill both password fields");
-    }
-    if (password === repeatedPassword) {
-      API.signup({ email: email, password: password, username: name })
+    } else if (password.length < 6 || repeatedPassword.length < 6) {
+      alert("Your password should contain at least 6 characters");
+    } else if (password !== repeatedPassword) {
+      alert("Passwords don't match");
+    } else if (!securityCheck) {
+      alert("You should set security question!");
+    } else if (password === repeatedPassword) {
+      API.signup({
+        email: email,
+        password: password,
+        username: name,
+        question: securityCheck.question,
+        answer: securityCheck.answer,
+      })
         .then((res) => {
           if (res.data.token) {
             localStorage.setItem("token", res.data.token);
