@@ -21,26 +21,14 @@ class PieChart extends Component {
       <div className="chart">
         <Pie
           data={this.state.chartData}
-<<<<<<< HEAD
+          width={1000}
+          height={500}
           options={{
+            maintainAspectRatio: false,
             title: {
               display: this.props.displayTitle,
               text: "Time Spent On Project Tasks In " + this.props.project,
               fontSize: 25,
-            },
-            legend: {
-              display: this.props.displayLegend,
-              position: this.props.legendPosition,
-=======
-          width={1000}
-          height={500}
-          options={{ 
-            maintainAspectRatio: false, 
-            title:{
-              display:this.props.displayTitle,
-              text:'Time Spent On Project Tasks In '+ this.props.project,
-              fontSize:25
->>>>>>> upstream/main
             },
           }}
         />
