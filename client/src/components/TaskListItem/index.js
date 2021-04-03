@@ -21,7 +21,7 @@ export default function TaskListItem(props) {
         <div className={classes.demo}>
           <List
             style={{
-              background: `linear-gradient(to right, ${props.color}  , #b6e7ea)`,
+              background: `linear-gradient(to right, ${props.color}  , white)`,
               borderRadius: "15px",
             }}
           >

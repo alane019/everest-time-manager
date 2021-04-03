@@ -72,7 +72,7 @@ function ProjectManager(props) {
         style={{
           overflow: "auto",
           paddingLeft: "0px",
-          height: "60vh",
+          height: "65vh",
         }}
       >
         {projects.map((project) =>

@@ -12,9 +12,19 @@ export default function AddForm(props) {
   const [inputPlaceholder, setInputPlaceholder] = useState("Create Task ...");
 
   return (
-    <AppBar position="static" style={{ borderRadius: "15px", marginTop: "7px"  }}>
+    <AppBar
+      position="static"
+      style={{
+        borderRadius: "15px",
+        marginTop: "7px",
+        border: "3px solid rgba(255,255,255, 0.3)",
+        background:
+          "linear-gradient(to right, rgba(40, 57, 101, 0.9) 0%, rgb(104, 166, 202) 100%)",
+      }}
+    >
       <Toolbar>
-        <InputBase autoComplete
+        <InputBase
+          autoComplete
           onChange={(e) => setInputText(e.target.value)}
           placeholder={inputPlaceholder}
           inputProps={{ "aria-label": "search" }}
@@ -23,9 +33,7 @@ export default function AddForm(props) {
         />
 
         <ListItemSecondaryAction>
-
-          <IconButton 
-            style={{ color: "white" }}
+          <IconButton
             onClick={(e) => {
               setInputPlaceholder("Add Task to Project ...");
               props.addTask(props.projectId, inputText);

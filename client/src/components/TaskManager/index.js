@@ -18,7 +18,7 @@ function TaskManager(props) {
     ul: {
       overflow: "auto",
       paddingLeft: "0px",
-      height: "56vh",
+      height: "62vh",
     },
     h3: {
       textAlign: "center",
@@ -91,7 +91,7 @@ function TaskManager(props) {
         )}
       </div>
       <AddTaskForm addTask={addTask} projectId={props.projectId} />
-    </div> 
+    </div>
   );
 }
 
