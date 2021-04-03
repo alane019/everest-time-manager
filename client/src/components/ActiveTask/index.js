@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import Timer from "../Timer";
 import HomeContext from "../../utils/HomeContext";
-import API from "../../utils/API";
 
 export default function ActiveTask(props) {
   const { activeTaskData } = useContext(HomeContext);
