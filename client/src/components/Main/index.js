@@ -13,11 +13,9 @@ import MeetTheTeam from "../MeetTheTeam";
 import Home from "../Home";
 import API from "../../utils/API";
 import LogOutCard from "../LogOutCard";
-import "./style.css";
 import GroupIcon from "@material-ui/icons/Group";
 import LiveHelpIcon from "@material-ui/icons/LiveHelp";
 import About from "../About";
-import DropUpContainer from "../DropUpContainer";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -84,10 +82,10 @@ export default function ScrollableTabsButtonPrevent(props) {
   const style = {
     nav: {
       background: "#042046",
-      height: "6vh",
     },
     navItemWidth: {
-      width: "25%",
+      height: "7vh",
+      width: "20%",
     },
   };
 

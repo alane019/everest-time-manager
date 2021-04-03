@@ -43,11 +43,11 @@ function Home(props) {
         localStorage.setItem("activeAction", activeTaskId);
 
         setContainerStyle({
-          footer: { height: "83vh" },
+          footer: { height: "85vh" },
           footerbuttondown: { visibility: "visible" },
           footerbuttonup: { visibility: "hidden" },
           footercont: { opacity: "1", visibility: "visible" },
-          goBackIconHeight: "77vh",
+          goBackIconHeight: "79vh",
         });
       })
       .catch((e) => console.log(e));
@@ -75,11 +75,11 @@ function Home(props) {
             project: { color: "" },
           });
           setContainerStyle({
-            footer: { height: "94vh" },
+            footer: { height: "93vh" },
             footerbuttondown: { visibility: "visible" },
             footerbuttonup: { visibility: "hidden" },
             footercont: { opacity: "1", visibility: "visible" },
-            goBackIconHeight: "88vh",
+            goBackIconHeight: "87vh",
           });
         })
         .catch((e) => console.log(e));
@@ -89,19 +89,19 @@ function Home(props) {
   const expand = () => {
     if (activeTaskData._id) {
       setContainerStyle({
-        footer: { height: "83vh" },
+        footer: { height: "85vh" },
         footerbuttondown: { visibility: "visible" },
         footerbuttonup: { visibility: "hidden" },
         footercont: { opacity: "1", visibility: "visible" },
-        goBackIconHeight: "77vh",
+        goBackIconHeight: "79vh",
       });
     } else {
       setContainerStyle({
-        footer: { height: "94vh" },
+        footer: { height: "93vh" },
         footerbuttondown: { visibility: "visible" },
         footerbuttonup: { visibility: "hidden" },
         footercont: { opacity: "1", visibility: "visible" },
-        goBackIconHeight: "88vh",
+        goBackIconHeight: "87vh",
       });
     }
   };

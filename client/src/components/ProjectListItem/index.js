@@ -23,7 +23,7 @@ export default function ProjectListItem(props) {
           <List
             style={{
               borderRadius: "15px",
-              background: `linear-gradient(to right, ${props.color}  , #b6e7ea)`,
+              background: `linear-gradient(to right, white  , #b6e7ea)`,
             }}
           >
             <ListItem>
