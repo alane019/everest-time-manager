@@ -1,0 +1,29 @@
+
+MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2
+
+ #active-task, .MuiGrid-root .MuiGrid-item .MuiGrid-grid-xs-12{
+ background-color:rgba(201, 209, 200, 0.99);
+ border-radius: 3px;
+ position: fixed;
+ top: 8vh;
+ width: 100%;
+ max-height: 100px;
+}
+/* MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 */
+
+.MuiAppBar-root, .MuiTabs-flexContainer, 
+.MuiTabs-scrollable, [id*="scrollable-prevent-tab-"]{
+    top: 0px;
+    height: 7vh;  
+    position: fixed;
+    width: 100%;
+    background-color: #042046;
+    z-index: 2; 
+  }
+
+.mui-selected{
+    background-color: #a5a451 !important;
+    z-index: 2; 
+  }
+
+

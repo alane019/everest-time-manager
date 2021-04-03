@@ -14,7 +14,9 @@ export default function AddProjectForm(props) {
   );
 
   return (
-    <AppBar position="static" style={{ borderRadius: "15px" }}>
+    <AppBar position="static" 
+    style={{ borderRadius: "15px",
+     marginTop: "7px", minHeight: "60px" }}>
       <Toolbar>
         <InputBase
           onChange={(e) => setInputText(e.target.value)}
@@ -25,7 +27,7 @@ export default function AddProjectForm(props) {
 
         <ListItemSecondaryAction>
           <IconButton
-            style={{ color: "white" }}
+            style={{ color: "white"}}
             onClick={(e) => {
               setInputPlaceholder("Create Project ...");
               props.addProject(inputText);

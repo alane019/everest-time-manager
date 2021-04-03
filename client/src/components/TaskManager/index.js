@@ -80,7 +80,7 @@ function TaskManager(props) {
         ))}
       </div>
       <AddTaskForm addTask={addTask} projectId={props.projectId} />
-    </div>
+    </div> 
   );
 }
 

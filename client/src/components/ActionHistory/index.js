@@ -33,7 +33,7 @@ useEffect(() => {
 
 
       return (
-       <div className="card" >
+       <div className="card-container" >
           
             {actionData.map((action) => (
               <ActionHistoryList

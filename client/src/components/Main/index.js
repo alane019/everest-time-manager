@@ -14,6 +14,7 @@ import MeetTheTeam from "../MeetTheTeam";
 import Home from "../Home";
 import API from "../../utils/API";
 import LogOutCard from "../LogOutCard";
+import "./style.css";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -122,6 +123,8 @@ export default function ScrollableTabsButtonPrevent(props) {
             {...a11yProps(2)}
           />
           <LogOutCard
+            id="scrollable-prevent-tab-logout"
+            className="logout-card"
             style={style.navItemWidth}
             icon={<ExitToAppIcon />}
             {...a11yProps(2)}
