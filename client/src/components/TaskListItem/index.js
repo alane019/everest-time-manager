@@ -9,6 +9,7 @@ import Box from "@material-ui/core/Box";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import EditTaskCard from "../EditTaskCard";
+import ConfirmDeleting from "../ConfirmDeleting";
 
 const useStyles = makeStyles(() => ({}));
 
@@ -45,8 +46,11 @@ export default function TaskListItem(props) {
                         name={props.name}
                       />
                     </IconButton>
-                    <IconButton onClick={() => props.deleteTask()}>
-                      <DeleteIcon />
+                    <IconButton>
+                      <ConfirmDeleting
+                        name={props.name}
+                        deleteItem={props.deleteTask}
+                      />
                     </IconButton>
                   </Box>
                 </Box>
