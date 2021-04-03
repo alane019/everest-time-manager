@@ -11,6 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ViewListIcon from "@material-ui/icons/ViewList";
 import EditIcon from "@material-ui/icons/Edit";
 import EditProjectCard from "../EditProjectCard";
+import ConfirmDeleting from "../ConfirmDeleting";
 
 export default function ProjectListItem(props) {
   const handleProjectOnClick = useContext(ProjectContext);
@@ -52,8 +53,11 @@ export default function ProjectListItem(props) {
                     projectId={props.projectId}
                   />
                 </IconButton>
-                <IconButton onClick={() => props.deleteProject()}>
-                  <DeleteIcon />
+                <IconButton>
+                  <ConfirmDeleting
+                    name={props.name}
+                    deleteItem={props.deleteProject}
+                  />
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
