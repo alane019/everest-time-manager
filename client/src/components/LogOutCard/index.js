@@ -68,7 +68,7 @@ export default function SpringModal(props) {
   };
 
   return (
-    <div>
+    <>
       <Tab
         style={props.style}
         icon={props.icon}
@@ -110,6 +110,6 @@ export default function SpringModal(props) {
           </div>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }
