@@ -12,6 +12,7 @@ import HomeContext from "../../utils/HomeContext";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
+import EditTaskCard from "../EditTaskCard";
 
 const useStyles = makeStyles(() => ({}));
 
@@ -41,7 +42,12 @@ export default function TaskListItem(props) {
                   </Box>
                   <Box>
                     <IconButton>
-                      <EditIcon />
+                      <EditTaskCard
+                        saveTaskName={props.saveTaskName}
+                        taskId={props.taskId}
+                        projectId={props.projectId}
+                        name={props.name}
+                      />
                     </IconButton>
                     <IconButton onClick={() => props.deleteTask()}>
                       <DeleteIcon />
