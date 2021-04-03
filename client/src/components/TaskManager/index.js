@@ -25,9 +25,10 @@ function TaskManager(props) {
     },
   };
   function deleteTask(taskId, projectId) {
-    API.deleteTask(taskId)
-      .then(() => {
+    API.updateTask({ disable: true }, taskId)
+      .then((res) => {
         getTasks(projectId);
+        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -73,17 +74,21 @@ function TaskManager(props) {
         Project Tasks
       </h3>
       <div style={style.ul}>
-        {tasks.map((task) => (
-          <TaskListItem
-            saveTaskName={saveTaskName}
-            deleteTask={() => deleteTask(task._id, props.projectId)}
-            key={task._id}
-            taskId={task._id}
-            color={task.project.color}
-            projectId={props.projectId}
-            name={task.name}
-          />
-        ))}
+        {tasks.map((task) =>
+          !task.disable ? (
+            <TaskListItem
+              saveTaskName={saveTaskName}
+              deleteTask={() => deleteTask(task._id, props.projectId)}
+              key={task._id}
+              taskId={task._id}
+              color={task.project.color}
+              projectId={props.projectId}
+              name={task.name}
+            />
+          ) : (
+            <></>
+          )
+        )}
       </div>
       <AddTaskForm addTask={addTask} projectId={props.projectId} />
     </div>
