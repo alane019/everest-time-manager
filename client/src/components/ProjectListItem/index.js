@@ -46,7 +46,11 @@ export default function ProjectListItem(props) {
                   <ViewListIcon />
                 </IconButton>
                 <IconButton>
-                  <EditProjectCard />
+                  <EditProjectCard
+                    saveProjectName={props.saveProjectName}
+                    name={props.name}
+                    projectId={props.projectId}
+                  />
                 </IconButton>
                 <IconButton onClick={() => props.deleteProject()}>
                   <DeleteIcon />
