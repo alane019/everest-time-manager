@@ -2,7 +2,6 @@ import API from "../../utils/API";
 import "./style.css";
 import React, { useState, useEffect } from "react";
 import ActionHistoryList from "../ActionHistoryList";
-import HistoryIcon from "../../assets/OutlineHistoryBlack24dp.png";
 
 function ActionHistory(props) {
   const [actionData, setActions] = useState([]);
@@ -15,8 +14,6 @@ function ActionHistory(props) {
     API.getAllActions()
       .then((res) => {
         setActions(res.data);
-        console.log("res.data: .......");
-        console.log(res.data);
       })
       .catch((error) => console.log(error));
   }

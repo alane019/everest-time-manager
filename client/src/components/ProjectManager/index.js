@@ -11,16 +11,6 @@ function ProjectManager(props) {
     getProjects();
   }, []);
 
-  const style = {
-    form: {},
-    ul: {
-      overflow: "auto",
-    },
-    h3: {
-      textAlign: "center",
-    },
-  };
-
   function deleteProject(id) {
     API.updateProject({ disable: true }, id)
       .then((res) => {
