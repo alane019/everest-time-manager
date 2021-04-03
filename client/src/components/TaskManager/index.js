@@ -35,6 +35,15 @@ function TaskManager(props) {
         console.log(error);
       });
   }
+  const saveTaskName = (val, projectId, taskId) => {
+    console.log("Edited Value -> ", val);
+    API.updateTask({ name: val }, taskId)
+      .then(() => {
+        getTasks(projectId);
+        console.log("task saved");
+      })
+      .catch((e) => console.log(e));
+  };
 
   const getTasks = (projectId) => {
     API.getTasksByProject(projectId)
@@ -70,6 +79,7 @@ function TaskManager(props) {
       <div style={style.ul}>
         {tasks.map((task) => (
           <TaskListItem
+            saveTaskName={saveTaskName}
             deleteTask={() => deleteTask(task._id, props.projectId)}
             key={task._id}
             taskId={task._id}
