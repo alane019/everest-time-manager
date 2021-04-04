@@ -2,7 +2,8 @@
 
 .projectManagerUl {
   background-color: #c9d1c898;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: visible;
   max-height: 65vh;
   padding: 2px;
 }

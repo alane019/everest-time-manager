@@ -23,3 +23,10 @@
 .task-name{
     display: inline-block; 
 }
+
+.card-container{
+    overflow: auto;
+    height: 75vh;
+    font-family: 'Noto Sans HK', sans-serif;
+     
+}
