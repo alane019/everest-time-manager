@@ -133,6 +133,7 @@ function Home(props) {
   return (
     <>
       {displayActiveTask()}
+      <h1 id="history-heading">History List</h1>
       <ActionHistory />
       <HomeContext.Provider
         value={{

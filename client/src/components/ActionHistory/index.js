@@ -23,7 +23,7 @@ function ActionHistory(props) {
 
 
   return (
-    <div className="card-container">
+    <div  id="history-list-container" className="card-container">
      {
       actionData.sort((a, b) => b.startTime - a.startTime).reverse()
       .map((action) => (
@@ -37,7 +37,7 @@ function ActionHistory(props) {
           duration={(moment.utc(action.duration*1000).format('HH:mm:ss'))}
         />
       ))}
-    </div>
+  </div>
   );
 }
 
