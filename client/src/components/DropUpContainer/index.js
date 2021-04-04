@@ -30,6 +30,12 @@ export default function DropUpContainer(props) {
             <TaskManager projectId={projectId} />;
           </ProjectContext.Provider>
         );
+      default:
+        return (
+          <ProjectContext.Provider value={handleProjectOnClick}>
+            <ProjectManager />
+          </ProjectContext.Provider>
+        );
     }
   };
 

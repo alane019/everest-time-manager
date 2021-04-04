@@ -57,19 +57,16 @@ export default function ScrollableTabsButtonPrevent(props) {
       API.getAction({
         activeAction: localStorage.getItem("activeAction"),
       }).then((res) => {
-        console.log(res.data);
         setActiveTaskData(res.data);
       });
     }
 
     API.getAllActions().then((res) => {
-      console.log(res.data);
       setActions(res.data);
     });
 
     return;
   }, []);
-  console.log(actions);
   const updateActiveTaskData = (data) => {
     setActiveTaskData(data);
   };
@@ -99,6 +96,7 @@ export default function ScrollableTabsButtonPrevent(props) {
     <div>
       <AppBar style={style.nav} position="static">
         <Tabs
+          indicatorColor="primary"
           value={value}
           onChange={handleChange}
           variant="scrollable"

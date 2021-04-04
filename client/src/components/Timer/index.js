@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
-import "./style.css";
+import React, { useContext, useState } from "react";
 import StopIcon from "@material-ui/icons/Stop";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import Box from "@material-ui/core/Box";
@@ -18,12 +17,12 @@ const Timer = (props) => {
   let rawDifference = now.diff(start) / 1000 / 60;
   return (
     <div className="container-fluid">
-      <Box display="flex" flexDirection="row">
+      <Box display="flex" flexDirection="row" style={{ color: "white" }}>
         <Box
           style={{
             paddingRight: "0px",
             borderRadius: "15px 0px 0px 15px",
-            background: "#c9d1c8de",
+            background: "#042046",
           }}
           p={1}
           className="start"
@@ -50,7 +49,7 @@ const Timer = (props) => {
             paddingLeft: "0px",
             paddingTop: "7px",
             borderRadius: "0px 15px 15px 0px",
-            background: "#c9d1c8de",
+            background: "#042046",
           }}
         >
           <div className="time">

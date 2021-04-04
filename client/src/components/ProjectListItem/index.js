@@ -4,12 +4,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Grid from "@material-ui/core/Grid";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
-import ThreeDotMenu from "../ThreeDotMenu";
 import ProjectContext from "../../utils/ProjectContext";
-import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import ViewListIcon from "@material-ui/icons/ViewList";
-import EditIcon from "@material-ui/icons/Edit";
 import EditProjectCard from "../EditProjectCard";
 import ConfirmDeleting from "../ConfirmDeleting";
 

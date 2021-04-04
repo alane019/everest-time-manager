@@ -1,6 +1,6 @@
-import React from 'react'
-import HistoryIcon from "../../assets/OutlineHistoryBlack24dp.png"
-import "./style.css"
+import React from "react";
+import HistoryIcon from "../../assets/OutlineHistoryBlack24dp.png";
+import "./style.css";
 const ActionHistoryList = (props) => {
 
     console.log("props, before return statement: " + props);

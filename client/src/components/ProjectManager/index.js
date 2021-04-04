@@ -4,22 +4,12 @@ import API from "../../utils/API";
 import ProjectListItem from "../ProjectListItem";
 import AddProjectForm from "../AddProjectForm";
 function ProjectManager(props) {
-  const [inputText, setInputText] = useState("");
   const [projects, setProjects] = useState([]);
+  const [projectNumber, setProjectNumber] = useState(0);
 
   useEffect(() => {
     getProjects();
   }, []);
-
-  const style = {
-    form: {},
-    ul: {
-      overflow: "auto",
-    },
-    h3: {
-      textAlign: "center",
-    },
-  };
 
   function deleteProject(id) {
     API.updateProject({ disable: true }, id)
@@ -30,14 +20,30 @@ function ProjectManager(props) {
         console.log(error);
       });
   }
-
+  function generateColorByIndex(i) {
+    const colorList = [
+      "chocolate",
+      "indianRed",
+      "plum",
+      "cornflowerBlue",
+      "chocolate",
+      "indianRed",
+      "plum",
+      "cornflowerBlue",
+      "chocolate",
+      "indianRed",
+      "plum",
+      "cornflowerBlue",
+    ];
+    return colorList[i];
+  }
   // form submit handler
   function handleSubmit(inputText) {
     if (inputText.length === 0) {
       return;
     }
     const newProjectData = {
-      color: "green",
+      color: generateColorByIndex(projectNumber + 1),
       name: inputText,
     };
     API.addProject(newProjectData)
@@ -49,16 +55,15 @@ function ProjectManager(props) {
   function getProjects() {
     API.getProjects()
       .then((res) => {
+        setProjectNumber(res.data.length);
         setProjects(res.data);
       })
       .catch((error) => console.log(error));
   }
   const saveProjectName = (val, projectId) => {
-    console.log("Edited Value -> ", val);
     API.updateProject({ name: val }, projectId)
       .then(() => {
         getProjects();
-        console.log("saved");
       })
       .catch((e) => console.log(e));
   };
