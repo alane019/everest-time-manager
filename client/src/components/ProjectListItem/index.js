@@ -32,7 +32,9 @@ export default function ProjectListItem(props) {
               />
               <h2
                 style={{ color: "black" }}
-                onClick={() => handleProjectOnClick(props.projectId)}
+                onClick={() =>
+                  handleProjectOnClick(props.projectId, props.name)
+                }
               >
                 {props.name}
               </h2>
