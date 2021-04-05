@@ -1,13 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+HK&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+HK&display=swap");
 
-
-
-#history-list-container{
-    margin-top: 15px;
-    font-family: 'Noto Sans HK', sans-serif;
-    box-shadow: inset #8080808c 0 0 7px 1px;
-    border: #8080808c solid 1px;
-    padding: 4px;
+#history-list-container {
+  margin: 0px;
+  font-family: "Noto Sans HK", sans-serif;
+  box-shadow: inset #8080808c 0 0 7px 1px;
+  border: #8080808c solid 1px;
+  padding: 2px;
 }
-   
