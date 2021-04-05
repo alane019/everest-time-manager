@@ -75,7 +75,6 @@ function ProjectManager(props) {
       </h3>
       <div
         style={{
-          overflow: "auto",
           paddingLeft: "0px",
           height: "65vh",
         }}
