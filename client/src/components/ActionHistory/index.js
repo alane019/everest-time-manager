@@ -6,6 +6,7 @@ const moment = require("moment");
 
 function ActionHistory(props) {
   const [actionData, setActions] = useState([]);
+  const [status, setStatus] = useState("");
   useEffect(() => {
     getAllActions();
   }, []);
@@ -13,10 +14,14 @@ function ActionHistory(props) {
   function getAllActions() {
     API.getAllActions()
       .then((res) => {
+        setStatus("actions");
         setActions(res.data);
       })
 
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setStatus("no-data");
+        console.log(error);
+      });
   }
   function getActionAmount() {
     if (actionData.length) {
@@ -25,7 +30,7 @@ function ActionHistory(props) {
     return 0;
   }
   function displayHistory() {
-    if (actionData.length) {
+    if (status === "actions") {
       return actionData
         .sort((a, b) => b.startTime - a.startTime)
         .reverse()
@@ -44,7 +49,7 @@ function ActionHistory(props) {
             duration={moment.utc(action.duration * 1000).format("HH:mm:ss")}
           />
         ));
-    } else {
+    } else if (status === "no-data") {
       return (
         <div style={{ marginTop: "30vh" }}>
           <h3 style={{ textAlign: "center", color: "#042046" }}>
