@@ -73,10 +73,12 @@ function ProjectManager(props) {
       <h3 style={{ textAlign: "center", padding: "10px", color: "white" }}>
         All Projects
       </h3>
-      <div
+      <div 
+        id="project-list-container" 
         style={{
           paddingLeft: "0px",
           height: "65vh",
+          overflow: "auto"
         }}
       >
         {projects.map((project) =>
