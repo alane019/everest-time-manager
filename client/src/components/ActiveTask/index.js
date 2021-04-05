@@ -26,26 +26,9 @@ export default function ActiveTask(props) {
         boxShadow: "gray 0px 0px 2px 2px",
       }}
     >
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refs/remotes/origin/main
-      <Grid
-        id="active-task"
-        item
-        xs={12}
-        style={{ margin: "0ps", padding: "0px" }}
-      >
-        <List style={{ margin: "0ps", padding: "0px" }}>
-          <ListItem>
-<<<<<<< HEAD
-=======
       <Grid id="active-task" item xs={12}>
-        <List style={{paddingTop: "0px"}}>
-          <ListItem style={{paddingTop: "0px"}}>
->>>>>>> upstream/main
-=======
->>>>>>> refs/remotes/origin/main
+        <List style={{ paddingTop: "0px" }}>
+          <ListItem style={{ paddingTop: "0px" }}>
             <FiberManualRecordIcon
               style={{
                 fontSize: "40px",
