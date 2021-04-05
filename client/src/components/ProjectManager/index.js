@@ -6,6 +6,7 @@ import AddProjectForm from "../AddProjectForm";
 function ProjectManager(props) {
   const [projects, setProjects] = useState([]);
   const [projectNumber, setProjectNumber] = useState(0);
+  const [status, setStatus] = useState("");
 
   useLayoutEffect(() => {
     getProjects();
@@ -17,6 +18,7 @@ function ProjectManager(props) {
         getProjects();
       })
       .catch((error) => {
+        setStatus("no-data");
         console.log(error);
       });
   }
@@ -57,8 +59,12 @@ function ProjectManager(props) {
       .then((res) => {
         setProjectNumber(res.data.length);
         setProjects(res.data);
+        setStatus("projects");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setStatus("no-data");
+        console.log(error);
+      });
   }
   const saveProjectName = (val, projectId) => {
     API.updateProject({ name: val }, projectId)
@@ -69,7 +75,7 @@ function ProjectManager(props) {
   };
   //
   function displayProjects() {
-    if (projects.length) {
+    if (status === "projects") {
       return projects.map((project) =>
         !project.disable ? (
           <ProjectListItem
@@ -84,7 +90,7 @@ function ProjectManager(props) {
           <></>
         )
       );
-    } else {
+    } else if (status === "no-data") {
       return (
         <div style={{ textAlign: "center", color: "white", marginTop: "20vh" }}>
           <em>
