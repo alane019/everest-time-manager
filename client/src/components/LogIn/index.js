@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import Main from "../Main";
 import "./style.css";
 import DropDownSecurityQuestions from "../DropDownSecurityQuestions";
+import ForgotPassword from "../ForgotPassword";
 
 export default function Login() {
   const [name, setName] = useState("");
@@ -88,9 +89,7 @@ export default function Login() {
                   />
                 </div>
                 <div className="hr"></div>
-                <div className="foot-lnk">
-                  <a href="#forgot">Forgot Password?</a>
-                </div>
+                <ForgotPassword />
               </div>
               <div className="sign-up-htm">
                 <div className="group">
