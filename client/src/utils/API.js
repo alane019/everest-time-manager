@@ -15,6 +15,12 @@ export default {
   getUsers: function () {
     return axios.get("/api/users");
   },
+  getSecurityQuestion: function (email) {
+    return axios.get(`/api/users/question/${email}`);
+  },
+  getUserId: function (email, answer) {
+    return axios.get(`/api/users/question/${email}/${answer}`);
+  },
   updateUser: function (data) {
     return axios.put(
       `/api/users/${localStorage.getItem("userId")}`,
@@ -23,6 +29,11 @@ export default {
       },
       { headers: { token: `${localStorage.getItem("token")}` } }
     );
+  },
+  setNewPassword: function (userId, password) {
+    return axios.put(`/api/users/new-password/${userId}`, {
+      password: password,
+    });
   },
 
   deleteProject: function (projectId) {

@@ -34,11 +34,24 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   findUserByEmail: function (req, res) {
-    db.User.findById({
+    db.User.find({
       email: req.params.email,
-      password: req.params.password,
     })
-      .then((dbModel) => res.json(dbModel))
+      .then((dbModel) => {
+        res.json(dbModel[0].question);
+      })
+      .catch((err) => res.status(422).json(err));
+  },
+  findUserByEmailAndAnswer: function (req, res) {
+    db.User.find({
+      email: req.params.email,
+    })
+      .then((dbModel) => {
+        if (dbModel[0].answer === req.params.answer) {
+          console.log(dbModel[0]._id);
+          res.json(dbModel[0]._id);
+        }
+      })
       .catch((err) => res.status(422).json(err));
   },
   getLoggedUser: async function (req, res) {

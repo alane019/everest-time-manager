@@ -32,8 +32,6 @@ class Chart extends Component {
       return new Task(actionData);
     });
 
-    console.log(tasks);
-
     this.state = {
       chartData: {
         labels: tasks.map((t) => `${t.projectName} - ${t.name}`),
@@ -48,33 +46,6 @@ class Chart extends Component {
         ],
       },
     };
-  }
-
-  componentDidMount() {
-    //this.getChartData();
-  }
-
-  getChartData() {
-    this.setState({
-      chartData: {
-        labels: ["Cleaning", "Biking", "Reading", "Coding", "Working"],
-        datasets: [
-          {
-            label: "Minutes",
-            data: [30, 60, 70, 90, 100],
-            backgroundColor: [
-              "#8e9aaf",
-              "#cbc0d3",
-              "#efd3d7",
-              "#feeafa",
-              "#dee2ff",
-            ],
-            borderColor: ["black"],
-            borderWidth: 2,
-          },
-        ],
-      },
-    });
   }
 
   render() {
