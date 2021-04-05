@@ -27,8 +27,8 @@ export default function ActiveTask(props) {
       }}
     >
       <Grid id="active-task" item xs={12}>
-        <List>
-          <ListItem>
+        <List style={{paddingTop: "0px"}}>
+          <ListItem style={{paddingTop: "0px"}}>
             <FiberManualRecordIcon
               style={{
                 fontSize: "40px",
