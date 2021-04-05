@@ -7,10 +7,12 @@ import "./style.css";
 export default function DropUpContainer(props) {
   const [componentState, setComponentState] = useState("projects");
   const [projectId, setProjectId] = useState("");
+  const [projectName, setProjectName] = useState("");
 
-  const handleProjectOnClick = (projectId) => {
+  const handleProjectOnClick = (projectId, name) => {
     setComponentState("tasks");
     setProjectId(projectId);
+    setProjectName(name);
   };
   const handleGoBack = () => {
     setComponentState("projects");
@@ -27,7 +29,7 @@ export default function DropUpContainer(props) {
       case "tasks":
         return (
           <ProjectContext.Provider value={handleGoBack}>
-            <TaskManager projectId={projectId} />;
+            <TaskManager projectId={projectId} projectName={projectName} />;
           </ProjectContext.Provider>
         );
       default:
