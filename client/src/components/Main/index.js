@@ -64,8 +64,6 @@ export default function ScrollableTabsButtonPrevent(props) {
     API.getAllActions().then((res) => {
       setActions(res.data);
     });
-
-    return;
   }, []);
   const updateActiveTaskData = (data) => {
     setActiveTaskData(data);

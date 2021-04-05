@@ -38,7 +38,7 @@ class Chart extends Component {
         datasets: [
           {
             label: "Minutes",
-            data: tasks.map((t) => t.duration),
+            data: tasks.map((t) => (t.duration / 60).toFixed(2)),
             backgroundColor: tasks.map((t) => t.color),
             borderColor: "white",
             borderWidth: 2,
