@@ -27,6 +27,9 @@ export default function ActiveTask(props) {
       }}
     >
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> refs/remotes/origin/main
       <Grid
         id="active-task"
         item
@@ -35,11 +38,14 @@ export default function ActiveTask(props) {
       >
         <List style={{ margin: "0ps", padding: "0px" }}>
           <ListItem>
+<<<<<<< HEAD
 =======
       <Grid id="active-task" item xs={12}>
         <List style={{paddingTop: "0px"}}>
           <ListItem style={{paddingTop: "0px"}}>
 >>>>>>> upstream/main
+=======
+>>>>>>> refs/remotes/origin/main
             <FiberManualRecordIcon
               style={{
                 fontSize: "40px",
