@@ -26,6 +26,7 @@ export default function ActiveTask(props) {
         boxShadow: "gray 0px 0px 2px 2px",
       }}
     >
+<<<<<<< HEAD
       <Grid
         id="active-task"
         item
@@ -34,6 +35,11 @@ export default function ActiveTask(props) {
       >
         <List style={{ margin: "0ps", padding: "0px" }}>
           <ListItem>
+=======
+      <Grid id="active-task" item xs={12}>
+        <List style={{paddingTop: "0px"}}>
+          <ListItem style={{paddingTop: "0px"}}>
+>>>>>>> upstream/main
             <FiberManualRecordIcon
               style={{
                 fontSize: "40px",
