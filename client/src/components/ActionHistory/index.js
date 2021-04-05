@@ -25,7 +25,7 @@ function ActionHistory(props) {
     return 0;
   }
   function displayHistory() {
-    if (actionData) {
+    if (actionData.length) {
       return actionData
         .sort((a, b) => b.startTime - a.startTime)
         .reverse()
@@ -46,14 +46,14 @@ function ActionHistory(props) {
         ));
     } else {
       return (
-        <div style={{ marginTop: "38vh" }}>
-          <h1 style={{ textAlign: "center" }}>
-            Hi, there is no data to display.
-          </h1>
-          <h1 style={{ textAlign: "center" }}>
-            To Start recording your time, crete a new Project by pushing on the
-            Bar icon bellow
-          </h1>
+        <div style={{ marginTop: "30vh" }}>
+          <h3 style={{ textAlign: "center", color: "#042046" }}>
+            <em>
+              Start recording your time by pushing on the{" "}
+              <strong style={{ color: "tomato" }}>Up Icon</strong> on the bottom
+              of the screen
+            </em>
+          </h3>
         </div>
       );
     }
@@ -64,7 +64,7 @@ function ActionHistory(props) {
       className="card-container"
       style={{ marginTop: props.containerStyle.historyListHeight }}
     >
-      <h3 style={{ textAlign: "center" }}>
+      <h3 style={{ textAlign: "center", color: "#042046" }}>
         <i>
           <strong>
             Total of{" "}
