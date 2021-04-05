@@ -11,6 +11,7 @@ function TaskManager(props) {
   const handleGoBack = useContext(ProjectContext);
   const [tasks, setTasks] = useState([]);
   const { containerStyle } = useContext(HomeContext);
+  const [status, setStatus] = useState("");
   useEffect(() => getTasks(props.projectId), [props.projectId]);
 
   const style = {
@@ -46,8 +47,10 @@ function TaskManager(props) {
     API.getTasksByProject(projectId)
       .then((res) => {
         setTasks(res.data);
+        setStatus("tasks");
       })
       .catch((error) => {
+        setStatus("no-data");
         console.log(error);
       });
   };
@@ -60,7 +63,7 @@ function TaskManager(props) {
       .catch((error) => console.log(error));
   };
   function displayTasks() {
-    if (tasks.length) {
+    if (status === "tasks") {
       return tasks.map((task) =>
         !task.disable ? (
           <TaskListItem
@@ -76,7 +79,7 @@ function TaskManager(props) {
           <></>
         )
       );
-    } else {
+    } else if (status === "no-data") {
       return (
         <div style={{ textAlign: "center", color: "white", marginTop: "20vh" }}>
           <em>
