@@ -71,7 +71,7 @@ function TaskManager(props) {
         }}
       />
       <h3 style={{ textAlign: "center", padding: "10px", color: "white" }}>
-        Project Tasks
+        {props.projectName} Tasks
       </h3>
       <div style={style.ul}>
         {tasks.map((task) =>
