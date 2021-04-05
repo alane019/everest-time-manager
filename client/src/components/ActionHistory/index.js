@@ -24,7 +24,40 @@ function ActionHistory(props) {
     }
     return 0;
   }
-
+  function displayHistory() {
+    if (actionData) {
+      return actionData
+        .sort((a, b) => b.startTime - a.startTime)
+        .reverse()
+        .map((action) => (
+          <ActionHistoryList
+            key={action._id}
+            taskName={action.task.name}
+            projectName={action.project.name}
+            projectColor={action.project.color}
+            startTime={moment(action.startTime).format(
+              "dddd, MMMM DD YYYY, h:mm a"
+            )}
+            endTime={moment(action.endTime).format(
+              "dddd, MMMM DD YYYY, h:mm a"
+            )}
+            duration={moment.utc(action.duration * 1000).format("HH:mm:ss")}
+          />
+        ));
+    } else {
+      return (
+        <div style={{ marginTop: "38vh" }}>
+          <h1 style={{ textAlign: "center" }}>
+            Hi, there is no data to display.
+          </h1>
+          <h1 style={{ textAlign: "center" }}>
+            To Start recording your time, crete a new Project by pushing on the
+            Bar icon bellow
+          </h1>
+        </div>
+      );
+    }
+  }
   return (
     <div
       id="history-list-container"
@@ -42,24 +75,7 @@ function ActionHistory(props) {
           </strong>
         </i>
       </h3>
-      {actionData
-        .sort((a, b) => b.startTime - a.startTime)
-        .reverse()
-        .map((action) => (
-          <ActionHistoryList
-            key={action._id}
-            taskName={action.task.name}
-            projectName={action.project.name}
-            projectColor={action.project.color}
-            startTime={moment(action.startTime).format(
-              "dddd, MMMM DD YYYY, h:mm a"
-            )}
-            endTime={moment(action.endTime).format(
-              "dddd, MMMM DD YYYY, h:mm a"
-            )}
-            duration={moment.utc(action.duration * 1000).format("HH:mm:ss")}
-          />
-        ))}
+      {displayHistory()}
     </div>
   );
 }
