@@ -20,7 +20,7 @@ function MeetTheTeam() {
         <div className="row" style={{ padding: '10px' }}>
           <div className="col-md-12">
             <div className="page-header">
-              <h1 style={{ textAlign: 'center' }}>Meet the Team</h1>
+              <h1 className="animate__animated animate__zoomIn" style={{ textAlign: 'center' }}>Meet the Team</h1>
             </div>
           </div>
         </div>
