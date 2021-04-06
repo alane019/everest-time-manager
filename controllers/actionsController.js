@@ -36,9 +36,10 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   removeAction: function (req, res) {
-    db.Action.findById({ _id: req.params.projectId })
+    db.Action.findById({ _id: req.params.actionId })
       .then((dbModel) => dbModel.remove())
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
 };
+

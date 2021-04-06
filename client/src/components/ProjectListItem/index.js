@@ -41,18 +41,19 @@ export default function ProjectListItem(props) {
 
               <ListItemSecondaryAction>
                 <IconButton
+                  style={{ margin: "0px 3px"}}
                   onClick={() => handleProjectOnClick(props.projectId)}
                 >
                   <ViewListIcon />
                 </IconButton>
-                <IconButton>
+                <IconButton style={{ margin: "0px 3px"}}>
                   <EditProjectCard
                     saveProjectName={props.saveProjectName}
                     name={props.name}
                     projectId={props.projectId}
                   />
                 </IconButton>
-                <IconButton>
+                <IconButton style={{ margin: "0px 3px"}}>
                   <ConfirmDeleting
                     name={props.name}
                     deleteItem={props.deleteProject}

@@ -88,7 +88,7 @@ function TaskManager(props) {
             </h3>
             <h3>
               <strong style={{ color: "tomato" }}>Create a task</strong> for
-              your project bellow; then,{" "}
+              your project below; then,{" "}
               <strong style={{ color: "tomato" }}>start it</strong>!
             </h3>
             <h3>

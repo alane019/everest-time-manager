@@ -140,9 +140,23 @@ export default {
       }
     );
   },
+
   getAllActions: function () {
     return axios.get(`/api/actions/${localStorage.getItem("userId")}`, {
       headers: { token: `${localStorage.getItem("token")}` },
     });
   },
-};
+
+  deleteAction: function(projectId, taskId, actionId){
+    return axios.delete(
+      `/api/actions/${localStorage.getItem("userId")}/${projectId}/${taskId}/${actionId}`,
+      {
+        headers: {token: `${localStorage.getItem("token")}`}
+      }
+
+    )
+  }
+
+}
+
+
