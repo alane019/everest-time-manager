@@ -53,7 +53,7 @@ https://everest-time-manager.herokuapp.com/
 6. Begin tracking the time you work on that tasks by pushing start and stop icon from the task.
 7. On the Home Page will be displayed the History of your actions.
 8. On the Chart Page you will visualize the amount of time you spent on different tasks.
-9. If you have other questions, contact any of the Developers listed on Meet the Team page, and we friendly will come for help.
+9. If you have other questions, contact any of the Developers listed in the Question Section and we will come friendly with a solution for you.
 
 ## Contribution
 
