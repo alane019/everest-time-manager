@@ -26,6 +26,7 @@ export default function AddProjectForm(props) {
     >
       <Toolbar>
         <InputBase
+          value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder={inputPlaceholder}
           inputProps={{ "aria-label": "search" }}
@@ -36,6 +37,7 @@ export default function AddProjectForm(props) {
           <IconButton
             onClick={(e) => {
               setInputPlaceholder("Create Project ...");
+              setInputText("");
               props.addProject(inputText);
             }}
           >
