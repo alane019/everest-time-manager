@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PieChart from "../PieChart";
+import SyncIcon from "@material-ui/icons/Sync";
+import IconButton from "@material-ui/core/IconButton";
 
 class Task {
   constructor(actionData) {
@@ -31,7 +33,6 @@ class Chart extends Component {
       const actionData = taskMap[taskId];
       return new Task(actionData);
     });
-
     this.state = {
       chartData: {
         labels: tasks.map((t) => `${t.projectName} - ${t.name}`),
@@ -51,7 +52,6 @@ class Chart extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header"></div>
         {Object.keys(this.state.chartData).length && (
           <PieChart
             chartData={this.state.chartData}
@@ -59,6 +59,12 @@ class Chart extends Component {
             legendPosition="bottom"
           />
         )}
+        <IconButton
+          style={{ position: "absolute", bottom: "30px", right: "30px" }}
+          onClick={() => this.props.syncActions()}
+        >
+          <SyncIcon />
+        </IconButton>
       </div>
     );
   }
