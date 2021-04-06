@@ -22,8 +22,6 @@
 
 ## Description
 
-Technologies used: Mongo, Express, React, Node, JS, HTML, CSS, Heroku, AtlasDB,Bootstrap, Material-UI, reactstrap, momentJs, axios, chart.js, JWT, express-session/validator, passport and others.
-
 What can be used but not owned. Can be spent but not kept. Is free but also priceless. And once lost, can never be returned. The answer is “Time”.
 
 Do you ever feel that you never have enough time to get everything done that you want to? Most people can relate to this feeling. Not having enough time to accomplish your goals can negatively impact relationships, schooling, work life balance, and even your confidence. If any of this rings true for you, then our app can help.
