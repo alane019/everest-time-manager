@@ -1,6 +1,11 @@
 import React from "react";
 import HistoryIcon from "../../assets/OutlineHistoryBlack24dp.png";
 import "./style.css";
+import Box from "@material-ui/core/Box";
+import IconButton from "@material-ui/core/IconButton";
+import EditTaskCard from "../EditTaskCard";
+import ConfirmDeleting from "../ConfirmDeleting";
+
 const ActionHistoryList = (props) => {
   return (
     <div className="card" key={props.projectId}>
@@ -24,7 +29,16 @@ const ActionHistoryList = (props) => {
           Duration: {props.duration} &nbsp;
           <span style={{ color: "gray" }}>(hr:min:sec) </span>{" "}
         </p>
+        <Box>
+          <IconButton style={{ margin: "0px 3px"}}>
+                    <ConfirmDeleting
+                      name={props.name}
+                      deleteItem={props.deleteAction}
+                    />
+          </IconButton>
+        </Box>
       </div>
+      
     </div>
   );
 };

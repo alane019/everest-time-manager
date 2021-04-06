@@ -14,6 +14,7 @@ function ActionHistory(props) {
   function getAllActions() {
     API.getAllActions()
       .then((res) => {
+        console.log(res.data)
         setStatus("actions");
         setActions(res.data);
       })
@@ -47,6 +48,7 @@ function ActionHistory(props) {
               "dddd, MMMM DD YYYY, h:mm a"
             )}
             duration={moment.utc(action.duration * 1000).format("HH:mm:ss")}
+            deleteAction={() => deleteAction(action.project._id, action.task._id, action._id)}
           />
         ));
     } else if (status === "no-data") {
@@ -63,6 +65,22 @@ function ActionHistory(props) {
       );
     }
   }
+
+  
+  function deleteAction(projectId, taskId, actionId) {
+    API.deleteAction(projectId, taskId, actionId)
+      .then((res) => {
+       getAllActions();
+       // getAllActions(projectId);
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log("Error: ")
+        console.log(error);
+      });
+  }
+  
+
   return (
     <div
       id="history-list-container"
