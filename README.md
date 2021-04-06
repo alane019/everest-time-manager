@@ -1,22 +1,58 @@
-# Goals&ProductivityTracker [![License: GPL v3](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Everest
+[![License: GPL v3](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## Table Of Contents
 
-1. [License](#license)
+- [License](#license)
 
-2. [Description](#description)
+- [Description](#description)
 
-3. [Installation](#installation)
+- [Deployment](#deployment)
 
-4. [Usage](#usage)
+- [Screenshots](#screenshots)
 
-5. [Contribution](#Contribution)
+- [Usage](#usage)
 
-6. [Tests](#tests)
+- [Contribution](#Contribution)
 
-7. [Questions](#questions)
+- [Features](#features)
+
+- [Questions](#questions)
+
 ## Description
-true
-## Installation
+What can be used but not owned. Can be spent but not kept. Is free but also priceless. And once lost, can never be returned. The answer is “Time”.
+
+Do you ever feel that you never have enough time to get everything done that you want to? Most people can relate to this feeling. Not having enough time to accomplish your goals can negatively impact relationships, schooling, work life balance, and even your confidence. If any of this rings true for you, then our app can help.
+
+We’ve created “Everest”. A mobile time tracking app that will help you focus on achieving desired goals through customizable projects and tasks that you can track with ease. Everest is an amazingly simple and convenient tool to stay on task, get more done, enjoy the personal rewards of accomplishment, and have more time at the end of the day. 
+
+So, say goodbye to not having enough time, take control of your life, be the efficient self starter you’ve always wanted to be, and know that getting everything done that you want to will never again feel like climbing Mount Everest. 
+
+## Deployment
+
+https://everest-time-manager.herokuapp.com/
+
+## Screenshots
+
+![Welcome](screenshots/welcome.gif "Welcome")
+![Project Action Tasks](screenshots/projectactiontasks.gif "Project Action Tasks")
+![Chart Page](screenshots/chartpage.jpg "Chart Page")
+![FAQ's](screenshots/faqs.jpg "FAQ's")
+
+
+## Usage
+
+1. Go to Home page.
+2. Open the Pull Up icon on the bottom of the page.
+3. Create a Project you want to work on.
+4. Press on Project Name or on the List icon on the right.
+5. Create multiple tasks that are part of that project.
+6. Begin tracking the time you work on that tasks by pushing start and stop icon from the task.
+7. On the Home Page will be displayed the History of your actions.
+8. On the Chart Page you will visualize the amount of time you spent on different tasks.
+9. If you have other questions, contact any of the Developers listed on Meet the Team page, and we friendly will come for help.
+
+## Contribution
+
 To contribute on our project follow next steps:
 
 1. Fork the repository. 
@@ -79,15 +115,38 @@ git commit -m "<inset-here-the-comment-regarding-to-merging"
 ```
 Following the steps above you will be able pull code and synchronize it locally.
 
-If you have any questions, ask them on the email: paveldarii@yahoo.com.
+## Features
 
-## Usage
-true
-## Contribution
-true
-## Tests
-true
+- Materiaal-UI
+- Axios
+- Bcryptjs
+- Bootstrap
+- Exporess
+- If-env
+- Jsonwebtoken
+- Moment
+- Mongoose
+- Passport
+- React
+- React-chartsjs-2
+- React-social-icons
+- Reactstrap
+
 ## Questions
+
+Please reach out to any of the developers with questions 
+
+![Meet The Team](screenshots/meettheteam.jpg "Meet The Team")
+
+Pavel Darii | <paveldarii@yahoo.com>
+
+Eric Ober | <ericscottober@gmail.com>
+
+Adam Lane | <adamlane.all@outlook.com>
+
+Matt Trader | <matthewtrader@sbcglobal.net>
+
+
 ## License
 [The MIT License](https://opensource.org/licenses/MIT/)
 
