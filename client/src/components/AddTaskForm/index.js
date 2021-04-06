@@ -25,6 +25,7 @@ export default function AddForm(props) {
       <Toolbar>
         <InputBase
           autoComplete
+          value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder={inputPlaceholder}
           inputProps={{ "aria-label": "search" }}
@@ -35,7 +36,7 @@ export default function AddForm(props) {
         <ListItemSecondaryAction>
           <IconButton
             onClick={(e) => {
-              setInputPlaceholder("Add Task to Project ...");
+              setInputText("");
               props.addTask(props.projectId, inputText);
             }}
           >

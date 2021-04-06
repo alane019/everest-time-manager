@@ -65,6 +65,11 @@ export default function ScrollableTabsButtonPrevent(props) {
       setActions(res.data);
     });
   }, []);
+  const syncActions = () => {
+    API.getAllActions().then((res) => {
+      setActions(res.data);
+    });
+  };
   const updateActiveTaskData = (data) => {
     setActiveTaskData(data);
   };
@@ -143,7 +148,7 @@ export default function ScrollableTabsButtonPrevent(props) {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        <Chart actions={actions}></Chart>
+        <Chart actions={actions} syncActions={syncActions}></Chart>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <MeetTheTeam></MeetTheTeam>
