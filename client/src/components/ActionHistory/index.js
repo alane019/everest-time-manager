@@ -91,10 +91,10 @@ function ActionHistory(props) {
         <i>
           <strong>
             Total of{" "}
-            <span style={{ fontSize: "100%", color: "tomato" }}>
+            <span style={{ fontSize: "100%", color: "darkGreen" }}>
               {getActionAmount()}
             </span>{" "}
-            actions made
+            actions tracked.
           </strong>
         </i>
       </h3>
