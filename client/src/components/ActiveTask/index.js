@@ -27,8 +27,8 @@ export default function ActiveTask(props) {
       }}
     >
       <Grid id="active-task" item xs={12}>
-        <List style={{paddingTop: "0px"}}>
-          <ListItem style={{paddingTop: "0px"}}>
+        <List style={{ paddingTop: "0px" }}>
+          <ListItem style={{ paddingTop: "0px" }}>
             <FiberManualRecordIcon
               style={{
                 fontSize: "40px",
@@ -36,11 +36,16 @@ export default function ActiveTask(props) {
               }}
             />
             <h3>{activeTaskData.task.name}</h3>
-            <ListItemSecondaryAction className="active-timer-div" style={{}}>
+            <ListItemSecondaryAction
+              className="active-timer-div"
+              style={{ margin: "0ps", padding: "0px" }}
+            >
               <Timer
+                style={{ margin: "0ps", padding: "0px" }}
                 className="active-timer"
                 style={{
                   boxShadow: "#80808029 0px 0px 3px 2px;",
+                  margin: "0px",
                 }}
               />
             </ListItemSecondaryAction>

@@ -17,6 +17,7 @@ function Home(props) {
     footerbuttonup: { visibility: "visible" },
     footercont: { opacity: "0", visibility: "hidden" },
     goBackIconHeight: "88vh",
+    historyListHeight: "0px",
   });
 
   //checks on load weather there is an active item in local storage or not
@@ -48,6 +49,7 @@ function Home(props) {
           footerbuttonup: { visibility: "hidden" },
           footercont: { opacity: "1", visibility: "visible" },
           goBackIconHeight: "79vh",
+          historyListHeight: "7vh",
         });
       })
       .catch((e) => console.log(e));
@@ -94,6 +96,7 @@ function Home(props) {
         footerbuttonup: { visibility: "hidden" },
         footercont: { opacity: "1", visibility: "visible" },
         goBackIconHeight: "79vh",
+        historyListHeight: "7vh",
       });
     } else {
       setContainerStyle({
@@ -102,16 +105,28 @@ function Home(props) {
         footerbuttonup: { visibility: "hidden" },
         footercont: { opacity: "1", visibility: "visible" },
         goBackIconHeight: "87vh",
+        historyListHeight: "0px",
       });
     }
   };
   const shrink = () => {
-    setContainerStyle({
-      footer: { height: "30px" },
-      footerbuttondown: { visibility: "hidden" },
-      footerbuttonup: { visibility: "visible" },
-      footercont: { opacity: "0", visibility: "hidden" },
-    });
+    if (activeTaskData._id) {
+      setContainerStyle({
+        footer: { height: "30px" },
+        footerbuttondown: { visibility: "hidden" },
+        footerbuttonup: { visibility: "visible" },
+        footercont: { opacity: "0", visibility: "hidden" },
+        historyListHeight: "7vh",
+      });
+    } else {
+      setContainerStyle({
+        footer: { height: "30px" },
+        footerbuttondown: { visibility: "hidden" },
+        footerbuttonup: { visibility: "visible" },
+        footercont: { opacity: "0", visibility: "hidden" },
+        historyListHeight: "0px",
+      });
+    }
   };
   const displayActiveTask = () => {
     if (activeTaskData._id) {
@@ -133,8 +148,7 @@ function Home(props) {
   return (
     <>
       {displayActiveTask()}
-      <h1 id="history-heading">History List</h1>
-      <ActionHistory />
+      <ActionHistory containerStyle={containerStyle} />
       <HomeContext.Provider
         value={{
           handleActiveTaskStatus: handleActiveTaskStatus,
