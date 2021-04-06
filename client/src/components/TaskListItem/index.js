@@ -28,8 +28,8 @@ export default function TaskListItem(props) {
               <h3 style={{ color: "black" }}>{props.name}</h3>
               <ListItemSecondaryAction>
                 <Box display="flex" flexDirection="row">
-                  <Box style={{ color: "black" }}>
-                    <IconButton>
+                  <Box style={{ color: "black"}}>
+                    <IconButton  style={{ margin: "0px 3px"}}>
                       <StartStop
                         taskId={props.taskId}
                         projectId={props.projectId}
@@ -37,7 +37,7 @@ export default function TaskListItem(props) {
                     </IconButton>
                   </Box>
                   <Box>
-                    <IconButton>
+                    <IconButton  style={{ margin: "0px 3px"}}>
                       <EditTaskCard
                         saveTaskName={props.saveTaskName}
                         taskId={props.taskId}
@@ -45,7 +45,7 @@ export default function TaskListItem(props) {
                         name={props.name}
                       />
                     </IconButton>
-                    <IconButton>
+                    <IconButton  style={{ margin: "0px 3px"}}>
                       <ConfirmDeleting
                         name={props.name}
                         deleteItem={props.deleteTask}
