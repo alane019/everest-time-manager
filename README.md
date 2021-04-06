@@ -1,5 +1,7 @@
 # Everest
+
 [![License: GPL v3](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Table Of Contents
 
 - [License](#license)
@@ -19,13 +21,14 @@
 - [Questions](#questions)
 
 ## Description
+
 What can be used but not owned. Can be spent but not kept. Is free but also priceless. And once lost, can never be returned. The answer is “Time”.
 
 Do you ever feel that you never have enough time to get everything done that you want to? Most people can relate to this feeling. Not having enough time to accomplish your goals can negatively impact relationships, schooling, work life balance, and even your confidence. If any of this rings true for you, then our app can help.
 
-We’ve created “Everest”. A mobile time tracking app that will help you focus on achieving desired goals through customizable projects and tasks that you can track with ease. Everest is an amazingly simple and convenient tool to stay on task, get more done, enjoy the personal rewards of accomplishment, and have more time at the end of the day. 
+We’ve created “Everest”. A mobile time tracking app that will help you focus on achieving desired goals through customizable projects and tasks that you can track with ease. Everest is an amazingly simple and convenient tool to stay on task, get more done, enjoy the personal rewards of accomplishment, and have more time at the end of the day.
 
-So, say goodbye to not having enough time, take control of your life, be the efficient self starter you’ve always wanted to be, and know that getting everything done that you want to will never again feel like climbing Mount Everest. 
+So, say goodbye to not having enough time, take control of your life, be the efficient self starter you’ve always wanted to be, and know that getting everything done that you want to will never again feel like climbing Mount Everest.
 
 ## Deployment
 
@@ -38,7 +41,6 @@ https://everest-time-manager.herokuapp.com/
 ![Chart Page](screenshots/chartpage.jpg "Chart Page")
 ![FAQ's](screenshots/faqs.jpg "FAQ's")
 
-
 ## Usage
 
 1. Go to Home page.
@@ -49,14 +51,14 @@ https://everest-time-manager.herokuapp.com/
 6. Begin tracking the time you work on that tasks by pushing start and stop icon from the task.
 7. On the Home Page will be displayed the History of your actions.
 8. On the Chart Page you will visualize the amount of time you spent on different tasks.
-9. If you have other questions, contact any of the Developers listed on Meet the Team page, and we friendly will come for help.
+9. If you have other questions, contact any of the Developers listed in the Question Section and we will come friendly with a solution for you.
 
 ## Contribution
 
 To contribute on our project follow next steps:
 
-1. Fork the repository. 
-   In the right corner of the page you should see a fork button. Press on it to fork the repository.  
+1. Fork the repository.
+   In the right corner of the page you should see a fork button. Press on it to fork the repository.
 
    ![fork-section](screenshots/fork-section.png)
 
@@ -75,34 +77,40 @@ To contribute on our project follow next steps:
 ```bash
 npm install
 ```
+
 5. To start the whole app insert in your CLI:
 
 ```bash
 npm start
 ```
+
 6. If you made some improvements in the app, you might want to upload your code, so one way to do this is to follow next steps:
+
 ```bash
 git add -A
 git commit -m "your commit text"
 git push
 ```
-7. Make a pull request. Go on your forked version of the app on GitHub, and look for pull request link; then, press on it and follow the steps:    
 
-![pullRequest section](screenshots/pullRequest-section.png)/   
+7. Make a pull request. Go on your forked version of the app on GitHub, and look for pull request link; then, press on it and follow the steps:
 
+![pullRequest section](screenshots/pullRequest-section.png)/
 
-8. Congratulation, you completed all steps to become part of the project.   
-
+8. Congratulation, you completed all steps to become part of the project.
 
 Note:
 -- To start just the back end side of your app insert in your CLI:
+
 ```bash
 node server.js
-```  
+```
+
 -- To start just the front end part of the app, in your CLI enter in client folder; then insert:
+
 ```bash
 npm start
 ```
+
 -- Sometimes you might want to synchronize your local repository with the main branch. To do that follow next steps:
 
 ```bash
@@ -113,6 +121,7 @@ git merge upstream/main main
 git add .
 git commit -m "<inset-here-the-comment-regarding-to-merging"
 ```
+
 Following the steps above you will be able pull code and synchronize it locally.
 
 ## Features
@@ -134,7 +143,7 @@ Following the steps above you will be able pull code and synchronize it locally.
 
 ## Questions
 
-Please reach out to any of the developers with questions 
+Please reach out to any of the developers with questions
 
 ![Meet The Team](screenshots/meettheteam.jpg "Meet The Team")
 
@@ -146,7 +155,6 @@ Adam Lane | <adamlane.all@outlook.com>
 
 Matt Trader | <matthewtrader@sbcglobal.net>
 
-
 ## License
-[The MIT License](https://opensource.org/licenses/MIT/)
 
+[The MIT License](https://opensource.org/licenses/MIT/)
