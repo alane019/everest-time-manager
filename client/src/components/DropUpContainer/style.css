@@ -45,6 +45,7 @@
   opacity: 1;
   width: 100%;
   transition: opacity 1s, visibility 2s, display 2s;
+  color: #042046;
 }
 #centerbutton {
   align: center;
