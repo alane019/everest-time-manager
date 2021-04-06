@@ -22,9 +22,7 @@
 
 ## Description
 
-[Link: https://everest-time-manager.herokuapp.com/](https://everest-time-manager.herokuapp.com/)
-
-Technologies: Mongo, Express, React, Node, JS, HTML, CSS, Heroku, AtlasDB,Bootstrap, Material-UI, reactstrap, momentJs, axios, chart.js, JWT, express-session/validator, passport and others.
+Technologies used: Mongo, Express, React, Node, JS, HTML, CSS, Heroku, AtlasDB,Bootstrap, Material-UI, reactstrap, momentJs, axios, chart.js, JWT, express-session/validator, passport and others.
 
 What can be used but not owned. Can be spent but not kept. Is free but also priceless. And once lost, can never be returned. The answer is “Time”.
 
