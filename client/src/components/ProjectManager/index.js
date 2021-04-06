@@ -24,18 +24,18 @@ function ProjectManager(props) {
   }
   function generateColorByIndex(i) {
     const colorList = [
-      "chocolate",
-      "indianRed",
-      "plum",
-      "cornflowerBlue",
-      "chocolate",
-      "indianRed",
-      "plum",
-      "cornflowerBlue",
-      "chocolate",
-      "indianRed",
-      "plum",
-      "cornflowerBlue",
+      '#cc5de8', // Grape 5
+      '#845ef7', // Violet 5
+      '#5c7cfa', // Indigo 5
+      '#339af0', // Blue 5
+      '#22b8cf', // Cyan 5
+      '#20c997', // Teal 5
+      '#51cf66', // Green 5
+      '#94d82d', // Lime 5
+      '#fcc419', // Yellow 5
+      '#ff922b', // Orange 5
+      '#ff6b6b', // Red 5
+      '#f06595', // Pink 5
     ];
     return colorList[i];
   }
