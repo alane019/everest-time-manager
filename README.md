@@ -126,11 +126,11 @@ Following the steps above you will be able pull code and synchronize it locally.
 
 ## Features
 
-- Materiaal-UI
+- Material-UI
 - Axios
 - Bcryptjs
 - Bootstrap
-- Exporess
+- Express
 - If-env
 - Jsonwebtoken
 - Moment
