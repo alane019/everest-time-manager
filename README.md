@@ -151,7 +151,7 @@ Pavel Darii | <paveldarii@yahoo.com>
 
 Eric Ober | <ericscottober@gmail.com>
 
-Adam Lane | <adamlane.all@outlook.com>
+Adam Lane | <adamlane8719@gmail.com>
 
 Matt Trader | <matthewtrader@sbcglobal.net>
 
