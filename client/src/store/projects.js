@@ -1,6 +1,7 @@
 //createSlice is a function that creates a entity that later will be combined with other entities
 import { createSlice } from "@reduxjs/toolkit";
 import moment from "moment";
+import { apiCallBegan } from "./api";
 //for memoisation purposes we use reselect library
 import { createSelector } from "reselect";
 
@@ -68,5 +69,5 @@ export const addBug = (project) =>
 // output is get passed to the result function which is the second one
 export const getUnresolvedBugs = createSelector(
   (state) => state.entities.projects.list,
-  (list) => list.filter((bug) => !bug.resolved)
+  (list) => list.filter((project) => !project.resolved)
 );
