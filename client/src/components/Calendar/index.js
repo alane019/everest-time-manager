@@ -1,10 +1,11 @@
 import React from 'react';
 
 import Scheduler from 'devextreme-react/scheduler';
-import {
-  generateResources,
-  generateAppointments
-} from './data.js';
+import calendarData from  './data.js';
+
+const generateResources = calendarData.generateResources;
+const generateAppointments = calendarData.generateAppointments;
+  
 
 const currentDate = new Date(2021, 8, 6);
 const views = [{
@@ -38,7 +39,7 @@ class Calendar extends React.Component {
         dataSource={appointments}
         height={600}
         views={views}
-        defaultCurrentView="3 Days"
+        defaultCurrentView="2 Days"
         defaultCurrentDate={currentDate}
         startDayHour={9}
         endDayHour={18}
