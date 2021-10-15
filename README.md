@@ -22,7 +22,7 @@
 
 ## Description
 
-What can be used but not owned. Can be spent but not kept. Is free but also priceless. And once lost, can never be returned. The answer is “Time”.
+What can be used but not owned? Can be spent but not kept? Is free but also priceless? And once lost, can never be returned? The answer is “Time”.
 
 Do you ever feel that you never have enough time to get everything done that you want to? Most people can relate to this feeling. Not having enough time to accomplish your goals can negatively impact relationships, schooling, work life balance, and even your confidence. If any of this rings true for you, then our app can help.
 
@@ -69,7 +69,7 @@ To contribute on our project follow next steps:
 3. Clone the app locally. Insert in your CLI the command similar with the one bellow.
 
 ```bash
-    git clone git@github.com:<your-git-hub-username>/goals-productivity-tracker.git
+    git clone git@github.com:<your-git-hub-username>/everest-time-analyzer.git
 ```
 
 4. Install all libraries. Insert next command in your CLI:
