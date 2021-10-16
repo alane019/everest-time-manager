@@ -15,7 +15,9 @@ import API from "../../utils/API";
 import LogOutCard from "../LogOutCard";
 import GroupIcon from "@material-ui/icons/Group";
 import LiveHelpIcon from "@material-ui/icons/LiveHelp";
+import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import About from "../About";
+import Calendar from "../Calendar";  
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -120,22 +122,28 @@ export default function ScrollableTabsButtonPrevent(props) {
           />
           <Tab
             style={style.navItemWidth}
-            icon={<GroupIcon />}
+            icon={<CalendarIcon />}
             aria-label="calendar"
             {...a11yProps(2)}
           />
           <Tab
             style={style.navItemWidth}
-            icon={<LiveHelpIcon />}
-            aria-label="calendar"
+            icon={<GroupIcon />}
+            aria-label="team"
             {...a11yProps(3)}
+          />
+          <Tab
+            style={style.navItemWidth}
+            icon={<LiveHelpIcon />}
+            aria-label="FAQ"
+            {...a11yProps(4)}
           />
           <LogOutCard
             id="scrollable-prevent-tab-logout"
             className="logout-card"
             style={style.navItemWidth}
             icon={<ExitToAppIcon />}
-            {...a11yProps(4)}
+            {...a11yProps(5)}
             removeToken={props.removeToken}
           ></LogOutCard>
         </Tabs>
@@ -150,10 +158,16 @@ export default function ScrollableTabsButtonPrevent(props) {
       <TabPanel value={value} index={1}>
         <Chart actions={actions} syncActions={syncActions}></Chart>
       </TabPanel>
+
       <TabPanel value={value} index={2}>
+        <Calendar />
+      </TabPanel>
+
+      <TabPanel value={value} index={3}>
         <MeetTheTeam></MeetTheTeam>
       </TabPanel>
-      <TabPanel value={value} index={3}>
+
+      <TabPanel value={value} index={4}>
         <About />
       </TabPanel>
     </div>
