@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import API from "../../utils/API";
-// import ProjectManager from "../ProjectManager";
+import DemoAccountInfoCard from "./DemoAccountInfoCard";
 import Main from "../Main";
 import "./style.css";
 import DropDownSecurityQuestions from "../DropDownSecurityQuestions";
@@ -90,7 +90,11 @@ export default function Login() {
                 </div>
                 <div className="hr"></div>
                 <ForgotPassword />
+				<div className="hr"></div>
+			  	<DemoAccountInfoCard />
               </div>
+			  
+			  
               <div className="sign-up-htm">
                 <div className="group">
                   <label htmlFor="name" className="label">
