@@ -53,8 +53,11 @@ const Timer = (props) => {
           }}
         >
           <div className="time">
-            {Math.floor(rawDifference)}:
-            {Math.floor(((rawDifference % 1) * 6000) / 100)}
+		  {(Math.floor(rawDifference) >= 1 && Math.floor(rawDifference) < 10 ) ?  [" 0"].toString()  : ""} 
+		  { Math.floor(rawDifference) < 1 ?  [" 00:"].toString() : "" }
+		  { Math.floor(rawDifference) >= 1 ? Math.floor(rawDifference) + ":" : "" }
+		  {Math.floor(((rawDifference % 1) * 6000) / 100) < 10 ? ("0").toString() : ""}
+		  {Math.floor(((rawDifference % 1) * 6000) / 100)}
           </div>
         </Box>
       </Box>
